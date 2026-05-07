@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="SaveTAB" load_steps=93 format=3]
+[gd_resource type="Resource" script_class="SaveTAB" format=3 uid="uid://c73vu6w4w80lv"]
 
-[ext_resource type="Script" path="res://int_note.gd" id="1_2bfy2"]
-[ext_resource type="Script" path="res://int_notes.gd" id="2_heq15"]
-[ext_resource type="Script" path="res://save_tab.gd" id="3_7putu"]
+[ext_resource type="Script" uid="uid://ciledy76rbhlj" path="res://scripts/int_note.gd" id="1_2bfy2"]
+[ext_resource type="Script" uid="uid://cc3wcooeyltt4" path="res://scripts/int_notes.gd" id="2_heq15"]
+[ext_resource type="Script" uid="uid://c0eglcapaetj" path="res://scripts/save_tab.gd" id="3_7putu"]
 
 [sub_resource type="Resource" id="Resource_agqka"]
 script = ExtResource("1_2bfy2")
@@ -10,9 +10,6 @@ fret = 5
 stk = 4
 note = 2
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_bj3ey"]
 script = ExtResource("1_2bfy2")
@@ -20,9 +17,6 @@ fret = 7
 stk = 3
 note = 9
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_ikp6p"]
 script = ExtResource("1_2bfy2")
@@ -30,9 +24,6 @@ fret = 7
 stk = 2
 note = 2
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_dorwm"]
 script = ExtResource("2_heq15")
@@ -45,8 +36,6 @@ stk = 4
 note = 2
 octave = 3
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_jktg0"]
 script = ExtResource("1_2bfy2")
@@ -55,8 +44,6 @@ stk = 4
 note = 2
 octave = 3
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_4jiwb"]
 script = ExtResource("1_2bfy2")
@@ -64,9 +51,6 @@ fret = 8
 stk = 1
 note = 7
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_g6ibn"]
 script = ExtResource("1_2bfy2")
@@ -74,9 +58,6 @@ fret = 7
 stk = 1
 note = 6
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_j88f4"]
 script = ExtResource("1_2bfy2")
@@ -85,8 +66,6 @@ stk = 4
 note = 2
 octave = 3
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_j18mi"]
 script = ExtResource("1_2bfy2")
@@ -95,8 +74,6 @@ stk = 4
 note = 2
 octave = 3
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_ftt53"]
 script = ExtResource("1_2bfy2")
@@ -104,9 +81,6 @@ fret = 5
 stk = 5
 note = 9
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_oyp7w"]
 script = ExtResource("1_2bfy2")
@@ -114,9 +88,6 @@ fret = 7
 stk = 4
 note = 4
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_koqmg"]
 script = ExtResource("1_2bfy2")
@@ -124,9 +95,6 @@ fret = 7
 stk = 3
 note = 9
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_3wy55"]
 script = ExtResource("2_heq15")
@@ -139,8 +107,6 @@ stk = 5
 note = 9
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_338si"]
 script = ExtResource("1_2bfy2")
@@ -149,8 +115,6 @@ stk = 5
 note = 9
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_rk6rx"]
 script = ExtResource("1_2bfy2")
@@ -158,9 +122,6 @@ fret = 5
 stk = 1
 note = 4
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_ug6se"]
 script = ExtResource("1_2bfy2")
@@ -168,9 +129,6 @@ fret = 7
 stk = 1
 note = 6
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_3wlld"]
 script = ExtResource("1_2bfy2")
@@ -179,8 +137,6 @@ stk = 4
 note = 9
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_te5no"]
 script = ExtResource("1_2bfy2")
@@ -189,8 +145,6 @@ stk = 4
 note = 9
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_cw4ay"]
 script = ExtResource("1_2bfy2")
@@ -198,9 +152,6 @@ fret = 2
 stk = 4
 note = 11
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_8pltg"]
 script = ExtResource("1_2bfy2")
@@ -208,9 +159,6 @@ fret = 4
 stk = 3
 note = 6
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_jgnyw"]
 script = ExtResource("1_2bfy2")
@@ -218,9 +166,6 @@ fret = 4
 stk = 2
 note = 11
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_4eeyx"]
 script = ExtResource("2_heq15")
@@ -233,8 +178,6 @@ stk = 4
 note = 11
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_s5lu8"]
 script = ExtResource("1_2bfy2")
@@ -243,8 +186,6 @@ stk = 4
 note = 11
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_4wm5b"]
 script = ExtResource("1_2bfy2")
@@ -252,9 +193,6 @@ fret = 2
 stk = 1
 note = 1
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_msgqr"]
 script = ExtResource("1_2bfy2")
@@ -263,8 +201,6 @@ stk = 4
 note = 11
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_x5dbl"]
 script = ExtResource("1_2bfy2")
@@ -272,9 +208,6 @@ fret = 3
 stk = 1
 note = 2
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_f5a5v"]
 script = ExtResource("1_2bfy2")
@@ -283,8 +216,6 @@ stk = 4
 note = 11
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_fgc1h"]
 script = ExtResource("1_2bfy2")
@@ -292,9 +223,6 @@ fret = 2
 stk = 5
 note = 6
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_nv6nt"]
 script = ExtResource("1_2bfy2")
@@ -302,9 +230,6 @@ fret = 4
 stk = 4
 note = 1
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_x47hk"]
 script = ExtResource("1_2bfy2")
@@ -312,9 +237,6 @@ fret = 4
 stk = 3
 note = 6
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_5v2wo"]
 script = ExtResource("2_heq15")
@@ -327,8 +249,6 @@ stk = 5
 note = 6
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_fd4oj"]
 script = ExtResource("1_2bfy2")
@@ -337,8 +257,6 @@ stk = 5
 note = 6
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_xvugt"]
 script = ExtResource("1_2bfy2")
@@ -346,9 +264,6 @@ fret = 0
 stk = 5
 note = 4
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_eyvuk"]
 script = ExtResource("1_2bfy2")
@@ -356,9 +271,6 @@ fret = 2
 stk = 4
 note = 11
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_pxrah"]
 script = ExtResource("1_2bfy2")
@@ -366,9 +278,6 @@ fret = 2
 stk = 3
 note = 4
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_n6ntd"]
 script = ExtResource("2_heq15")
@@ -381,8 +290,6 @@ stk = 5
 note = 4
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_lwael"]
 script = ExtResource("1_2bfy2")
@@ -390,9 +297,6 @@ fret = 2
 stk = 5
 note = 6
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_wijci"]
 script = ExtResource("1_2bfy2")
@@ -400,9 +304,6 @@ fret = 4
 stk = 4
 note = 1
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_thoht"]
 script = ExtResource("1_2bfy2")
@@ -410,9 +311,6 @@ fret = 4
 stk = 3
 note = 6
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_u7rpv"]
 script = ExtResource("2_heq15")
@@ -425,8 +323,6 @@ stk = 5
 note = 6
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_2bfy2"]
 script = ExtResource("1_2bfy2")
@@ -434,9 +330,6 @@ fret = 3
 stk = 5
 note = 7
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_heq15"]
 script = ExtResource("1_2bfy2")
@@ -444,9 +337,6 @@ fret = 5
 stk = 4
 note = 2
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_7putu"]
 script = ExtResource("1_2bfy2")
@@ -454,9 +344,6 @@ fret = 5
 stk = 3
 note = 7
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_x0gjh"]
 script = ExtResource("2_heq15")
@@ -469,8 +356,6 @@ stk = 5
 note = 7
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_yuatt"]
 script = ExtResource("1_2bfy2")
@@ -479,8 +364,6 @@ stk = 5
 note = 7
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_senw8"]
 script = ExtResource("1_2bfy2")
@@ -489,8 +372,6 @@ stk = 5
 note = 7
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_2adhc"]
 script = ExtResource("1_2bfy2")
@@ -498,9 +379,6 @@ fret = 5
 stk = 3
 note = 7
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_cnfj4"]
 script = ExtResource("1_2bfy2")
@@ -508,9 +386,6 @@ fret = 4
 stk = 2
 note = 11
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_8myum"]
 script = ExtResource("2_heq15")
@@ -522,9 +397,6 @@ fret = 7
 stk = 3
 note = 9
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_12b61"]
 script = ExtResource("1_2bfy2")
@@ -532,9 +404,6 @@ fret = 6
 stk = 2
 note = 1
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_tgked"]
 script = ExtResource("2_heq15")
@@ -546,9 +415,6 @@ fret = 5
 stk = 4
 note = 2
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_lg2c6"]
 script = ExtResource("1_2bfy2")
@@ -556,9 +422,6 @@ fret = 7
 stk = 3
 note = 9
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_n10sm"]
 script = ExtResource("1_2bfy2")
@@ -566,9 +429,6 @@ fret = 7
 stk = 2
 note = 2
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_nledi"]
 script = ExtResource("2_heq15")
@@ -581,8 +441,6 @@ stk = 4
 note = 2
 octave = 3
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_u5ud7"]
 script = ExtResource("1_2bfy2")
@@ -591,8 +449,6 @@ stk = 4
 note = 2
 octave = 3
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_k82vh"]
 script = ExtResource("1_2bfy2")
@@ -600,9 +456,6 @@ fret = 8
 stk = 1
 note = 7
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_l2uep"]
 script = ExtResource("1_2bfy2")
@@ -610,9 +463,6 @@ fret = 7
 stk = 1
 note = 6
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_pch06"]
 script = ExtResource("1_2bfy2")
@@ -620,9 +470,6 @@ fret = 5
 stk = 1
 note = 4
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_3mrpe"]
 script = ExtResource("1_2bfy2")
@@ -630,9 +477,6 @@ fret = 7
 stk = 2
 note = 2
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_o5y4j"]
 script = ExtResource("1_2bfy2")
@@ -640,9 +484,6 @@ fret = 3
 stk = 5
 note = 7
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_d1ves"]
 script = ExtResource("1_2bfy2")
@@ -650,9 +491,6 @@ fret = 5
 stk = 4
 note = 2
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_14jkv"]
 script = ExtResource("1_2bfy2")
@@ -660,9 +498,6 @@ fret = 5
 stk = 3
 note = 7
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_xqker"]
 script = ExtResource("2_heq15")
@@ -675,8 +510,6 @@ stk = 5
 note = 7
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_m6cha"]
 script = ExtResource("1_2bfy2")
@@ -685,8 +518,6 @@ stk = 5
 note = 7
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_ggvef"]
 script = ExtResource("1_2bfy2")
@@ -694,9 +525,6 @@ fret = 4
 stk = 2
 note = 11
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_kqx4x"]
 script = ExtResource("1_2bfy2")
@@ -704,9 +532,6 @@ fret = 6
 stk = 2
 note = 1
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_3b8ip"]
 script = ExtResource("1_2bfy2")
@@ -714,9 +539,6 @@ fret = 7
 stk = 2
 note = 2
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_e65b6"]
 script = ExtResource("1_2bfy2")
@@ -724,9 +546,6 @@ fret = 6
 stk = 2
 note = 1
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_gij2p"]
 script = ExtResource("1_2bfy2")
@@ -734,9 +553,6 @@ fret = 5
 stk = 5
 note = 9
 octave = 2
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_nikr6"]
 script = ExtResource("1_2bfy2")
@@ -744,9 +560,6 @@ fret = 7
 stk = 4
 note = 4
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_bv628"]
 script = ExtResource("1_2bfy2")
@@ -754,9 +567,6 @@ fret = 7
 stk = 3
 note = 9
 octave = 3
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_neoch"]
 script = ExtResource("2_heq15")
@@ -769,8 +579,6 @@ stk = 5
 note = 9
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_7yijd"]
 script = ExtResource("1_2bfy2")
@@ -779,8 +587,6 @@ stk = 5
 note = 9
 octave = 2
 mod = 1
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_hjbxw"]
 script = ExtResource("1_2bfy2")
@@ -788,9 +594,6 @@ fret = 6
 stk = 2
 note = 1
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_qjm0k"]
 script = ExtResource("1_2bfy2")
@@ -798,9 +601,6 @@ fret = 7
 stk = 2
 note = 2
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_2g8kd"]
 script = ExtResource("1_2bfy2")
@@ -808,9 +608,6 @@ fret = 9
 stk = 2
 note = 4
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [sub_resource type="Resource" id="Resource_kgqc4"]
 script = ExtResource("1_2bfy2")
@@ -818,9 +615,6 @@ fret = 7
 stk = 2
 note = 2
 octave = 4
-mod = 0
-vibrato = false
-bend = 0
 
 [resource]
 script = ExtResource("3_7putu")
@@ -829,4 +623,3 @@ melody = [SubResource("Resource_dorwm"), SubResource("Resource_o1x05"), SubResou
 name = "Canon Rock - Jerry C"
 tempo = 200.0
 key = 2
-scale = 0

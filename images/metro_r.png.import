@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8uv78kad6ss"
-path="res://.godot/imported/guitar_master_horizons.png-47f79f7ae5ff277661117b027fab00f1.ctex"
+uid="uid://cjs6pxytmr62s"
+path="res://.godot/imported/metro_r.png-6e7c23283c86d8b14e7e73a533e54495.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guitar_master_horizons.png"
-dest_files=["res://.godot/imported/guitar_master_horizons.png-47f79f7ae5ff277661117b027fab00f1.ctex"]
+source_file="res://images/metro_r.png"
+dest_files=["res://.godot/imported/metro_r.png-6e7c23283c86d8b14e7e73a533e54495.ctex"]
 
 [params]
 

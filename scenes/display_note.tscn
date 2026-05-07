@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddxlocqiwkgsh"]
+[gd_scene format=3 uid="uid://ddxlocqiwkgsh"]
 
-[ext_resource type="Script" uid="uid://ddrffskaebet8" path="res://display_note.gd" id="1_sd4hg"]
+[ext_resource type="Script" uid="uid://ddrffskaebet8" path="res://scripts/display_note.gd" id="1_sd4hg"]
 
 [sub_resource type="Animation" id="Animation_g730w"]
 length = 0.001

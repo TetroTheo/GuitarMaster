@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="SaveTAB" format=3]
 
-[ext_resource type="Script" path="res://int_note.gd" id="1_bxqv0"]
-[ext_resource type="Script" path="res://int_notes.gd" id="2_fgsju"]
-[ext_resource type="Script" path="res://save_tab.gd" id="3_755wa"]
+[ext_resource type="Script" uid="uid://ciledy76rbhlj" path="res://scripts/int_note.gd" id="1_bxqv0"]
+[ext_resource type="Script" uid="uid://cc3wcooeyltt4" path="res://scripts/int_notes.gd" id="2_fgsju"]
+[ext_resource type="Script" uid="uid://c0eglcapaetj" path="res://scripts/save_tab.gd" id="3_755wa"]
 
 [sub_resource type="Resource" id="Resource_slxt1"]
 script = ExtResource("1_bxqv0")

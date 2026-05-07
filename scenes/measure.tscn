@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://548jhfmpyql3"]
+[gd_scene format=3 uid="uid://548jhfmpyql3"]
 
-[ext_resource type="Script" uid="uid://cur5vd7cihvxm" path="res://measure.gd" id="1_ph5es"]
+[ext_resource type="Script" uid="uid://cur5vd7cihvxm" path="res://scripts/measure.gd" id="1_ph5es"]
 
 [node name="Measure" type="ColorRect"]
 custom_minimum_size = Vector2(315, 178)

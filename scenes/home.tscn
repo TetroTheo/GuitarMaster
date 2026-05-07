@@ -1,17 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu6iwedghx7ll"]
+[gd_scene format=3 uid="uid://cu6iwedghx7ll"]
 
-[ext_resource type="Script" uid="uid://d0e8eq2tuelhg" path="res://display_note_container.gd" id="1_o1ld7"]
-[ext_resource type="Texture2D" uid="uid://ccffma886l78k" path="res://plus.png" id="2_2ayvv"]
-[ext_resource type="Texture2D" uid="uid://1g8h0o51rmgx" path="res://metro_l.png" id="2_vqw7c"]
-[ext_resource type="Texture2D" uid="uid://re1qm5onnteh" path="res://play.png" id="2_w1mvj"]
-[ext_resource type="Script" uid="uid://dqftdsviu685w" path="res://a_test_tab_editor.gd" id="3_w1mvj"]
-[ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://metronome-85688.mp3" id="4_2ayvv"]
-[ext_resource type="Texture2D" uid="uid://byglroffrpx85" path="res://loop.png" id="4_qq0qw"]
-[ext_resource type="Texture2D" uid="uid://opnh1d0j4uin" path="res://edit.png" id="5_qq0qw"]
-[ext_resource type="Texture2D" uid="uid://dl508ehdcbdrr" path="res://eye.png" id="6_q6q8i"]
-[ext_resource type="Script" uid="uid://cb1ptt62x4rcm" path="res://fret_markers.gd" id="10_q6q8i"]
+[ext_resource type="Script" uid="uid://d0e8eq2tuelhg" path="res://scripts/display_note_container.gd" id="1_hhep5"]
+[ext_resource type="Script" uid="uid://cb1ptt62x4rcm" path="res://scripts/fret_markers.gd" id="2_cmjdo"]
+[ext_resource type="Texture2D" uid="uid://1g8h0o51rmgx" path="res://images/metro_l.png" id="3_yu5fn"]
+[ext_resource type="Texture2D" uid="uid://re1qm5onnteh" path="res://images/play.png" id="4_ip4d6"]
+[ext_resource type="Texture2D" uid="uid://byglroffrpx85" path="res://images/loop.png" id="5_gi00y"]
+[ext_resource type="Texture2D" uid="uid://opnh1d0j4uin" path="res://images/edit.png" id="6_rpgsi"]
+[ext_resource type="Texture2D" uid="uid://dl508ehdcbdrr" path="res://images/eye.png" id="7_ju5sp"]
+[ext_resource type="Texture2D" uid="uid://ccffma886l78k" path="res://images/plus.png" id="8_o7pnx"]
+[ext_resource type="Script" uid="uid://dqftdsviu685w" path="res://scripts/a_test_tab_editor.gd" id="9_aish6"]
+[ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://audio/metronome-sound.mp3" id="10_snnha"]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=146251521]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,33 +19,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1584101691]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 372.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=1507836220]
 layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=2146077768]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="DisplayNoteContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="DisplayNoteContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=515358678]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("1_o1ld7")
+script = ExtResource("1_hhep5")
 
-[node name="FretMarkers" type="Panel" parent="VBoxContainer/ScrollContainer"]
+[node name="FretMarkers" type="Panel" parent="VBoxContainer/ScrollContainer" unique_id=1194862198]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1473, 45.725)
 layout_mode = 2
-script = ExtResource("10_q6q8i")
+script = ExtResource("2_cmjdo")
 
-[node name="0" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="0" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=353630465]
 layout_mode = 0
 offset_right = 60.0
 offset_bottom = 40.0
@@ -54,7 +54,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="1" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="1" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=1437823059]
 layout_mode = 0
 offset_left = 197.0
 offset_right = 257.0
@@ -64,7 +64,7 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="2" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="2" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=2131730019]
 layout_mode = 0
 offset_left = 325.0
 offset_right = 385.0
@@ -74,7 +74,7 @@ text = "5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="3" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="3" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=1657701045]
 layout_mode = 0
 offset_left = 453.0
 offset_right = 513.0
@@ -84,7 +84,7 @@ text = "7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="4" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="4" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=186504264]
 layout_mode = 0
 offset_left = 581.0
 offset_right = 641.0
@@ -94,7 +94,7 @@ text = "9"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="5" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="5" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=1334391461]
 layout_mode = 0
 offset_left = 773.0
 offset_right = 833.0
@@ -104,7 +104,7 @@ text = "12"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="6" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="6" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=231450727]
 layout_mode = 0
 offset_left = 965.0
 offset_right = 1025.0
@@ -114,7 +114,7 @@ text = "15"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="7" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="7" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=1375330017]
 layout_mode = 0
 offset_left = 1093.0
 offset_right = 1153.0
@@ -124,7 +124,7 @@ text = "17"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="8" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="8" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=1475794018]
 layout_mode = 0
 offset_left = 1221.0
 offset_right = 1281.0
@@ -134,7 +134,7 @@ text = "19"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="9" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+[node name="9" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers" unique_id=428760140]
 layout_mode = 0
 offset_left = 1349.0
 offset_right = 1409.0
@@ -144,17 +144,17 @@ text = "21"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ControlBar" type="ColorRect" parent="VBoxContainer"]
+[node name="ControlBar" type="ColorRect" parent="VBoxContainer" unique_id=1865870086]
 custom_minimum_size = Vector2(1152, 40)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ControlBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ControlBar" unique_id=430456247]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Key" type="OptionButton" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="Key" type="OptionButton" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=208514295]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
@@ -184,7 +184,7 @@ popup/item_10/id = 10
 popup/item_11/text = "B"
 popup/item_11/id = 11
 
-[node name="Scale" type="OptionButton" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="Scale" type="OptionButton" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1926378397]
 unique_name_in_owner = true
 layout_mode = 2
 selected = 0
@@ -214,7 +214,7 @@ popup/item_10/id = 10
 popup/item_11/text = "Chromatic"
 popup/item_11/id = 11
 
-[node name="Metro" type="SpinBox" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="Metro" type="SpinBox" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1142299342]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -226,7 +226,7 @@ suffix = "BPM"
 custom_arrow_step = 5.0
 select_all_on_focus = true
 
-[node name="MetroSlider" type="HSlider" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="MetroSlider" type="HSlider" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=976908251]
 visible = false
 modulate = Color(0, 1, 1, 1)
 custom_minimum_size = Vector2(256.645, 40)
@@ -235,77 +235,77 @@ min_value = 50.0
 max_value = 250.0
 value = 120.0
 
-[node name="MetroLights" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="MetroLights" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1598232832]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights" unique_id=670193009]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 1, 1, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights" unique_id=2029900057]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 1, 1, 1)
 
-[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights" unique_id=469836469]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 1, 1, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights" unique_id=126119232]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 1, 1, 1)
 
-[node name="MetronomeMode" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="MetronomeMode" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=491093474]
 unique_name_in_owner = true
 modulate = Color(0, 1, 1, 1)
 layout_mode = 2
 toggle_mode = true
-icon = ExtResource("2_vqw7c")
+icon = ExtResource("3_yu5fn")
 
-[node name="Play" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1289100680]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 toggle_mode = true
-icon = ExtResource("2_w1mvj")
+icon = ExtResource("4_ip4d6")
 
-[node name="Loop" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="Loop" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1269784780]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 toggle_mode = true
-icon = ExtResource("4_qq0qw")
+icon = ExtResource("5_gi00y")
 
-[node name="Clear" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="Clear" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1278023692]
 visible = false
 layout_mode = 2
 text = "Clear"
 
-[node name="EditorMode" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="EditorMode" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=165896266]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-icon = ExtResource("5_qq0qw")
+icon = ExtResource("6_rpgsi")
 
-[node name="SettingsTAB" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="SettingsTAB" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=297742092]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
-icon = ExtResource("6_q6q8i")
+icon = ExtResource("7_ju5sp")
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB" unique_id=769572824]
 visible = false
 layout_mode = 0
 offset_left = -60.0
@@ -313,7 +313,7 @@ offset_top = -188.0
 offset_right = 110.0
 color = Color(0, 0, 0, 1)
 
-[node name="SettingsPanel" type="VBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB"]
+[node name="SettingsPanel" type="VBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB" unique_id=78043414]
 visible = false
 z_index = 1
 layout_mode = 0
@@ -322,25 +322,25 @@ offset_top = -185.0
 offset_right = 105.0
 offset_bottom = -4.0
 
-[node name="SettingsName" type="LineEdit" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+[node name="SettingsName" type="LineEdit" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel" unique_id=227906969]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "New TAB"
 
-[node name="SettingsKey" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+[node name="SettingsKey" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel" unique_id=1873592063]
 unique_name_in_owner = true
 layout_mode = 2
 text = "C Major"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel" unique_id=1619662112]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer2" unique_id=1931792832]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Tempo:"
 
-[node name="SettingsMetro" type="SpinBox" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer2"]
+[node name="SettingsMetro" type="SpinBox" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer2" unique_id=1813529156]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -352,184 +352,184 @@ suffix = "BPM"
 custom_arrow_step = 5.0
 select_all_on_focus = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel" unique_id=1944314925]
 layout_mode = 2
 
-[node name="Import" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3"]
+[node name="Import" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3" unique_id=833946894]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Import"
 
-[node name="Export" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3"]
+[node name="Export" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3" unique_id=706410826]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Export"
 
-[node name="Close" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+[node name="Close" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel" unique_id=1094990491]
 modulate = Color(1, 0.396265, 0.362646, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Close TAB"
 
-[node name="NewTAB" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="NewTAB" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1155562015]
 layout_mode = 2
-icon = ExtResource("2_2ayvv")
+icon = ExtResource("8_o7pnx")
 
-[node name="TabBar" type="TabBar" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="TabBar" type="TabBar" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1612456474]
 unique_name_in_owner = true
 clip_contents = true
 custom_minimum_size = Vector2(576, 0)
 layout_mode = 2
 select_with_rmb = true
 
-[node name="PopupPanel" type="PopupPanel" parent="VBoxContainer/ControlBar/HBoxContainer/TabBar"]
+[node name="PopupPanel" type="PopupPanel" parent="VBoxContainer/ControlBar/HBoxContainer/TabBar" unique_id=1815019764]
 unique_name_in_owner = true
 
-[node name="MenuButton" type="MenuButton" parent="VBoxContainer/ControlBar/HBoxContainer"]
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer/ControlBar/HBoxContainer" unique_id=1101390323]
 visible = false
 layout_mode = 2
 text = "Popup"
 item_count = 1
 popup/item_0/id = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=77021845]
 layout_mode = 2
 
-[node name="DebugBar" type="ColorRect" parent="VBoxContainer/VBoxContainer"]
+[node name="DebugBar" type="ColorRect" parent="VBoxContainer/VBoxContainer" unique_id=675162371]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1152, 40)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer/DebugBar"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer/DebugBar" unique_id=209757136]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 41.0
 vertical_scroll_mode = 0
 
-[node name="EditorContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer"]
+[node name="EditorContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer" unique_id=2103664180]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("3_w1mvj")
+script = ExtResource("9_aish6")
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=551060568]
 visible = false
 layout_mode = 2
 text = "BASE |"
 
-[node name="undo" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="undo" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1716047679]
 modulate = Color(0, 1, 1, 1)
 layout_mode = 2
 text = "UNDO"
 
-[node name="1" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="1" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=966658723 groups=["time"]]
 layout_mode = 2
 text = "WHOLE"
 
-[node name="2" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="2" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=898328850 groups=["time"]]
 layout_mode = 2
 text = "HALF"
 
-[node name="4" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="4" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1977102051 groups=["time"]]
 modulate = Color(0, 0.980392, 0.603922, 1)
 layout_mode = 2
 text = "QUARTER"
 
-[node name="8" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="8" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1179685876 groups=["time"]]
 layout_mode = 2
 text = "EIGHTH"
 
-[node name="16" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="16" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1719766641 groups=["time"]]
 layout_mode = 2
 text = "1/16"
 
-[node name="32" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="32" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1216373923 groups=["time"]]
 layout_mode = 2
 text = "1/32"
 
-[node name="Triplet" type="CheckButton" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="Triplet" type="CheckButton" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1434062784 groups=["time"]]
 layout_mode = 2
 text = "TRIPLE"
 
-[node name="Dotted" type="CheckButton" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+[node name="Dotted" type="CheckButton" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1891333669 groups=["time"]]
 layout_mode = 2
 text = "DOT"
 
-[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1782240837]
 visible = false
 layout_mode = 2
 text = "MOD |"
 
-[node name="m0" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m0" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1998724549 groups=["mod"]]
 modulate = Color(0, 0.980392, 0.603922, 1)
 layout_mode = 2
 text = "NORMAL"
 
-[node name="m1" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m1" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1833537470 groups=["mod"]]
 layout_mode = 2
 text = "PALM MUTE"
 
-[node name="m2" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m2" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=33565457 groups=["mod"]]
 visible = false
 layout_mode = 2
 text = "MUTE"
 
-[node name="m3" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m3" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1408763500 groups=["mod"]]
 layout_mode = 2
 text = "REST"
 
-[node name="m4" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m4" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1266568615 groups=["mod"]]
 visible = false
 layout_mode = 2
 text = "TAP"
 
-[node name="m5" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m5" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=775179520 groups=["mod"]]
 visible = false
 layout_mode = 2
 text = "HARM"
 
-[node name="m6" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m6" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1758778749 groups=["mod"]]
 visible = false
 layout_mode = 2
 text = "SLIDE UP"
 
-[node name="m7" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="m7" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=279644177 groups=["mod"]]
 visible = false
 layout_mode = 2
 text = "SLIDE DOWN"
 
-[node name="bend" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="bend" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1208848184 groups=["mod"]]
 visible = false
 layout_mode = 2
 text = "BEND"
 
-[node name="vibrato" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+[node name="vibrato" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=45201350 groups=["mod"]]
 visible = false
 layout_mode = 2
 text = "VIBRATO"
 
-[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1215844879]
 visible = false
 layout_mode = 2
 text = "CTRL |"
 
-[node name="Button9" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="Button9" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=222993681]
 visible = false
 layout_mode = 2
 text = "TEMPO"
 
-[node name="Button10" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="Button10" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=517761298]
 visible = false
 layout_mode = 2
 text = "TIME"
 
-[node name="Saver" type="FileDialog" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="Saver" type="FileDialog" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=1215714651]
 unique_name_in_owner = true
 access = 2
 filters = PackedStringArray("*.tres")
 
-[node name="Loader" type="FileDialog" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+[node name="Loader" type="FileDialog" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" unique_id=2051822922]
 unique_name_in_owner = true
 auto_translate_mode = 1
 title = "Open a File"
@@ -538,30 +538,30 @@ file_mode = 0
 access = 2
 filters = PackedStringArray("*.tres")
 
-[node name="BarContainerOld" type="HFlowContainer" parent="VBoxContainer/VBoxContainer"]
+[node name="BarContainerOld" type="HFlowContainer" parent="VBoxContainer/VBoxContainer" unique_id=879306254]
 custom_minimum_size = Vector2(1152, 0)
 layout_mode = 2
 theme_override_constants/h_separation = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer" unique_id=98513608]
 layout_mode = 2
 vertical_scroll_mode = 0
 scroll_deadzone = 400
 
-[node name="BarContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/ScrollContainer"]
+[node name="BarContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/ScrollContainer" unique_id=277975435]
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 
-[node name="MetroSound" type="AudioStreamPlayer" parent="."]
+[node name="MetroSound" type="AudioStreamPlayer" parent="." unique_id=882011929]
 unique_name_in_owner = true
-stream = ExtResource("4_2ayvv")
+stream = ExtResource("10_snnha")
 volume_db = -15.92
 
-[node name="MetroTimer" type="Timer" parent="."]
+[node name="MetroTimer" type="Timer" parent="." unique_id=1379699123]
 process_callback = 0
 wait_time = 0.5
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1300606781]
 visible = false
 custom_minimum_size = Vector2(1152, 0)
 anchors_preset = 0

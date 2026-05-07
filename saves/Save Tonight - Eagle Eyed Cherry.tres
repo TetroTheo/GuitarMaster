@@ -1,0 +1,929 @@
+[gd_resource type="Resource" script_class="SaveTAB" format=3 uid="uid://caqvldd0hdh0r"]
+
+[ext_resource type="Script" uid="uid://ciledy76rbhlj" path="res://scripts/int_note.gd" id="1_xanmr"]
+[ext_resource type="Script" uid="uid://cc3wcooeyltt4" path="res://scripts/int_notes.gd" id="2_3xvc6"]
+[ext_resource type="Script" uid="uid://c0eglcapaetj" path="res://scripts/save_tab.gd" id="3_rsxhj"]
+
+[sub_resource type="Resource" id="Resource_8kjcx"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 4
+note = 9
+octave = 2
+
+[sub_resource type="Resource" id="Resource_kc21k"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_1nb8a"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_6rlg8"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_rsav0"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_g680h"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_8kjcx"), SubResource("Resource_kc21k"), SubResource("Resource_1nb8a"), SubResource("Resource_6rlg8"), SubResource("Resource_rsav0")])
+
+[sub_resource type="Resource" id="Resource_f1rmt"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 4
+note = 9
+octave = 2
+
+[sub_resource type="Resource" id="Resource_hpbuw"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_mvhra"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_s5qj5"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_36usc"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_b2la8"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_f1rmt"), SubResource("Resource_hpbuw"), SubResource("Resource_mvhra"), SubResource("Resource_s5qj5"), SubResource("Resource_36usc")])
+
+[sub_resource type="Resource" id="Resource_qfaec"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 4
+note = 9
+octave = 2
+
+[sub_resource type="Resource" id="Resource_4kejh"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_7lj5q"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_ckfps"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_4dw7k"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_p06d8"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_qfaec"), SubResource("Resource_4kejh"), SubResource("Resource_7lj5q"), SubResource("Resource_ckfps"), SubResource("Resource_4dw7k")])
+
+[sub_resource type="Resource" id="Resource_lxmmm"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 4
+note = 9
+octave = 2
+
+[sub_resource type="Resource" id="Resource_tidwt"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_jyq62"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_kydoj"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_y20jp"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_xktbu"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_lxmmm"), SubResource("Resource_tidwt"), SubResource("Resource_jyq62"), SubResource("Resource_kydoj"), SubResource("Resource_y20jp")])
+
+[sub_resource type="Resource" id="Resource_ir5h4"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 4
+note = 9
+octave = 2
+
+[sub_resource type="Resource" id="Resource_upgtm"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_8ytds"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_1a8sp"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_duwwb"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_ipttm"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_ir5h4"), SubResource("Resource_upgtm"), SubResource("Resource_8ytds"), SubResource("Resource_1a8sp"), SubResource("Resource_duwwb")])
+
+[sub_resource type="Resource" id="Resource_myx2o"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 5
+note = 5
+octave = 2
+
+[sub_resource type="Resource" id="Resource_cf2df"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_67cs6"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 3
+note = 5
+octave = 3
+
+[sub_resource type="Resource" id="Resource_mgoia"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_4rs2s"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_wl07t"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 0
+note = 5
+octave = 4
+
+[sub_resource type="Resource" id="Resource_rjlp7"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_myx2o"), SubResource("Resource_cf2df"), SubResource("Resource_67cs6"), SubResource("Resource_mgoia"), SubResource("Resource_4rs2s"), SubResource("Resource_wl07t")])
+
+[sub_resource type="Resource" id="Resource_foen7"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 5
+note = 5
+octave = 2
+
+[sub_resource type="Resource" id="Resource_ldrjm"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_7cws5"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 3
+note = 5
+octave = 3
+
+[sub_resource type="Resource" id="Resource_s4pu7"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_2l2at"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_ool2t"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 0
+note = 5
+octave = 4
+
+[sub_resource type="Resource" id="Resource_hifln"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_foen7"), SubResource("Resource_ldrjm"), SubResource("Resource_7cws5"), SubResource("Resource_s4pu7"), SubResource("Resource_2l2at"), SubResource("Resource_ool2t")])
+
+[sub_resource type="Resource" id="Resource_1cyoi"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 5
+note = 5
+octave = 2
+
+[sub_resource type="Resource" id="Resource_uhxm4"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_k4tju"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 3
+note = 5
+octave = 3
+
+[sub_resource type="Resource" id="Resource_dl0ml"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_6g2d1"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_htiru"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 0
+note = 5
+octave = 4
+
+[sub_resource type="Resource" id="Resource_osjol"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_1cyoi"), SubResource("Resource_uhxm4"), SubResource("Resource_k4tju"), SubResource("Resource_dl0ml"), SubResource("Resource_6g2d1"), SubResource("Resource_htiru")])
+
+[sub_resource type="Resource" id="Resource_77p43"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 5
+note = 5
+octave = 2
+
+[sub_resource type="Resource" id="Resource_vrjtv"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_d27v1"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 3
+note = 5
+octave = 3
+
+[sub_resource type="Resource" id="Resource_j2n8g"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_uwoy7"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_50jre"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 0
+note = 5
+octave = 4
+
+[sub_resource type="Resource" id="Resource_xcow6"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_77p43"), SubResource("Resource_vrjtv"), SubResource("Resource_d27v1"), SubResource("Resource_j2n8g"), SubResource("Resource_uwoy7"), SubResource("Resource_50jre")])
+
+[sub_resource type="Resource" id="Resource_id3tf"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 5
+note = 5
+octave = 2
+
+[sub_resource type="Resource" id="Resource_d877q"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_uhhg6"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 3
+note = 5
+octave = 3
+
+[sub_resource type="Resource" id="Resource_hmyni"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_lns57"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_qv6nr"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 0
+note = 5
+octave = 4
+
+[sub_resource type="Resource" id="Resource_f3mfg"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_id3tf"), SubResource("Resource_d877q"), SubResource("Resource_uhhg6"), SubResource("Resource_hmyni"), SubResource("Resource_lns57"), SubResource("Resource_qv6nr")])
+
+[sub_resource type="Resource" id="Resource_ku1hs"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 5
+note = 5
+octave = 2
+
+[sub_resource type="Resource" id="Resource_r42xx"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_vb51k"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 3
+note = 5
+octave = 3
+
+[sub_resource type="Resource" id="Resource_k031k"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 2
+note = 9
+octave = 3
+
+[sub_resource type="Resource" id="Resource_vn1e3"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_l01cp"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 0
+note = 5
+octave = 4
+
+[sub_resource type="Resource" id="Resource_0xcxt"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_ku1hs"), SubResource("Resource_r42xx"), SubResource("Resource_vb51k"), SubResource("Resource_k031k"), SubResource("Resource_vn1e3"), SubResource("Resource_l01cp")])
+
+[sub_resource type="Resource" id="Resource_g2gfx"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_3abnr"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_8fpg2"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_dt376"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_5fb5u"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_jno85"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_g2gfx"), SubResource("Resource_3abnr"), SubResource("Resource_8fpg2"), SubResource("Resource_dt376"), SubResource("Resource_5fb5u")])
+
+[sub_resource type="Resource" id="Resource_nccjy"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_11k27"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_ulhce"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_426mr"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_dei3o"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_d2cb0"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_nccjy"), SubResource("Resource_11k27"), SubResource("Resource_ulhce"), SubResource("Resource_426mr"), SubResource("Resource_dei3o")])
+
+[sub_resource type="Resource" id="Resource_fkppo"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_nywap"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_u6f2v"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_kwnor"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_xwiqp"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_cbfys"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_fkppo"), SubResource("Resource_nywap"), SubResource("Resource_u6f2v"), SubResource("Resource_kwnor"), SubResource("Resource_xwiqp")])
+
+[sub_resource type="Resource" id="Resource_bsl65"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_3rhkr"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_6r87q"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_1a67u"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_q0dxu"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_6jwdi"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_bsl65"), SubResource("Resource_3rhkr"), SubResource("Resource_6r87q"), SubResource("Resource_1a67u"), SubResource("Resource_q0dxu")])
+
+[sub_resource type="Resource" id="Resource_bj77v"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_ai5d6"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 3
+note = 4
+octave = 3
+
+[sub_resource type="Resource" id="Resource_fn5ft"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_uxtwh"]
+script = ExtResource("1_xanmr")
+fret = 1
+stk = 1
+octave = 4
+
+[sub_resource type="Resource" id="Resource_or2ny"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 0
+note = 4
+octave = 4
+
+[sub_resource type="Resource" id="Resource_a8noa"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_bj77v"), SubResource("Resource_ai5d6"), SubResource("Resource_fn5ft"), SubResource("Resource_uxtwh"), SubResource("Resource_or2ny")])
+
+[sub_resource type="Resource" id="Resource_uuojr"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 5
+note = 7
+octave = 2
+
+[sub_resource type="Resource" id="Resource_qihg1"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 4
+note = 11
+octave = 2
+
+[sub_resource type="Resource" id="Resource_bxc27"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 3
+note = 2
+octave = 3
+
+[sub_resource type="Resource" id="Resource_sdi0s"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_38b6q"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 1
+note = 2
+octave = 4
+
+[sub_resource type="Resource" id="Resource_d15yw"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 0
+note = 7
+octave = 4
+
+[sub_resource type="Resource" id="Resource_cm87m"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_uuojr"), SubResource("Resource_qihg1"), SubResource("Resource_bxc27"), SubResource("Resource_sdi0s"), SubResource("Resource_38b6q"), SubResource("Resource_d15yw")])
+
+[sub_resource type="Resource" id="Resource_k72ub"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 5
+note = 7
+octave = 2
+
+[sub_resource type="Resource" id="Resource_1ukpk"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 4
+note = 11
+octave = 2
+
+[sub_resource type="Resource" id="Resource_glojd"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 3
+note = 2
+octave = 3
+
+[sub_resource type="Resource" id="Resource_o183f"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_0opli"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 1
+note = 2
+octave = 4
+
+[sub_resource type="Resource" id="Resource_byb7u"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 0
+note = 7
+octave = 4
+
+[sub_resource type="Resource" id="Resource_yk6mu"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_k72ub"), SubResource("Resource_1ukpk"), SubResource("Resource_glojd"), SubResource("Resource_o183f"), SubResource("Resource_0opli"), SubResource("Resource_byb7u")])
+
+[sub_resource type="Resource" id="Resource_h5fkr"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 5
+note = 7
+octave = 2
+
+[sub_resource type="Resource" id="Resource_cnkmo"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 4
+note = 11
+octave = 2
+
+[sub_resource type="Resource" id="Resource_yid7p"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 3
+note = 2
+octave = 3
+
+[sub_resource type="Resource" id="Resource_psv5m"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_lqvew"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 1
+note = 2
+octave = 4
+
+[sub_resource type="Resource" id="Resource_fjvvp"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 0
+note = 7
+octave = 4
+
+[sub_resource type="Resource" id="Resource_vqafy"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_h5fkr"), SubResource("Resource_cnkmo"), SubResource("Resource_yid7p"), SubResource("Resource_psv5m"), SubResource("Resource_lqvew"), SubResource("Resource_fjvvp")])
+
+[sub_resource type="Resource" id="Resource_fwxql"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 5
+note = 7
+octave = 2
+
+[sub_resource type="Resource" id="Resource_yjnxl"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 4
+note = 11
+octave = 2
+
+[sub_resource type="Resource" id="Resource_2iujp"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 3
+note = 2
+octave = 3
+
+[sub_resource type="Resource" id="Resource_mvmhd"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_yunoi"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 1
+note = 2
+octave = 4
+
+[sub_resource type="Resource" id="Resource_1pchh"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 0
+note = 7
+octave = 4
+
+[sub_resource type="Resource" id="Resource_8b2yr"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_fwxql"), SubResource("Resource_yjnxl"), SubResource("Resource_2iujp"), SubResource("Resource_mvmhd"), SubResource("Resource_yunoi"), SubResource("Resource_1pchh")])
+
+[sub_resource type="Resource" id="Resource_7kxut"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 5
+note = 7
+octave = 2
+
+[sub_resource type="Resource" id="Resource_jm3ix"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 4
+note = 11
+octave = 2
+
+[sub_resource type="Resource" id="Resource_fhsvx"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 3
+note = 2
+octave = 3
+
+[sub_resource type="Resource" id="Resource_mqqx0"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_i7370"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 1
+note = 2
+octave = 4
+
+[sub_resource type="Resource" id="Resource_vwree"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 0
+note = 7
+octave = 4
+
+[sub_resource type="Resource" id="Resource_qm6d4"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_7kxut"), SubResource("Resource_jm3ix"), SubResource("Resource_fhsvx"), SubResource("Resource_mqqx0"), SubResource("Resource_i7370"), SubResource("Resource_vwree")])
+
+[sub_resource type="Resource" id="Resource_kr4pw"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 5
+note = 7
+octave = 2
+
+[sub_resource type="Resource" id="Resource_nufpp"]
+script = ExtResource("1_xanmr")
+fret = 2
+stk = 4
+note = 11
+octave = 2
+
+[sub_resource type="Resource" id="Resource_r7p77"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 3
+note = 2
+octave = 3
+
+[sub_resource type="Resource" id="Resource_l220s"]
+script = ExtResource("1_xanmr")
+fret = 0
+stk = 2
+note = 7
+octave = 3
+
+[sub_resource type="Resource" id="Resource_oj3c6"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 1
+note = 2
+octave = 4
+
+[sub_resource type="Resource" id="Resource_twtuv"]
+script = ExtResource("1_xanmr")
+fret = 3
+stk = 0
+note = 7
+octave = 4
+
+[sub_resource type="Resource" id="Resource_j3gmj"]
+script = ExtResource("2_3xvc6")
+arr = Array[ExtResource("1_xanmr")]([SubResource("Resource_kr4pw"), SubResource("Resource_nufpp"), SubResource("Resource_r7p77"), SubResource("Resource_l220s"), SubResource("Resource_oj3c6"), SubResource("Resource_twtuv")])
+
+[resource]
+script = ExtResource("3_rsxhj")
+tim = [1.0, 1.0, 1.0, 0.5, 0.5, 0.5, 0.5, 1.0, 1.0, 0.5, 0.5, 1.0, 1.0, 1.0, 0.5, 0.5, 0.5, 0.5, 1.0, 1.0, 0.5, 0.5]
+melody = [SubResource("Resource_g680h"), SubResource("Resource_b2la8"), SubResource("Resource_p06d8"), SubResource("Resource_xktbu"), SubResource("Resource_ipttm"), SubResource("Resource_rjlp7"), SubResource("Resource_hifln"), SubResource("Resource_osjol"), SubResource("Resource_xcow6"), SubResource("Resource_f3mfg"), SubResource("Resource_0xcxt"), SubResource("Resource_jno85"), SubResource("Resource_d2cb0"), SubResource("Resource_cbfys"), SubResource("Resource_6jwdi"), SubResource("Resource_a8noa"), SubResource("Resource_cm87m"), SubResource("Resource_yk6mu"), SubResource("Resource_vqafy"), SubResource("Resource_8b2yr"), SubResource("Resource_qm6d4"), SubResource("Resource_j3gmj")]
+name = "SAVE TONIGHT"
+tempo = 190.0
+key = 9
+scale = 1

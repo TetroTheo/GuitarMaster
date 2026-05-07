@@ -20,7 +20,7 @@ config/name_localized={
 }
 config/description="Necessary for being a master of your guitar ^^"
 config/version="1.4.0"
-run/main_scene="uid://cu6iwedghx7ll"
+run/main_scene="uid://ciahctelm2ovt"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://b8uv78kad6ss"
 

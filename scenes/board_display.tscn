@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dh7dm1fipt07y"]
+
+[ext_resource type="Script" uid="uid://d0e8eq2tuelhg" path="res://scripts/display_note_container.gd" id="1_sio7s"]
+
+[node name="BoardDisplay" type="ScrollContainer" unique_id=1959295129]
+vertical_scroll_mode = 0
+
+[node name="DisplayNoteContainer" type="VBoxContainer" parent="." unique_id=292231799]
+layout_mode = 2
+script = ExtResource("1_sio7s")
