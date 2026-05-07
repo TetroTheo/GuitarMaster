@@ -1,0 +1,595 @@
+[gd_scene load_steps=11 format=3 uid="uid://cu6iwedghx7ll"]
+
+[ext_resource type="Script" uid="uid://d0e8eq2tuelhg" path="res://display_note_container.gd" id="1_o1ld7"]
+[ext_resource type="Texture2D" uid="uid://ccffma886l78k" path="res://plus.png" id="2_2ayvv"]
+[ext_resource type="Texture2D" uid="uid://1g8h0o51rmgx" path="res://metro_l.png" id="2_vqw7c"]
+[ext_resource type="Texture2D" uid="uid://re1qm5onnteh" path="res://play.png" id="2_w1mvj"]
+[ext_resource type="Script" uid="uid://dqftdsviu685w" path="res://a_test_tab_editor.gd" id="3_w1mvj"]
+[ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://metronome-85688.mp3" id="4_2ayvv"]
+[ext_resource type="Texture2D" uid="uid://byglroffrpx85" path="res://loop.png" id="4_qq0qw"]
+[ext_resource type="Texture2D" uid="uid://opnh1d0j4uin" path="res://edit.png" id="5_qq0qw"]
+[ext_resource type="Texture2D" uid="uid://dl508ehdcbdrr" path="res://eye.png" id="6_q6q8i"]
+[ext_resource type="Script" uid="uid://cb1ptt62x4rcm" path="res://fret_markers.gd" id="10_q6q8i"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 372.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="DisplayNoteContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_o1ld7")
+
+[node name="FretMarkers" type="Panel" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1473, 45.725)
+layout_mode = 2
+script = ExtResource("10_q6q8i")
+
+[node name="0" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="1" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 197.0
+offset_right = 257.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 325.0
+offset_right = 385.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 453.0
+offset_right = 513.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="4" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 581.0
+offset_right = 641.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="5" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 773.0
+offset_right = 833.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="6" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 965.0
+offset_right = 1025.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="7" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 1093.0
+offset_right = 1153.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "17"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="8" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 1221.0
+offset_right = 1281.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "19"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="9" type="Label" parent="VBoxContainer/ScrollContainer/FretMarkers"]
+layout_mode = 0
+offset_left = 1349.0
+offset_right = 1409.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "21"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlBar" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1152, 40)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ControlBar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Key" type="OptionButton" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 12
+popup/item_0/text = "C"
+popup/item_0/id = 0
+popup/item_1/text = "C#"
+popup/item_1/id = 1
+popup/item_2/text = "D"
+popup/item_2/id = 2
+popup/item_3/text = "D#"
+popup/item_3/id = 3
+popup/item_4/text = "E"
+popup/item_4/id = 4
+popup/item_5/text = "F"
+popup/item_5/id = 5
+popup/item_6/text = "F#"
+popup/item_6/id = 6
+popup/item_7/text = "G"
+popup/item_7/id = 7
+popup/item_8/text = "G#"
+popup/item_8/id = 8
+popup/item_9/text = "A"
+popup/item_9/id = 9
+popup/item_10/text = "A#"
+popup/item_10/id = 10
+popup/item_11/text = "B"
+popup/item_11/id = 11
+
+[node name="Scale" type="OptionButton" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 12
+popup/item_0/text = "Major"
+popup/item_0/id = 0
+popup/item_1/text = "Minor"
+popup/item_1/id = 1
+popup/item_2/text = "Pentonic Major"
+popup/item_2/id = 2
+popup/item_3/text = "Pentonic Minor"
+popup/item_3/id = 3
+popup/item_4/text = "Dorian"
+popup/item_4/id = 4
+popup/item_5/text = "Phrygian"
+popup/item_5/id = 5
+popup/item_6/text = "Lydian"
+popup/item_6/id = 6
+popup/item_7/text = "Mixolydian"
+popup/item_7/id = 7
+popup/item_8/text = "Locrian"
+popup/item_8/id = 8
+popup/item_9/text = "Harmonic Minor"
+popup/item_9/id = 9
+popup/item_10/text = "Melodic Minor"
+popup/item_10/id = 10
+popup/item_11/text = "Chromatic"
+popup/item_11/id = 11
+
+[node name="Metro" type="SpinBox" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = 50.0
+max_value = 250.0
+value = 120.0
+alignment = 1
+suffix = "BPM"
+custom_arrow_step = 5.0
+select_all_on_focus = true
+
+[node name="MetroSlider" type="HSlider" parent="VBoxContainer/ControlBar/HBoxContainer"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+custom_minimum_size = Vector2(256.645, 40)
+layout_mode = 2
+min_value = 50.0
+max_value = 250.0
+value = 120.0
+
+[node name="MetroLights" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 1, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 1, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 1, 1, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/MetroLights"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 1, 1, 1)
+
+[node name="MetronomeMode" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 1, 1)
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("2_vqw7c")
+
+[node name="Play" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("2_w1mvj")
+
+[node name="Loop" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("4_qq0qw")
+
+[node name="Clear" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Clear"
+
+[node name="EditorMode" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("5_qq0qw")
+
+[node name="SettingsTAB" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+icon = ExtResource("6_q6q8i")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB"]
+visible = false
+layout_mode = 0
+offset_left = -60.0
+offset_top = -188.0
+offset_right = 110.0
+color = Color(0, 0, 0, 1)
+
+[node name="SettingsPanel" type="VBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = -56.0
+offset_top = -185.0
+offset_right = 105.0
+offset_bottom = -4.0
+
+[node name="SettingsName" type="LineEdit" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "New TAB"
+
+[node name="SettingsKey" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "C Major"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tempo:"
+
+[node name="SettingsMetro" type="SpinBox" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+min_value = 50.0
+max_value = 250.0
+value = 200.0
+alignment = 1
+suffix = "BPM"
+custom_arrow_step = 5.0
+select_all_on_focus = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+layout_mode = 2
+
+[node name="Import" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Import"
+
+[node name="Export" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export"
+
+[node name="Close" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel"]
+modulate = Color(1, 0.396265, 0.362646, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close TAB"
+
+[node name="NewTAB" type="Button" parent="VBoxContainer/ControlBar/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_2ayvv")
+
+[node name="TabBar" type="TabBar" parent="VBoxContainer/ControlBar/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(576, 0)
+layout_mode = 2
+select_with_rmb = true
+
+[node name="PopupPanel" type="PopupPanel" parent="VBoxContainer/ControlBar/HBoxContainer/TabBar"]
+unique_name_in_owner = true
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer/ControlBar/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Popup"
+item_count = 1
+popup/item_0/id = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DebugBar" type="ColorRect" parent="VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1152, 40)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer/DebugBar"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 41.0
+vertical_scroll_mode = 0
+
+[node name="EditorContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("3_w1mvj")
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+visible = false
+layout_mode = 2
+text = "BASE |"
+
+[node name="undo" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 2
+text = "UNDO"
+
+[node name="1" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+layout_mode = 2
+text = "WHOLE"
+
+[node name="2" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+layout_mode = 2
+text = "HALF"
+
+[node name="4" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+modulate = Color(0, 0.980392, 0.603922, 1)
+layout_mode = 2
+text = "QUARTER"
+
+[node name="8" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+layout_mode = 2
+text = "EIGHTH"
+
+[node name="16" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+layout_mode = 2
+text = "1/16"
+
+[node name="32" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+layout_mode = 2
+text = "1/32"
+
+[node name="Triplet" type="CheckButton" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+layout_mode = 2
+text = "TRIPLE"
+
+[node name="Dotted" type="CheckButton" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["time"]]
+layout_mode = 2
+text = "DOT"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+visible = false
+layout_mode = 2
+text = "MOD |"
+
+[node name="m0" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+modulate = Color(0, 0.980392, 0.603922, 1)
+layout_mode = 2
+text = "NORMAL"
+
+[node name="m1" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+layout_mode = 2
+text = "PALM MUTE"
+
+[node name="m2" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+visible = false
+layout_mode = 2
+text = "MUTE"
+
+[node name="m3" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+layout_mode = 2
+text = "REST"
+
+[node name="m4" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+visible = false
+layout_mode = 2
+text = "TAP"
+
+[node name="m5" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+visible = false
+layout_mode = 2
+text = "HARM"
+
+[node name="m6" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+visible = false
+layout_mode = 2
+text = "SLIDE UP"
+
+[node name="m7" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+visible = false
+layout_mode = 2
+text = "SLIDE DOWN"
+
+[node name="bend" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+visible = false
+layout_mode = 2
+text = "BEND"
+
+[node name="vibrato" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" groups=["mod"]]
+visible = false
+layout_mode = 2
+text = "VIBRATO"
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+visible = false
+layout_mode = 2
+text = "CTRL |"
+
+[node name="Button9" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+visible = false
+layout_mode = 2
+text = "TEMPO"
+
+[node name="Button10" type="Button" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+visible = false
+layout_mode = 2
+text = "TIME"
+
+[node name="Saver" type="FileDialog" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+unique_name_in_owner = true
+access = 2
+filters = PackedStringArray("*.tres")
+
+[node name="Loader" type="FileDialog" parent="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres")
+
+[node name="BarContainerOld" type="HFlowContainer" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+vertical_scroll_mode = 0
+scroll_deadzone = 400
+
+[node name="BarContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+
+[node name="MetroSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_2ayvv")
+volume_db = -15.92
+
+[node name="MetroTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.5
+
+[node name="Control" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(1152, 0)
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 5.0
+
+[connection signal="item_selected" from="VBoxContainer/ControlBar/HBoxContainer/Key" to="VBoxContainer/ScrollContainer/VBoxContainer/DisplayNoteContainer" method="_on_key_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/ControlBar/HBoxContainer/Scale" to="VBoxContainer/ScrollContainer/VBoxContainer/DisplayNoteContainer" method="_on_scale_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/ControlBar/HBoxContainer/Metro" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_metro_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/ControlBar/HBoxContainer/Metro" to="MetroSound" method="_on_metro_value_changed"]
+[connection signal="toggled" from="VBoxContainer/ControlBar/HBoxContainer/MetronomeMode" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_metronome_mode_toggled"]
+[connection signal="toggled" from="VBoxContainer/ControlBar/HBoxContainer/Play" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_play_toggled"]
+[connection signal="toggled" from="VBoxContainer/ControlBar/HBoxContainer/Loop" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_loop_toggled"]
+[connection signal="pressed" from="VBoxContainer/ControlBar/HBoxContainer/Clear" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_clear_pressed"]
+[connection signal="toggled" from="VBoxContainer/ControlBar/HBoxContainer/EditorMode" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_editor_mode_toggled"]
+[connection signal="toggled" from="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_settings_tab_toggled"]
+[connection signal="text_submitted" from="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/SettingsName" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_settings_name_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/SettingsKey" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_settings_key_pressed"]
+[connection signal="value_changed" from="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer2/SettingsMetro" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_settings_metro_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3/Import" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_import_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/HBoxContainer3/Export" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_export_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlBar/HBoxContainer/SettingsTAB/SettingsPanel/Close" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_close_pressed"]
+[connection signal="pressed" from="VBoxContainer/ControlBar/HBoxContainer/NewTAB" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_new_tab_pressed"]
+[connection signal="tab_changed" from="VBoxContainer/ControlBar/HBoxContainer/TabBar" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_tab_bar_tab_changed"]
+[connection signal="tab_rmb_clicked" from="VBoxContainer/ControlBar/HBoxContainer/TabBar" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_tab_bar_tab_rmb_clicked"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer/undo" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_undo_pressed"]
+[connection signal="file_selected" from="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer/Saver" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_saver_file_selected"]
+[connection signal="file_selected" from="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer/Loader" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_loader_file_selected"]
+[connection signal="timeout" from="MetroTimer" to="MetroSound" method="_on_metro_timer_timeout"]
+[connection signal="mouse_entered" from="Control" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Control" to="VBoxContainer/VBoxContainer/DebugBar/ScrollContainer/EditorContainer" method="_on_control_mouse_exited"]
