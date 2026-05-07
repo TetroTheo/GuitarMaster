@@ -5,7 +5,7 @@
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_8uh7m"]
 
-[node name="Node2D" type="Node2D" unique_id=1034481522]
+[node name="Sync" type="Node2D" unique_id=1034481522]
 script = ExtResource("1_wtrvg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1694715629]

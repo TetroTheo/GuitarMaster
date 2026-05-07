@@ -1,0 +1,9 @@
+Array[NotePackage]
+	NotePackage
+		duration : float
+		notes : Array[Note]
+			Note
+				pitch : int
+				octave : int
+				fret : int
+				string : int
