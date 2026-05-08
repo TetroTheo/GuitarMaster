@@ -11,6 +11,7 @@ static var pitch_to_string : Array[String] = [
 		'F#','G','G#','A','A#','B'
 ]
 
+## Fret Pitch String
 func _init(f := 0, p := 0, s := 0) -> void:
 	fret = f
 	pitch = p
@@ -28,7 +29,7 @@ func octave() -> int:
 func note_name()-> String:
 	return pitch_letter() + str(octave())
 
-
+## example input: 'E2'
 static func pitch_from_string(name: String) -> int:
 	var name_parts = name.split()
 	var new_pitch := 0

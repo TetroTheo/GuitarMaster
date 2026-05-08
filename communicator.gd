@@ -1,9 +1,10 @@
 extends Node
 
-var duration := 1.0
+var duration := 0.25
 var chord_notes : Array[Note] = []
 var chord_creation := false
 
+## if any key is pressed, tell the sheet to add a note
 func key_pressed(note):
 	if chord_creation:
 		chord_notes.append(note)
@@ -15,15 +16,16 @@ func key_pressed(note):
 
 
 func on_duration_changed(index: int) -> void:
-	duration = 4 * pow(0.5, index)
+	duration = pow(0.5, index)
 
-
+## add a rest
 func on_rest_pressed() -> void:
 	var npkg = NotePackage.new()
 	npkg.duration = duration
 	$Sheet.add_note_pkg(npkg)
 
-
+## if we are turning off the chord feature,
+## if we had saved notes to the chord, we add all of them at once to an npkg
 func on_chord_toggled(toggled_on: bool) -> void:
 	chord_creation = toggled_on
 	if not chord_creation:
