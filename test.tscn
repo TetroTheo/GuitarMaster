@@ -16,6 +16,50 @@ grow_vertical = 2
 script = ExtResource("3_6uqi0")
 
 [node name="Fretboard" parent="Communicator" unique_id=165216119 instance=ExtResource("1_8uh7m")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -379.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sheet" parent="Communicator" unique_id=658091262 instance=ExtResource("2_6uqi0")]
 offset_top = 343.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Communicator" unique_id=535346514]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rest" type="Button" parent="Communicator/HBoxContainer" unique_id=1736106853]
+layout_mode = 2
+text = "REST"
+
+[node name="Duration" type="OptionButton" parent="Communicator/HBoxContainer" unique_id=53274829]
+layout_mode = 2
+selected = 2
+item_count = 5
+popup/item_0/text = "Whole"
+popup/item_0/id = 0
+popup/item_1/text = "Half"
+popup/item_1/id = 1
+popup/item_2/text = "Quarter"
+popup/item_2/id = 2
+popup/item_3/text = "Eighth"
+popup/item_3/id = 3
+popup/item_4/text = "Sixteenth"
+popup/item_4/id = 4
+
+[node name="Chord" type="Button" parent="Communicator/HBoxContainer" unique_id=1411413056]
+layout_mode = 2
+toggle_mode = true
+text = "CHORD"
+
+[connection signal="pressed" from="Communicator/HBoxContainer/Rest" to="Communicator" method="on_rest_pressed"]
+[connection signal="item_selected" from="Communicator/HBoxContainer/Duration" to="Communicator" method="on_duration_changed"]
+[connection signal="toggled" from="Communicator/HBoxContainer/Chord" to="Communicator" method="on_chord_toggled"]
