@@ -60,6 +60,10 @@ layout_mode = 2
 toggle_mode = true
 text = "CHORD"
 
+[node name="CheckButton" type="CheckButton" parent="Communicator/HBoxContainer" unique_id=1368161599]
+layout_mode = 2
+text = "EDIT MEASURES"
+
 [connection signal="pressed" from="Communicator/HBoxContainer/Rest" to="Communicator" method="on_rest_pressed"]
 [connection signal="item_selected" from="Communicator/HBoxContainer/Duration" to="Communicator" method="on_duration_changed"]
 [connection signal="toggled" from="Communicator/HBoxContainer/Chord" to="Communicator" method="on_chord_toggled"]

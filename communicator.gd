@@ -37,3 +37,15 @@ func on_chord_toggled(toggled_on: bool) -> void:
 				npkg.notes.append(note)
 			$Sheet.add_note_pkg(npkg)
 			chord_notes.clear()
+
+## TODO:
+## make sure notes do not repeat strings in a chord
+## be able to move measures around
+## delete a measure
+## delete an npkgn (if all are deleted in a measure, then delete the measure)
+## duplicate a measure
+
+## SETTINGS:
+## left-handed
+## bass mode
+## scaling (constant | logarithmic)

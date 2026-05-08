@@ -15,12 +15,31 @@ offset_bottom = 648.0
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="." unique_id=993654634]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=627759038]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -25.0
-offset_right = 11.0
+offset_top = -40.0
+offset_right = 40.0
 grow_vertical = 0
+
+[node name="Left" type="Button" parent="HBoxContainer" unique_id=1419409131]
+layout_mode = 2
+text = "<"
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=993654634]
+layout_mode = 2
 text = "1"
+
+[node name="Right" type="Button" parent="HBoxContainer" unique_id=203168976]
+layout_mode = 2
+text = ">"
+
+[node name="Duplicate" type="Button" parent="HBoxContainer" unique_id=1031635779]
+layout_mode = 2
+text = "Duplicate"
+
+[node name="Delete" type="Button" parent="HBoxContainer" unique_id=597024512]
+layout_mode = 2
+text = "Delete"
