@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bniuvcdt27wtl"]
 
 [ext_resource type="Script" uid="uid://b1nvhii2vw6nj" path="res://test-sheet.gd" id="1_xlxo5"]
+[ext_resource type="PackedScene" uid="uid://c301umtiyw4wy" path="res://test-measure.tscn" id="2_bwqsc"]
 
 [node name="Sheet" type="ScrollContainer" unique_id=658091262]
 anchors_preset = 15
@@ -15,8 +16,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Measure" type="HBoxContainer" parent="MeasureContainer" unique_id=1802096255]
-custom_minimum_size = Vector2(600, 0)
+[node name="Measure" parent="MeasureContainer" unique_id=2028305356 instance=ExtResource("2_bwqsc")]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
