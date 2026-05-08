@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://bniuvcdt27wtl"]
 
-[ext_resource type="PackedScene" uid="uid://bqhqm608hhbdx" path="res://note-package-node.tscn" id="1_dq5je"]
+[ext_resource type="Script" uid="uid://b1nvhii2vw6nj" path="res://test-sheet.gd" id="1_xlxo5"]
 
-[node name="ScrollContainer" type="ScrollContainer" unique_id=658091262]
+[node name="Sheet" type="ScrollContainer" unique_id=658091262]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xlxo5")
 
 [node name="MeasureContainer" type="HBoxContainer" parent="." unique_id=980484444]
 layout_mode = 2
@@ -18,6 +19,4 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="NotePackageNode" parent="MeasureContainer/Measure" unique_id=393414843 instance=ExtResource("1_dq5je")]
-layout_mode = 2
+theme_override_constants/separation = 0

@@ -18,15 +18,15 @@ config/name="Guitar Master Horizons"
 config/name_localized={
 "ja_JP": "ギターマスター"
 }
-config/description="Necessary for being a master of your guitar ^^"
-config/version="1.4.0"
+config/description="Necessary for being a master of your guitar"
+config/version="2.0.0"
 run/main_scene="uid://ciahctelm2ovt"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://b8uv78kad6ss"
 
 [display]
 
-window/size/viewport_height=503
+window/size/resizable=false
 window/size/always_on_top=true
 
 [gui]

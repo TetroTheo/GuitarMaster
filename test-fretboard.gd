@@ -16,6 +16,8 @@ func _ready() -> void:
 		for j in range(25):
 			var key = Key.new()
 			key.set_note(Note.new(j, pitch, i))
+			if get_parent().name == "Communicator":
+				key.key_pressed.connect(get_parent().key_pressed)
 			fret.add_child(key)
 			pitch += 1
 		## there will be 6 total frets

@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://bqhqm608hhbdx"]
 
+[ext_resource type="Script" uid="uid://uwavigcapfmq" path="res://note-package-node.gd" id="1_xm4e4"]
+
 [node name="Button" type="Button" unique_id=500657331]
 offset_right = 50.0
 offset_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_xm4e4")
 
 [node name="Label" type="Label" parent="." unique_id=1889663074]
 layout_mode = 0
