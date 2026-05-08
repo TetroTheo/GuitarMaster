@@ -1,3 +1,4 @@
+(Q1) How will a song be stored?
 Array[NotePackage]
 	NotePackage
 		duration : float
@@ -7,3 +8,17 @@ Array[NotePackage]
 				octave : int
 				fret : int
 				string : int
+
+(Q2) How should the sheet be structured?
+ScrollContainer
+	Measures
+		Measure
+			NotePackageNode
+				note-pkg : NotePackage
+
+(Q3) How would the fretboard be structured?
+ScrollContainer
+	Strings
+		String
+			Key
+				key-note : Note

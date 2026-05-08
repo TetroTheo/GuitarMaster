@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccffma886l78k"
-path="res://.godot/imported/plus.png-ddcd3d83bb39042afc3f64c48698e250.ctex"
+uid="uid://cjs6pxytmr62s"
+path="res://.godot/imported/metro_r.png-e55b107ebc0f010b87c2b49c0bdb3591.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/plus.png"
-dest_files=["res://.godot/imported/plus.png-ddcd3d83bb39042afc3f64c48698e250.ctex"]
+source_file="res://icons/metro_r.png"
+dest_files=["res://.godot/imported/metro_r.png-e55b107ebc0f010b87c2b49c0bdb3591.ctex"]
 
 [params]
 

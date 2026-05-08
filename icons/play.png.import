@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8uv78kad6ss"
-path="res://.godot/imported/guitar_master_horizons.png-0679e2378127d10cc3c7aae7fbc74aff.ctex"
+uid="uid://re1qm5onnteh"
+path="res://.godot/imported/play.png-8f33348722067c2b3cb83c7deaeb90b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/guitar_master_horizons.png"
-dest_files=["res://.godot/imported/guitar_master_horizons.png-0679e2378127d10cc3c7aae7fbc74aff.ctex"]
+source_file="res://icons/play.png"
+dest_files=["res://.godot/imported/play.png-8f33348722067c2b3cb83c7deaeb90b6.ctex"]
 
 [params]
 

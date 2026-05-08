@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfw50qnbmywo"]
 
-[ext_resource type="Script" uid="uid://bny00vncc8sqn" path="res://test_fretboard.gd" id="1_a6qxd"]
+[ext_resource type="Script" uid="uid://bny00vncc8sqn" path="res://test-fretboard.gd" id="1_a6qxd"]
 
 [node name="Fretboard" type="ScrollContainer" unique_id=165216119]
 clip_contents = false

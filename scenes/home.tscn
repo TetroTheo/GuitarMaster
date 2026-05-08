@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://d0e8eq2tuelhg" path="res://scripts/display_note_container.gd" id="1_hhep5"]
 [ext_resource type="Script" uid="uid://cb1ptt62x4rcm" path="res://scripts/fret_markers.gd" id="2_cmjdo"]
-[ext_resource type="Texture2D" uid="uid://1g8h0o51rmgx" path="res://images/metro_l.png" id="3_yu5fn"]
-[ext_resource type="Texture2D" uid="uid://re1qm5onnteh" path="res://images/play.png" id="4_ip4d6"]
-[ext_resource type="Texture2D" uid="uid://byglroffrpx85" path="res://images/loop.png" id="5_gi00y"]
-[ext_resource type="Texture2D" uid="uid://opnh1d0j4uin" path="res://images/edit.png" id="6_rpgsi"]
-[ext_resource type="Texture2D" uid="uid://dl508ehdcbdrr" path="res://images/eye.png" id="7_ju5sp"]
-[ext_resource type="Texture2D" uid="uid://ccffma886l78k" path="res://images/plus.png" id="8_o7pnx"]
+[ext_resource type="Texture2D" uid="uid://1g8h0o51rmgx" path="res://icons/metro_l.png" id="3_yu5fn"]
+[ext_resource type="Texture2D" uid="uid://re1qm5onnteh" path="res://icons/play.png" id="4_ip4d6"]
+[ext_resource type="Texture2D" uid="uid://byglroffrpx85" path="res://icons/loop.png" id="5_gi00y"]
+[ext_resource type="Texture2D" uid="uid://opnh1d0j4uin" path="res://icons/edit.png" id="6_rpgsi"]
+[ext_resource type="Texture2D" uid="uid://dl508ehdcbdrr" path="res://icons/eye.png" id="7_ju5sp"]
+[ext_resource type="Texture2D" uid="uid://ccffma886l78k" path="res://icons/plus.png" id="8_o7pnx"]
 [ext_resource type="Script" uid="uid://dqftdsviu685w" path="res://scripts/a_test_tab_editor.gd" id="9_aish6"]
 [ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://audio/metronome-sound.mp3" id="10_snnha"]
 

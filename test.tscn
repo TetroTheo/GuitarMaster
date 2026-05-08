@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bca24mwsuhtsx"]
+
+[ext_resource type="PackedScene" uid="uid://dfw50qnbmywo" path="res://test-fretboard.tscn" id="1_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://bniuvcdt27wtl" path="res://test-sheet.tscn" id="2_6uqi0"]
+
+[node name="Control" type="Control" unique_id=385323799]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fretboard" parent="." unique_id=165216119 instance=ExtResource("1_8uh7m")]
+layout_mode = 0
+
+[node name="ScrollContainer" parent="." unique_id=658091262 instance=ExtResource("2_6uqi0")]
+layout_mode = 1
+offset_top = 269.0
