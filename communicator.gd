@@ -6,7 +6,7 @@ var chord_notes : Array[Note] = []
 var chord_creation := false
 
 ## if any key is pressed, tell the sheet to add a note
-func key_pressed(note):
+func key_pressed(note : Note):
 	## if we are creating a chord, keep it to yourself for now.
 	## we will add all notes of the chord at once!
 	if chord_creation:
@@ -16,6 +16,19 @@ func key_pressed(note):
 	npkg.duration = duration
 	npkg.notes.append(note)
 	$Sheet.add_note_pkg(npkg)
+	play_sound(note)
+
+func play_sound(note : Note):
+	var audio_player := AudioStreamPlayer.new()
+	audio_player.stream = load("uid://jre4lw6j7p4d")
+	audio_player.finished.connect(on_audio_player_finished.bind(audio_player))
+	audio_player.pitch_scale = note.scale_pitch()
+	$AudioPlayers.add_child(audio_player)
+	audio_player.play()
+
+
+func on_audio_player_finished(audio_player):
+	audio_player.queue_free()
 
 
 func on_duration_changed(index: int) -> void:

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dfw50qnbmywo" path="res://test-fretboard.tscn" id="1_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://bniuvcdt27wtl" path="res://test-sheet.tscn" id="2_6uqi0"]
 [ext_resource type="Script" uid="uid://cbe1xr2bm1tt5" path="res://communicator.gd" id="3_6uqi0"]
+[ext_resource type="AudioStream" uid="uid://jre4lw6j7p4d" path="res://audio/guitar-E2-distorted.wav" id="4_ppyta"]
 
 [node name="Control" type="Control" unique_id=385323799]
 layout_mode = 3
@@ -63,6 +64,11 @@ text = "CHORD"
 [node name="MeasureEdit" type="CheckButton" parent="Communicator/HBoxContainer" unique_id=1368161599]
 layout_mode = 2
 text = "EDIT MEASURES"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
+stream = ExtResource("4_ppyta")
+
+[node name="AudioPlayers" type="Node" parent="Communicator" unique_id=1900118977]
 
 [connection signal="pressed" from="Communicator/HBoxContainer/Rest" to="Communicator" method="on_rest_pressed"]
 [connection signal="item_selected" from="Communicator/HBoxContainer/Duration" to="Communicator" method="on_duration_changed"]

@@ -29,13 +29,21 @@ func octave() -> int:
 func note_name()-> String:
 	return pitch_letter() + str(octave())
 
-## example input: 'E2'
+
 static func pitch_from_string(name: String) -> int:
 	var name_parts = name.split()
 	var new_pitch := 0
 	new_pitch += pitch_to_string.find(name_parts[0])
 	new_pitch += 12 * int(name_parts[1])
 	return new_pitch
+
+## we start at C0, but the audio is E2, so offset by 28
+## example inputs: 
+## 'E1' (pitch = 16) -> 0.5
+## 'E2' (pitch = 28) -> 1.0
+## 'E3' (pitch = 40) -> 2.0
+func scale_pitch() -> float:
+	return exp(log(2) * (pitch - 28) / 12)
 
 
 func _to_string() -> String:

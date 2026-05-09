@@ -17,6 +17,9 @@ func create_keys():
 	## switches the tuning to bass (and there are four strings)
 	if bass_mode:
 		tuning = bass_tuning
+	# for debugging
+	for string_note in tuning:
+		print(Note.pitch_from_string(string_note))
 	for i in range(len(tuning)-1,-1,-1):
 		var string = HBoxContainer.new()
 		string.name = "String " + str(i)
