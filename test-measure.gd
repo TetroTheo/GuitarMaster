@@ -1,7 +1,14 @@
 class_name Measure
 extends Control
 
+## so that we know where we are in the track's array of measures
 var measure_number : int
+## changes the numberator of the song's time signature.
+## examples:
+## 1.0 = 4/4
+## 1.5 = 6/4
+## 0.75 = 3/4
+var measure_length := 1.5
 
 ## the sheet calls this when making a new measure, so that the new measure may
 ## bind all of its editing buttons directly to that sheet.
@@ -33,17 +40,18 @@ func get_duration() -> float:
 
 ## returns whether or not this measure is completely filled with notes
 func is_full() -> bool:
-	return is_equal_approx(get_duration(), 1.0)
+	return is_equal_approx(get_duration(), measure_length)
 
 ## returns whether or not the note's duration will fit within the measure or fill it entirely!
 func can_fit(npkg: NotePackage) -> bool:
-	return get_duration() + npkg.duration < 1.0 or is_equal_approx(get_duration() + npkg.duration, 1.0)
+	return get_duration() + npkg.duration < measure_length or is_equal_approx(get_duration() + npkg.duration, measure_length)
 
 ## adds the Note Package Node to this measure
 func add_npkgn(npkgn, pkg):
 	$NotePackageNodes.add_child(npkgn)
 	## sets the size, and notes
-	npkgn.set_note_pkg(pkg)
+	## we send ourself as an argument so that the note can easier tell what to resize to!
+	npkgn.set_note_pkg(pkg, self)
 	## hide the Add Notes button if the measure is full!
 	if $HBoxContainer/AddNote.visible and is_full():
 		$HBoxContainer/AddNote.hide()

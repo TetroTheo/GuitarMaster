@@ -4,7 +4,7 @@ extends ScrollContainer
 
 @onready var measures = $MeasureContainer
 var measure_mode := false
-var add_to_measure := -1
+var measure_to_add_to := -1
 
 func _ready() -> void:
 	create_new_measure()
@@ -16,14 +16,14 @@ func add_note_pkg(pkg: NotePackage):
 	var npkgn = load("uid://bqhqm608hhbdx").instantiate()
 	var current_measure : Measure
 	if measures.get_children():
-		var last_measure = measures.get_child(add_to_measure)
+		var last_measure = measures.get_child(measure_to_add_to)
 		if last_measure.can_fit(pkg):
 			current_measure = last_measure
 		else:
 			## if we were not adding to the last measure, then now we are!
 			## because the measure we were adding to must be full!
-			if add_to_measure > -1:
-				add_to_measure = -1
+			if measure_to_add_to > -1:
+				measure_to_add_to = -1
 				## make an attempt to add to the last measure if unfilled
 				## otherwise, we make a new one!
 				var new_last_measure = measures.get_child(-1)
@@ -93,12 +93,13 @@ func on_move_left(measure):
 
 ## if a measure is unfilled, this lets us add more notes to it!
 func add_to(measure):
-	add_to_measure = measure.measure_number
+	measure_to_add_to = measure.measure_number
 
 ## returns the full song of this track for playback
 func get_song() -> Array[NotePackage]:
 	var song : Array[NotePackage]
-	for measure in measures:
-		for npkgn in measures.get_npkgn():
-			song.append_array(npkgn.note_pkg)
+	for measure in measures.get_children():
+		#return song
+		for npkgn in measure.get_nkpgn():
+			song.append(npkgn.note_pkg)
 	return song

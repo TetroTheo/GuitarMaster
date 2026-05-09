@@ -6,3 +6,11 @@ extends Resource
 @export var notes : Array[Note]
 
 # note that this structure works for rests, too!
+
+## to string feature
+func _to_string() -> String:
+	var string := ""
+	string += str(duration)
+	for note in notes:
+		string += "|" + str(note)
+	return string

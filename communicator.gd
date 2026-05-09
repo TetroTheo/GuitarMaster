@@ -85,4 +85,5 @@ func on_measure_edit_toggled(toggled_on: bool) -> void:
 
 
 func _on_play_song_pressed() -> void:
-	pass # Replace with function body.
+	var song = track.get_song()
+	print(song)

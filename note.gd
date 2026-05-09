@@ -47,4 +47,4 @@ func scale_pitch() -> float:
 
 
 func _to_string() -> String:
-	return note_name() + ' (S' + str(string) + 'F' + str(fret) + ')'
+	return note_name() + '(S' + str(string) + 'F' + str(fret) + ')'
