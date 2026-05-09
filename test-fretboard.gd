@@ -9,6 +9,11 @@ var bass_mode := false
 
 ## instantiates keys in the fretboard
 func _ready() -> void:
+	create_keys()
+
+## builds all the keys and adds them to this fretboard, with connections.
+## this will be useful for when switching between left-handed or bass mode
+func create_keys():
 	## switches the tuning to bass (and there are four strings)
 	if bass_mode:
 		tuning = bass_tuning
