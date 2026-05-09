@@ -47,3 +47,8 @@ text = "Duplicate"
 visible = false
 layout_mode = 2
 text = "Delete"
+
+[node name="AddNote" type="Button" parent="HBoxContainer" unique_id=1692710059]
+visible = false
+layout_mode = 2
+text = "Add Notes Here"

@@ -46,6 +46,7 @@ func on_chord_toggled(toggled_on: bool) -> void:
 # move a measure
 ## delete an npkgn (if all are deleted in a measure, then delete the measure)
 # duplicate a measure
+# adding notes will never overload a measure
 
 ## SETTINGS:
 ## left-handed

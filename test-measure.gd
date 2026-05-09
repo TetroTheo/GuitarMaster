@@ -9,6 +9,7 @@ func connect_editing_buttons(sheet):
 	$HBoxContainer/Duplicate.pressed.connect(sheet.on_duplicate.bind(self))
 	$HBoxContainer/Right.pressed.connect(sheet.on_move_right.bind(self))
 	$HBoxContainer/Left.pressed.connect(sheet.on_move_left.bind(self))
+	$HBoxContainer/AddNote.pressed.connect(sheet.add_to.bind(self))
 
 ## the measure cannot set its own, so it relies on this function
 func set_measure_number(n : int):
@@ -23,13 +24,29 @@ func change_measure_number(increment : int):
 func get_duration() -> float:
 	var duration := 0.0
 	for npkgn in $NotePackageNodes.get_children():
+		if not npkgn.note_pkg:
+			print("ERROR: NPKG NOT FOUND")
+			continue
 		duration += npkgn.note_pkg.duration
 	return duration
 
+## returns whether or not this measure is completely filled with notes
+func is_full() -> bool:
+	return is_equal_approx(get_duration(), 1.0)
+
+## adds the Note Package Node to this measure
+func add_npkgn(npkgn, pkg):
+	$NotePackageNodes.add_child(npkgn)
+	## sets the size, and notes
+	npkgn.set_note_pkg(pkg)
+	## hide the Add Notes button if the measure is full!
+	if $HBoxContainer/AddNote.visible and is_full():
+		$HBoxContainer/AddNote.hide()
 
 func edit_mode(toggled_on : bool):
-	var v = toggled_on
-	$HBoxContainer/Left.visible = v
-	$HBoxContainer/Right.visible = v
-	$HBoxContainer/Duplicate.visible = v
-	$HBoxContainer/Delete.visible = v
+	$HBoxContainer/Left.visible = toggled_on
+	$HBoxContainer/Right.visible = toggled_on
+	$HBoxContainer/Duplicate.visible = toggled_on
+	$HBoxContainer/Delete.visible = toggled_on
+	## this should only be visible when you can add notes!
+	$HBoxContainer/AddNote.visible = toggled_on and not is_full()
