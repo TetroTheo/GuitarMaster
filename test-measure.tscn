@@ -25,21 +25,25 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="Left" type="Button" parent="HBoxContainer" unique_id=1419409131]
+visible = false
 layout_mode = 2
 text = "<"
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=993654634]
 layout_mode = 2
-text = "1"
+text = "0"
 
 [node name="Right" type="Button" parent="HBoxContainer" unique_id=203168976]
+visible = false
 layout_mode = 2
 text = ">"
 
 [node name="Duplicate" type="Button" parent="HBoxContainer" unique_id=1031635779]
+visible = false
 layout_mode = 2
 text = "Duplicate"
 
 [node name="Delete" type="Button" parent="HBoxContainer" unique_id=597024512]
+visible = false
 layout_mode = 2
 text = "Delete"

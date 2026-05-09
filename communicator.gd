@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 var duration := 0.25
@@ -40,12 +41,17 @@ func on_chord_toggled(toggled_on: bool) -> void:
 
 ## TODO:
 ## make sure notes do not repeat strings in a chord
-## be able to move measures around
-## delete a measure
+# be able to move measures around
+# delete a measure
+# move a measure
 ## delete an npkgn (if all are deleted in a measure, then delete the measure)
-## duplicate a measure
+# duplicate a measure
 
 ## SETTINGS:
 ## left-handed
 ## bass mode
 ## scaling (constant | logarithmic)
+
+
+func on_measure_edit_toggled(toggled_on: bool) -> void:
+	$Sheet.edit_measure_mode(toggled_on)
