@@ -7,6 +7,8 @@ var chord_creation := false
 
 ## if any key is pressed, tell the sheet to add a note
 func key_pressed(note):
+	## if we are creating a chord, keep it to yourself for now.
+	## we will add all notes of the chord at once!
 	if chord_creation:
 		chord_notes.append(note)
 		return
@@ -25,7 +27,7 @@ func on_rest_pressed() -> void:
 	npkg.duration = duration
 	$Sheet.add_note_pkg(npkg)
 
-## if we are turning off the chord feature,
+## if we are turning off the chord feature, then
 ## if we had saved notes to the chord, we add all of them at once to an npkg
 func on_chord_toggled(toggled_on: bool) -> void:
 	chord_creation = toggled_on
@@ -47,10 +49,14 @@ func on_chord_toggled(toggled_on: bool) -> void:
 ## delete an npkgn (if all are deleted in a measure, then delete the measure)
 # duplicate a measure
 # adding notes will never overload a measure
+## make a guitar sound effect
+## calculate pitch frequency for a given integer pitch
+## compile one unbroken array of note packages
+## connect the sync test with the note packages
 
 ## SETTINGS:
-## left-handed
-## bass mode
+# left-handed mode
+# bass mode
 ## scaling (constant | logarithmic)
 
 

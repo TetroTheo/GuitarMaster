@@ -17,11 +17,12 @@ func add_note_pkg(pkg: NotePackage):
 		if last_measure.get_duration() + pkg.duration < 1.0 or is_equal_approx(last_measure.get_duration() + pkg.duration, 1.0):
 			current_measure = last_measure
 		else:
-			
 			## if we were not adding to the last measure, then now we are!
 			## because the measure we were adding to must be full!
 			if add_to_measure > -1:
 				add_to_measure = -1
+				## make an attempt to add to the last measure if unfilled
+				## otherwise, we make a new one!
 				var new_last_measure = $MeasureContainer.get_child(-1)
 				if new_last_measure.get_duration() + pkg.duration < 1.0 or is_equal_approx(new_last_measure.get_duration() + pkg.duration, 1.0):
 					current_measure = new_last_measure
