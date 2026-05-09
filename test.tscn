@@ -41,6 +41,21 @@ grow_vertical = 2
 layout_mode = 2
 text = "REST"
 
+[node name="DurationModifiers" type="OptionButton" parent="Communicator/Editing" unique_id=1565503565]
+layout_mode = 2
+selected = 0
+fit_to_longest_item = false
+allow_reselect = true
+item_count = 4
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Triple (1/3x)"
+popup/item_1/id = 1
+popup/item_2/text = "Dotted (3/2x)"
+popup/item_2/id = 2
+popup/item_3/text = "Double Dotted (7/4x)"
+popup/item_3/id = 3
+
 [node name="Duration" type="OptionButton" parent="Communicator/Editing" unique_id=53274829]
 layout_mode = 2
 selected = 2
@@ -75,6 +90,7 @@ stream = ExtResource("4_ppyta")
 [node name="AudioPlayers" type="Node" parent="Communicator" unique_id=1900118977]
 
 [connection signal="pressed" from="Communicator/Editing/Rest" to="Communicator" method="on_rest_pressed"]
+[connection signal="item_selected" from="Communicator/Editing/DurationModifiers" to="Communicator" method="_on_duration_modifiers_item_selected"]
 [connection signal="item_selected" from="Communicator/Editing/Duration" to="Communicator" method="on_duration_changed"]
 [connection signal="toggled" from="Communicator/Editing/Chord" to="Communicator" method="on_chord_toggled"]
 [connection signal="toggled" from="Communicator/Editing/MeasureEdit" to="Communicator" method="on_measure_edit_toggled"]

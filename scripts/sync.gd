@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var bpm = 120
 var seconds_per_beat = 60.0 /bpm

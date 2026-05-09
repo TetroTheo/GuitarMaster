@@ -4,6 +4,8 @@ extends Node
 ## we're making this a variable for multi-track support in the future. hopefully!
 @onready var track = $Track
 var duration := 0.25
+## so we keep track of what modifier mode we're in
+var duration_modifier := 1.0
 var chord_notes : Array[Note] = []
 var chord_creation := false
 
@@ -15,10 +17,12 @@ func key_pressed(note : Note):
 		chord_notes.append(note)
 		return
 	var npkg = NotePackage.new()
-	npkg.duration = duration
+	## apply modifier here
+	npkg.duration = duration * duration_modifier
 	npkg.notes.append(note)
 	track.add_note_pkg(npkg)
-	play_sound(note)
+	#play_sound(note)
+	note.play_sound($AudioPlayers)
 
 func play_sound(note : Note):
 	var audio_player := AudioStreamPlayer.new()
@@ -39,7 +43,7 @@ func on_duration_changed(index: int) -> void:
 ## add a rest
 func on_rest_pressed() -> void:
 	var npkg = NotePackage.new()
-	npkg.duration = duration
+	npkg.duration = duration * duration_modifier
 	track.add_note_pkg(npkg)
 
 ## if we are turning off the chord feature, then
@@ -49,7 +53,8 @@ func on_chord_toggled(toggled_on: bool) -> void:
 	if not chord_creation:
 		if chord_notes:
 			var npkg = NotePackage.new()
-			npkg.duration = duration
+			## apply modifier here
+			npkg.duration = duration * duration_modifier
 			for note in chord_notes:
 				# make sure that notes do not repeat strings later
 				npkg.notes.append(note)
@@ -87,3 +92,17 @@ func on_measure_edit_toggled(toggled_on: bool) -> void:
 func _on_play_song_pressed() -> void:
 	var song = track.get_song()
 	print(song)
+
+## gives more configurability to the note
+## allows triplets, dotted, and double dotted
+## of course, this will make playback a bit trickier, but not too much more than it already will be!
+func _on_duration_modifiers_item_selected(index: int) -> void:
+	match index:
+		0: ## normal
+			duration_modifier = 1.0
+		1: ## triplet
+			duration_modifier = 1.0/3
+		2: ## dotted
+			duration_modifier = 1.5
+		3: ## double dotted
+			duration_modifier = 1.75

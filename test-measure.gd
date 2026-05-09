@@ -8,7 +8,7 @@ var measure_number : int
 ## 1.0 = 4/4
 ## 1.5 = 6/4
 ## 0.75 = 3/4
-var measure_length := 1.5
+var measure_length := 1.0
 
 ## the sheet calls this when making a new measure, so that the new measure may
 ## bind all of its editing buttons directly to that sheet.

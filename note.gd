@@ -48,3 +48,15 @@ func scale_pitch() -> float:
 
 func _to_string() -> String:
 	return note_name() + '(S' + str(string) + 'F' + str(fret) + ')'
+
+## so that you can easily play a note from any node!
+func play_sound(node : Node):
+	var audio_player := AudioStreamPlayer.new()
+	audio_player.stream = load("uid://jre4lw6j7p4d")
+	audio_player.finished.connect(on_audio_player_finished.bind(audio_player))
+	audio_player.pitch_scale = scale_pitch()
+	node.add_child(audio_player)
+	audio_player.play()
+
+static func on_audio_player_finished(audio_player):
+	audio_player.queue_free()
