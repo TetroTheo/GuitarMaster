@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://jre4lw6j7p4d" path="res://audio/guitar-E2-distorted.wav" id="4_ppyta"]
 
 [node name="Control" type="Control" unique_id=385323799]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,10 +25,10 @@ offset_bottom = -379.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sheet" parent="Communicator" unique_id=658091262 instance=ExtResource("2_6uqi0")]
+[node name="Track" parent="Communicator" unique_id=658091262 instance=ExtResource("2_6uqi0")]
 offset_top = 343.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Communicator" unique_id=535346514]
+[node name="Editing" type="HBoxContainer" parent="Communicator" unique_id=535346514]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -37,11 +38,11 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Rest" type="Button" parent="Communicator/HBoxContainer" unique_id=1736106853]
+[node name="Rest" type="Button" parent="Communicator/Editing" unique_id=1736106853]
 layout_mode = 2
 text = "REST"
 
-[node name="Duration" type="OptionButton" parent="Communicator/HBoxContainer" unique_id=53274829]
+[node name="Duration" type="OptionButton" parent="Communicator/Editing" unique_id=53274829]
 layout_mode = 2
 selected = 2
 item_count = 5
@@ -56,21 +57,26 @@ popup/item_3/id = 3
 popup/item_4/text = "Sixteenth"
 popup/item_4/id = 4
 
-[node name="Chord" type="Button" parent="Communicator/HBoxContainer" unique_id=1411413056]
+[node name="Chord" type="Button" parent="Communicator/Editing" unique_id=1411413056]
 layout_mode = 2
 toggle_mode = true
 text = "CHORD"
 
-[node name="MeasureEdit" type="CheckButton" parent="Communicator/HBoxContainer" unique_id=1368161599]
+[node name="MeasureEdit" type="CheckButton" parent="Communicator/Editing" unique_id=1368161599]
 layout_mode = 2
 text = "EDIT MEASURES"
+
+[node name="PlaySong" type="Button" parent="Communicator/Editing" unique_id=886263486]
+layout_mode = 2
+text = "Play Song"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
 stream = ExtResource("4_ppyta")
 
 [node name="AudioPlayers" type="Node" parent="Communicator" unique_id=1900118977]
 
-[connection signal="pressed" from="Communicator/HBoxContainer/Rest" to="Communicator" method="on_rest_pressed"]
-[connection signal="item_selected" from="Communicator/HBoxContainer/Duration" to="Communicator" method="on_duration_changed"]
-[connection signal="toggled" from="Communicator/HBoxContainer/Chord" to="Communicator" method="on_chord_toggled"]
-[connection signal="toggled" from="Communicator/HBoxContainer/MeasureEdit" to="Communicator" method="on_measure_edit_toggled"]
+[connection signal="pressed" from="Communicator/Editing/Rest" to="Communicator" method="on_rest_pressed"]
+[connection signal="item_selected" from="Communicator/Editing/Duration" to="Communicator" method="on_duration_changed"]
+[connection signal="toggled" from="Communicator/Editing/Chord" to="Communicator" method="on_chord_toggled"]
+[connection signal="toggled" from="Communicator/Editing/MeasureEdit" to="Communicator" method="on_measure_edit_toggled"]
+[connection signal="pressed" from="Communicator/Editing/PlaySong" to="Communicator" method="_on_play_song_pressed"]

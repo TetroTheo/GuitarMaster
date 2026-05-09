@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bniuvcdt27wtl"]
 
-[ext_resource type="Script" uid="uid://b1nvhii2vw6nj" path="res://test-sheet.gd" id="1_xlxo5"]
+[ext_resource type="Script" uid="uid://b1nvhii2vw6nj" path="res://test-track.gd" id="1_xlxo5"]
 
-[node name="Sheet" type="ScrollContainer" unique_id=658091262]
+[node name="Track" type="ScrollContainer" unique_id=658091262]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

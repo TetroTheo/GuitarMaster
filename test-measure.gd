@@ -1,3 +1,4 @@
+class_name Measure
 extends Control
 
 var measure_number : int
@@ -34,6 +35,10 @@ func get_duration() -> float:
 func is_full() -> bool:
 	return is_equal_approx(get_duration(), 1.0)
 
+## returns whether or not the note's duration will fit within the measure or fill it entirely!
+func can_fit(npkg: NotePackage) -> bool:
+	return get_duration() + npkg.duration < 1.0 or is_equal_approx(get_duration() + npkg.duration, 1.0)
+
 ## adds the Note Package Node to this measure
 func add_npkgn(npkgn, pkg):
 	$NotePackageNodes.add_child(npkgn)
@@ -42,6 +47,10 @@ func add_npkgn(npkgn, pkg):
 	## hide the Add Notes button if the measure is full!
 	if $HBoxContainer/AddNote.visible and is_full():
 		$HBoxContainer/AddNote.hide()
+
+## instead of accessing nkpgns directly, the measure should just return them when requested.
+func get_nkpgn():
+	return $NotePackageNodes.get_children()
 
 func edit_mode(toggled_on : bool):
 	$HBoxContainer/Left.visible = toggled_on
