@@ -17,8 +17,11 @@ var song_note_index := 0
 var last_song_note_position := 0.0
 var loop := false
 var BPM := 120.0
-var selected_npkgn: Node
+var last_song_note_duration := 0.0
 var song_just_started := true
+
+var selected_npkgn: Node
+
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
@@ -140,7 +143,7 @@ func _on_play_song_pressed() -> void:
 	print("Now Playing: " + str(song))
 	song_note_index = 0
 	last_song_note_position = 0.0
-	song_just_started = true
+	last_song_note_duration = 0.0
 	generator.play()
 
 func _process(_delta: float) -> void:
@@ -150,15 +153,13 @@ func _process(_delta: float) -> void:
 	song_position -= AudioServer.get_output_latency() + 0.25
 	## the scaling factor is the reciprocal of seconds per beat multiplied by four
 	song_position /= 4 * 60.0 / BPM
-	var last_song_note_duration = song[song_note_index - 1].duration
-	if song_note_index == 0 and song_just_started:
-		last_song_note_duration = 0.0
-		song_just_started = false
 	## play as many notes as the song position has passed
 	while last_song_note_position + last_song_note_duration < song_position:
 		for note in song[song_note_index].notes:
 			note.play_sound(get_node("AudioPlayers"))
 		last_song_note_position = song_position
+		## we need to get the LAST note that was played!
+		last_song_note_duration = song[song_note_index].duration
 		song_note_index += 1
 		## check if this was the last note
 		if song_note_index >= len(song):
