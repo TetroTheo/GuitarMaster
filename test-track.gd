@@ -98,10 +98,14 @@ func add_to(measure):
 	measure_to_add_to = measure.measure_number
 
 ## returns the full song of this track for playback
-func get_song() -> Array[NotePackage]:
-	var song : Array[NotePackage]
+func get_song() -> SongPackage:
+	var song_pkg := SongPackage.new()
 	for measure in measures.get_children():
-		#return song
+		var measure_pkg := MeasurePackage.new()
+		measure_pkg.tempo = measure.tempo
+		measure_pkg.time_signature_numerator = measure.time_signature_numerator
+		measure_pkg.time_signature_denominator = measure.time_signature_denominator
 		for npkgn in measure.get_nkpgn():
-			song.append(npkgn.note_pkg)
-	return song
+			measure_pkg.note_packages.append(npkgn.note_pkg)
+		song_pkg.measure_packages.append(measure_pkg)
+	return song_pkg

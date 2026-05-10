@@ -1,4 +1,4 @@
 extends Resource
-class_name Song
+class_name SongPackage
 
-@export var note_packages : Array[NotePackage]
+@export var measure_packages : Array[MeasurePackage]

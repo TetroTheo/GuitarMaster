@@ -13,13 +13,17 @@ var chord_notes : Array[Note] = []
 var chord_creation := false
 var selected_npkgn: Node
 ## for track playback
-var song : Array[NotePackage]
+var song : SongPackage
 var song_position := 0.0
 var song_note_index := 0
+var song_measure_index := 0
 var last_song_note_position := 0.0
 var loop := false
 var BPM := 120.0
 var last_song_note_duration := 0.0
+var last_metronome_tick_position := 0.0
+var last_metronome_tick_duration := 0.0
+var metronome_on := true
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
@@ -149,34 +153,75 @@ func _on_play_song_pressed() -> void:
 	song = track.get_song()
 	print("Now Playing: " + str(song))
 	song_note_index = 0
+	song_measure_index = 0
 	last_song_note_position = 0.0
 	last_song_note_duration = 0.0
+	last_metronome_tick_position = 0.0
+	last_metronome_tick_duration = 0.0
 	generator.play()
 
+
+## let's take a moment to talk about time signatures. I finally understand them now.
+## so, think of the numerator as how many notes there are, and the bottom as the duration of each note.
+## a time signature of X/Y would have measures that contain X notes that are each a duration of Y.
+## here are some examples:
+## 6/4 = six quarter notes
+## 3/2 = three half notes
+## 2/1 = two whole notes
+## 4/4 = four quarter notes
+## 6/8 = six eigth notes
+## what's important to note is that while different fractions have the same ratio, the metronome plays differently.
+## for example, in 6/4, we play the metronome every quarter note, but in 3/2, we play it for every half note.
+## in terms of this program, the duration of the metronome should be 4/Y for any time signature X/Y.
+## (but we still need to store X and Y. both to calculate the ratio of the measure, and for display.)
+
+## plays the song
 func _process(_delta: float) -> void:
 	if not song or not generator.playing:
+		return
+	## there may be a song without measures!
+	if not song.measure_packages:
 		return
 	song_position = generator.get_playback_position() + AudioServer.get_time_since_last_mix()
 	song_position -= AudioServer.get_output_latency() + 0.25
 	## the scaling factor is the reciprocal of seconds per beat multiplied by four
+	## here, we're using the BPM to uniformly scale the song position,
+	## so that we won't have to scale the metronome or any notes after this.
+	## the BPM will also not be needed.
 	song_position /= 4 * 60.0 / BPM
+	## play the metronome!
+	while last_metronome_tick_position + last_metronome_tick_duration < song_position:
+		## even if not currently enabled, keep track of the metronome,
+		## so that it can be turned on and off properly during playback!
+		if metronome_on:
+			$Metronome.play()
+		## don't delete this line! I crashed my computer after forgetting this one...
+		last_metronome_tick_position = song_position
+		## metronome frequency is based on the current time signature
+		last_metronome_tick_duration = 4.0/song.measure_packages[song_measure_index].time_signature_denominator
 	## play as many notes as the song position has passed
 	while last_song_note_position + last_song_note_duration < song_position:
-		for note in song[song_note_index].notes:
+		for note in song.measure_packages[song_measure_index].note_packages[song_note_index].notes:
 			note.play_sound(get_node("AudioPlayers"))
 		last_song_note_position = song_position
 		## we need to get the LAST note that was played!
-		last_song_note_duration = song[song_note_index].duration
+		last_song_note_duration = song.measure_packages[song_measure_index].note_packages[song_note_index].duration
 		song_note_index += 1
-		## check if this was the last note
-		if song_note_index >= len(song):
-			if loop:
-				## start from the first note
-				song_note_index = 0
-			else:
-				## end playback
-				stop_song()
-				break
+		## check if this was the last note in the measure
+		if song_note_index >= len(song.measure_packages[song_measure_index].note_packages):
+			## move to next measure
+			song_measure_index += 1
+			song_note_index = 0
+			## check if this was the last note of the last measure
+			if song_measure_index >= len(song.measure_packages):
+				if loop:
+					## start from the first note of the first measure
+					song_note_index = 0
+					song_measure_index = 0
+				else:
+					## end playback
+					stop_song()
+					break
 
 ## stops the song
 ## (did I really have to write this?)
@@ -222,9 +267,9 @@ func _on_save_file_pressed() -> void:
 
 func _on_save_file_file_selected(path: String) -> void:
 	## create the resource
-	var song_rc = Song.new()
-	song_rc.note_packages = track.get_song()
-	print(ResourceSaver.save(song_rc, path))
+	var song_rc = track.get_song()
+	var error := ResourceSaver.save(song_rc, path)
+	if error: push_warning("Saving error: " + error_string(error))
 
 
 func _on_load_file_file_selected(path: String) -> void:

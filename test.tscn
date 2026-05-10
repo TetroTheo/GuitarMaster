@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dfw50qnbmywo" path="res://test-fretboard.tscn" id="1_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://bniuvcdt27wtl" path="res://test-track.tscn" id="2_6uqi0"]
 [ext_resource type="Script" uid="uid://cbe1xr2bm1tt5" path="res://communicator.gd" id="3_6uqi0"]
-[ext_resource type="AudioStream" uid="uid://jre4lw6j7p4d" path="res://audio/guitar-E2-distorted.wav" id="4_ppyta"]
+[ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://audio/metronome-sound.mp3" id="4_ppyta"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_ppyta"]
 
@@ -131,7 +131,7 @@ text = "Save"
 layout_mode = 2
 text = "Load"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
+[node name="Metronome" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
 stream = ExtResource("4_ppyta")
 
 [node name="AudioPlayers" type="Node" parent="Communicator" unique_id=1900118977]
@@ -139,8 +139,6 @@ stream = ExtResource("4_ppyta")
 [node name="AudioStreamGenerator" type="AudioStreamPlayer" parent="Communicator" unique_id=1175235395]
 stream = SubResource("AudioStreamGenerator_ppyta")
 playback_type = 1
-
-[node name="AudioGenerator" type="Node" parent="Communicator" unique_id=1817462943]
 
 [node name="SaveFile" type="FileDialog" parent="Communicator" unique_id=1862164143]
 oversampling_override = 1.0
