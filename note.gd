@@ -6,6 +6,8 @@ extends Resource
 @export var pitch : int
 @export_range(0,5,1) var string : int
 
+var key : Key
+
 static var pitch_to_string : Array[String] = [
 		'C','C#','D','D#','E','F',
 		'F#','G','G#','A','A#','B'

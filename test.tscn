@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://cbe1xr2bm1tt5" path="res://communicator.gd" id="3_6uqi0"]
 [ext_resource type="AudioStream" uid="uid://jre4lw6j7p4d" path="res://audio/guitar-E2-distorted.wav" id="4_ppyta"]
 
-[node name="Control" type="Control" unique_id=385323799]
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_ppyta"]
+
+[node name="Test" type="Control" unique_id=385323799]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,12 +84,36 @@ text = "EDIT MEASURES"
 
 [node name="PlaySong" type="Button" parent="Communicator/Editing" unique_id=886263486]
 layout_mode = 2
-text = "Play Song"
+text = "Play/Stop"
+
+[node name="PauseSong" type="Button" parent="Communicator/Editing" unique_id=14099895]
+layout_mode = 2
+toggle_mode = true
+text = "Pause"
+
+[node name="Loop" type="Button" parent="Communicator/Editing" unique_id=1360420693]
+layout_mode = 2
+toggle_mode = true
+text = "Loop"
+
+[node name="BPM" type="SpinBox" parent="Communicator/Editing" unique_id=1391751871]
+custom_minimum_size = Vector2(96.645, 0)
+layout_mode = 2
+min_value = 60.0
+max_value = 300.0
+value = 120.0
+suffix = "BPM"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
 stream = ExtResource("4_ppyta")
 
 [node name="AudioPlayers" type="Node" parent="Communicator" unique_id=1900118977]
+
+[node name="AudioStreamGenerator" type="AudioStreamPlayer" parent="Communicator" unique_id=1175235395]
+stream = SubResource("AudioStreamGenerator_ppyta")
+playback_type = 1
+
+[node name="AudioGenerator" type="Node" parent="Communicator" unique_id=1817462943]
 
 [connection signal="pressed" from="Communicator/Editing/Rest" to="Communicator" method="on_rest_pressed"]
 [connection signal="item_selected" from="Communicator/Editing/DurationModifiers" to="Communicator" method="_on_duration_modifiers_item_selected"]
@@ -95,3 +121,6 @@ stream = ExtResource("4_ppyta")
 [connection signal="toggled" from="Communicator/Editing/Chord" to="Communicator" method="on_chord_toggled"]
 [connection signal="toggled" from="Communicator/Editing/MeasureEdit" to="Communicator" method="on_measure_edit_toggled"]
 [connection signal="pressed" from="Communicator/Editing/PlaySong" to="Communicator" method="_on_play_song_pressed"]
+[connection signal="toggled" from="Communicator/Editing/PauseSong" to="Communicator" method="pause_song"]
+[connection signal="toggled" from="Communicator/Editing/Loop" to="Communicator" method="_on_loop_toggled"]
+[connection signal="value_changed" from="Communicator/Editing/BPM" to="Communicator" method="_on_bpm_value_changed"]

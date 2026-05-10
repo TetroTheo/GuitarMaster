@@ -17,6 +17,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	song_position = $AudioStreamPlayer.get_playback_position() + AudioServer.get_time_since_last_mix()
 	song_position -= AudioServer.get_output_latency()
+	var song_beats = song_position / bpm
+	print(song_beats)
 	song_pos_in_beats = floori(song_position / seconds_per_beat)
 	check_beat()
 
@@ -24,7 +26,7 @@ func check_beat():
 	if not last_checked_beat < song_pos_in_beats:
 		return
 	$MetroSound.play()
-	print("beat ", song_pos_in_beats, " measure ", measure)
+	print("beat ", song_pos_in_beats, " measure ", measure, " ", last_checked_beat, " ", song_pos_in_beats)
 	measure += 1
 	if measure % 4 == 0:
 		measure = 0
