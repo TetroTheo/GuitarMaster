@@ -17,6 +17,33 @@ var song_note_index := 0
 var last_song_note_position := 0.0
 var loop := false
 var BPM := 120.0
+var selected_npkgn: Node
+
+## so that we can connect to the track, so that it will tell us when a measure is deleted
+func _ready() -> void:
+	track.measure_deleted.connect(on_measure_deleted)
+	$Editing/NoteEdit.get_popup().id_pressed.connect(note_edit_option_selected)
+
+
+func note_edit_option_selected(index: int):
+	match index:
+		0: ## rewrite
+			pass
+		1: ## delete
+			$Editing/NoteEdit.disabled = true
+			selected_npkgn.queue_free()
+			selected_npkgn = null
+		2: ## play from here
+			pass
+
+
+
+## if we delete a measure with the selected npkgn, then reset the button
+func on_measure_deleted(measure: Measure):
+	for npkgn in measure.get_nkpgn():
+		if npkgn == selected_npkgn:
+			selected_npkgn = null
+			$Editing/NoteEdit.disabled = true
 
 ## if any key is pressed, tell the sheet to add a note
 func key_pressed(note : Note):
@@ -37,12 +64,13 @@ func key_pressed(note : Note):
 				break
 		note.key.toggle_on()
 		chord_notes.append(note)
+		note.play_sound($AudioPlayers)
 		return
 	var npkg = NotePackage.new()
-	## apply modifier here
+	## apply the duration modifier to the npkg
 	npkg.duration = duration * duration_modifier
 	npkg.notes.append(note)
-	track.add_note_pkg(npkg)
+	track.add_note_pkg(self, npkg)
 	note.play_sound($AudioPlayers)
 
 
@@ -53,7 +81,7 @@ func on_duration_changed(index: int) -> void:
 func on_rest_pressed() -> void:
 	var npkg = NotePackage.new()
 	npkg.duration = duration * duration_modifier
-	track.add_note_pkg(npkg)
+	track.add_note_pkg(self, npkg)
 
 ## if we are turning off the chord feature, then
 ## if we had saved notes to the chord, we add all of them at once to an npkg
@@ -67,7 +95,10 @@ func on_chord_toggled(toggled_on: bool) -> void:
 			for note in chord_notes:
 				npkg.notes.append(note)
 				note.key.toggle_off()
-			track.add_note_pkg(npkg)
+				## just play for fun!
+				note.play_sound($AudioPlayers)
+			## include ourselves so that the npkgn can conect to us
+			track.add_note_pkg(self, npkg)
 			chord_notes.clear()
 
 ## TODO:
@@ -164,3 +195,8 @@ func _on_duration_modifiers_item_selected(index: int) -> void:
 			duration_modifier = 1.5
 		3: ## double dotted
 			duration_modifier = 1.75
+
+## at last, we can connect to these!
+func on_npkgn_pressed(npkgn):
+	selected_npkgn = npkgn
+	$Editing/NoteEdit.disabled = false

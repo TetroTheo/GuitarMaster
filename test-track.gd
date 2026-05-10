@@ -5,6 +5,7 @@ extends ScrollContainer
 @onready var measures = $MeasureContainer
 var measure_mode := false
 var measure_to_add_to := -1
+signal measure_deleted
 
 func _ready() -> void:
 	create_new_measure()
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 ## adds an npkg to the sheet. if the last measure is full, we make a new one.
 ## either way, we add the measure to an available space in a measure.
-func add_note_pkg(pkg: NotePackage):
+func add_note_pkg(communicator: Node, pkg: NotePackage):
 	var npkgn = load("uid://bqhqm608hhbdx").instantiate()
 	var current_measure : Measure
 	if measures.get_children():
@@ -36,7 +37,7 @@ func add_note_pkg(pkg: NotePackage):
 				current_measure = create_new_measure()
 	else:
 		current_measure = create_new_measure()
-	current_measure.add_npkgn(npkgn, pkg)
+	current_measure.add_npkgn(communicator, npkgn, pkg)
 
 
 func create_new_measure() -> Node:
@@ -56,6 +57,7 @@ func edit_measure_mode(toggled_on: bool):
 ## deletes the measure that sent this
 ## moves measures that come after it backwards by one.
 func on_delete(measure):
+	measure_deleted.emit(measure)
 	for i in range(measure.measure_number, measures.get_child_count()):
 		measures.get_child(i).change_measure_number(-1)
 		measure.queue_free()

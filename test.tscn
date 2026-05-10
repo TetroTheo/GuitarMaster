@@ -78,6 +78,19 @@ layout_mode = 2
 toggle_mode = true
 text = "CHORD"
 
+[node name="NoteEdit" type="MenuButton" parent="Communicator/Editing" unique_id=552369376]
+layout_mode = 2
+disabled = true
+text = "EDIT NOTE"
+flat = false
+item_count = 3
+popup/item_0/text = "Rewrite"
+popup/item_0/id = 0
+popup/item_1/text = "Delete"
+popup/item_1/id = 1
+popup/item_2/text = "Play from here"
+popup/item_2/id = 2
+
 [node name="MeasureEdit" type="CheckButton" parent="Communicator/Editing" unique_id=1368161599]
 layout_mode = 2
 text = "EDIT MEASURES"
