@@ -15,40 +15,103 @@ offset_bottom = 648.0
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=627759038]
+[node name="HBoxContainerUpper" type="HBoxContainer" parent="." unique_id=627759038]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
+offset_right = 57.0
+offset_bottom = 33.0
 
-[node name="Left" type="Button" parent="HBoxContainer" unique_id=1419409131]
+[node name="Left" type="Button" parent="HBoxContainerUpper" unique_id=1419409131]
 visible = false
 layout_mode = 2
 text = "<"
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=993654634]
+[node name="Label" type="Label" parent="HBoxContainerUpper" unique_id=993654634]
 layout_mode = 2
 text = "0"
 
-[node name="Right" type="Button" parent="HBoxContainer" unique_id=203168976]
+[node name="Right" type="Button" parent="HBoxContainerUpper" unique_id=203168976]
 visible = false
 layout_mode = 2
 text = ">"
 
-[node name="Duplicate" type="Button" parent="HBoxContainer" unique_id=1031635779]
+[node name="HBoxContainerLower" type="HBoxContainer" parent="." unique_id=2057775448]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 273.0
+grow_vertical = 0
+
+[node name="Duplicate" type="Button" parent="HBoxContainerLower" unique_id=1031635779]
 visible = false
 layout_mode = 2
 text = "Duplicate"
 
-[node name="Delete" type="Button" parent="HBoxContainer" unique_id=597024512]
+[node name="Delete" type="Button" parent="HBoxContainerLower" unique_id=597024512]
 visible = false
 layout_mode = 2
 text = "Delete"
 
-[node name="AddNote" type="Button" parent="HBoxContainer" unique_id=1692710059]
+[node name="AddNote" type="Button" parent="HBoxContainerLower" unique_id=1692710059]
 visible = false
 layout_mode = 2
 text = "Add Notes Here"
+
+[node name="HBoxContainerUpperRight" type="HBoxContainer" parent="." unique_id=805291441]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -332.0
+offset_bottom = 33.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Tempo" type="SpinBox" parent="HBoxContainerUpperRight" unique_id=1897683516]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+min_value = 60.0
+max_value = 240.0
+value = 120.0
+alignment = 1
+suffix = "BPM"
+
+[node name="HBoxContainerLowerRight" type="HBoxContainer" parent="." unique_id=1674579510]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -332.0
+offset_top = -33.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="TSN" type="SpinBox" parent="HBoxContainerLowerRight" unique_id=1070410179]
+layout_mode = 2
+min_value = 1.0
+max_value = 16.0
+value = 4.0
+alignment = 1
+custom_arrow_round = true
+
+[node name="Slash" type="Label" parent="HBoxContainerLowerRight" unique_id=1732376466]
+layout_mode = 2
+text = "/"
+
+[node name="TSD" type="SpinBox" parent="HBoxContainerLowerRight" unique_id=1595266594]
+layout_mode = 2
+min_value = 1.0
+max_value = 16.0
+value = 4.0
+alignment = 1
+custom_arrow_round = true
+
+[connection signal="value_changed" from="HBoxContainerUpperRight/Tempo" to="." method="_on_tempo_value_changed"]
+[connection signal="value_changed" from="HBoxContainerLowerRight/TSN" to="." method="_on_tsn_value_changed"]
+[connection signal="value_changed" from="HBoxContainerLowerRight/TSD" to="." method="_on_tsd_value_changed"]

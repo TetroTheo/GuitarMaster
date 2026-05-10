@@ -52,9 +52,10 @@ func _to_string() -> String:
 	return note_name() + '(S' + str(string) + 'F' + str(fret) + ')'
 
 ## so that you can easily play a note from any node!
+# make the audio configurable!
 func play_sound(node : Node):
 	var audio_player := AudioStreamPlayer.new()
-	audio_player.stream = load("uid://jre4lw6j7p4d")
+	audio_player.stream = load("res://audio/A440.wav")
 	audio_player.finished.connect(on_audio_player_finished.bind(audio_player))
 	audio_player.pitch_scale = scale_pitch()
 	node.add_child(audio_player)

@@ -1,3 +1,4 @@
+@tool
 class_name Track
 extends ScrollContainer
 
@@ -5,6 +6,7 @@ extends ScrollContainer
 @onready var measures = $MeasureContainer
 var measure_mode := false
 var measure_to_add_to := -1
+var overwrite_npkg : Node = null
 signal measure_deleted
 
 func _ready() -> void:
@@ -14,6 +16,15 @@ func _ready() -> void:
 ## adds an npkg to the sheet. if the last measure is full, we make a new one.
 ## either way, we add the measure to an available space in a measure.
 func add_note_pkg(communicator: Node, pkg: NotePackage):
+	## instead of adding a note, we write to an existing npkg,
+	## if the communicator has told us to!
+	if overwrite_npkg:
+		overwrite_npkg.note_pkg = pkg
+		## because the text does not update itself
+		overwrite_npkg.update_note_display()
+		## we remove the reference, but the node still exists!
+		overwrite_npkg = null
+		return
 	var npkgn = load("uid://bqhqm608hhbdx").instantiate()
 	var current_measure : Measure
 	if measures.get_children():
@@ -40,7 +51,7 @@ func add_note_pkg(communicator: Node, pkg: NotePackage):
 	current_measure.add_npkgn(communicator, npkgn, pkg)
 
 
-func create_new_measure() -> Node:
+func create_new_measure() -> Measure:
 	var new_measure = load("res://test-measure.tscn").instantiate()
 	new_measure.set_measure_number(measures.get_child_count())
 	new_measure.connect_editing_buttons(self)
@@ -64,7 +75,7 @@ func on_delete(measure):
 
 ## duplicates the measure that sent this signal, and inserts that measure right after where it was duplicated.
 ## it moves measures that come after forward by one.
-func on_duplicate(measure):
+func on_duplicate(measure : Measure):
 	for i in range(measure.measure_number + 1, measures.get_child_count()):
 		measures.get_child(i).change_measure_number(+1)
 	var copy = measure.duplicate()
@@ -73,10 +84,13 @@ func on_duplicate(measure):
 	for npkgn in measure.get_node("NotePackageNodes").get_children():
 		copy.get_node("NotePackageNodes").get_child(index).note_pkg = npkgn.note_pkg.duplicate()
 		index += 1
-	duplicate()
 	copy.set_measure_number(measure.measure_number + 1)
 	## duplication does not copy signal connections!
 	copy.connect_editing_buttons(self)
+	## it also does not copy time signatures or tempo
+	copy.time_signature_numerator = measure.time_signature_numerator
+	copy.time_signature_denominator = measure.time_signature_denominator
+	copy.tempo = measure.tempo
 	measures.add_child(copy)
 	measures.move_child(copy, copy.measure_number)
 
@@ -109,3 +123,21 @@ func get_song() -> SongPackage:
 			measure_pkg.note_packages.append(npkgn.note_pkg)
 		song_pkg.measure_packages.append(measure_pkg)
 	return song_pkg
+
+## here's where the fun begins...
+func load_song(communicator : Node, song : SongPackage):
+	clear_song()
+	for measure in song.measure_packages:
+		var new_measure = create_new_measure()
+		new_measure.tempo = measure.tempo
+		new_measure.time_signature_numerator = measure.time_signature_numerator
+		new_measure.time_signature_denominator = measure.time_signature_denominator
+		new_measure.update_display()
+		for npkg in measure.note_packages:
+			var npkgn = load("uid://bqhqm608hhbdx").instantiate()
+			new_measure.add_npkgn(communicator, npkgn, npkg)
+
+
+func clear_song():
+	for child in measures.get_children():
+		child.queue_free()

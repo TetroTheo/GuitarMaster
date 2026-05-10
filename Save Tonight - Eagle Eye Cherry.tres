@@ -1,0 +1,232 @@
+[gd_resource type="Resource" script_class="SongPackage" format=3 uid="uid://bqjn3jc07fj4"]
+
+[ext_resource type="Script" uid="uid://cxydnenors0o5" path="res://measure-package.gd" id="1_w2i06"]
+[ext_resource type="Script" uid="uid://crprus3q5jnld" path="res://note-package.gd" id="2_cgloy"]
+[ext_resource type="Script" uid="uid://d3fegwwpfjcwh" path="res://note.gd" id="3_lsnb5"]
+[ext_resource type="Script" uid="uid://djxrmchqhdklt" path="res://song.gd" id="4_xqg0a"]
+
+[sub_resource type="Resource" id="Resource_gmgnx"]
+script = ExtResource("3_lsnb5")
+pitch = 33
+string = 1
+
+[sub_resource type="Resource" id="Resource_honcs"]
+script = ExtResource("3_lsnb5")
+fret = 2
+pitch = 40
+string = 2
+
+[sub_resource type="Resource" id="Resource_3dl0s"]
+script = ExtResource("3_lsnb5")
+fret = 2
+pitch = 45
+string = 3
+
+[sub_resource type="Resource" id="Resource_0114f"]
+script = ExtResource("3_lsnb5")
+fret = 1
+pitch = 48
+string = 4
+
+[sub_resource type="Resource" id="Resource_khc4l"]
+script = ExtResource("3_lsnb5")
+pitch = 52
+string = 5
+
+[sub_resource type="Resource" id="Resource_8fqjf"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_gmgnx"), SubResource("Resource_honcs"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_wibnv"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_gmgnx"), SubResource("Resource_honcs"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_m6vko"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_gmgnx"), SubResource("Resource_honcs"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_iyh1n"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_gmgnx"), SubResource("Resource_honcs"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_apif2"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_gmgnx"), SubResource("Resource_honcs"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_3h3vg"]
+script = ExtResource("1_w2i06")
+note_packages = Array[ExtResource("2_cgloy")]([SubResource("Resource_8fqjf"), SubResource("Resource_wibnv"), SubResource("Resource_m6vko"), SubResource("Resource_iyh1n"), SubResource("Resource_apif2")])
+time_signature_numerator = 4
+time_signature_denominator = 4
+tempo = 120.0
+
+[sub_resource type="Resource" id="Resource_v0qjy"]
+script = ExtResource("3_lsnb5")
+fret = 3
+pitch = 36
+string = 1
+
+[sub_resource type="Resource" id="Resource_xda1g"]
+script = ExtResource("3_lsnb5")
+fret = 3
+pitch = 41
+string = 2
+
+[sub_resource type="Resource" id="Resource_urpab"]
+script = ExtResource("3_lsnb5")
+fret = 1
+pitch = 53
+string = 5
+
+[sub_resource type="Resource" id="Resource_rjwje"]
+script = ExtResource("3_lsnb5")
+fret = 1
+pitch = 29
+
+[sub_resource type="Resource" id="Resource_mvf0g"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_v0qjy"), SubResource("Resource_xda1g"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_urpab"), SubResource("Resource_rjwje")])
+
+[sub_resource type="Resource" id="Resource_v8ywc"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rjwje"), SubResource("Resource_v0qjy"), SubResource("Resource_xda1g"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_urpab")])
+
+[sub_resource type="Resource" id="Resource_htbnw"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rjwje"), SubResource("Resource_v0qjy"), SubResource("Resource_xda1g"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_urpab")])
+
+[sub_resource type="Resource" id="Resource_ock3q"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rjwje"), SubResource("Resource_v0qjy"), SubResource("Resource_xda1g"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_urpab")])
+
+[sub_resource type="Resource" id="Resource_ja0p1"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rjwje"), SubResource("Resource_v0qjy"), SubResource("Resource_xda1g"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_urpab")])
+
+[sub_resource type="Resource" id="Resource_11my1"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rjwje"), SubResource("Resource_v0qjy"), SubResource("Resource_xda1g"), SubResource("Resource_3dl0s"), SubResource("Resource_0114f"), SubResource("Resource_urpab")])
+
+[sub_resource type="Resource" id="Resource_p2nrp"]
+script = ExtResource("1_w2i06")
+note_packages = Array[ExtResource("2_cgloy")]([SubResource("Resource_mvf0g"), SubResource("Resource_v8ywc"), SubResource("Resource_htbnw"), SubResource("Resource_ock3q"), SubResource("Resource_ja0p1"), SubResource("Resource_11my1")])
+time_signature_numerator = 4
+time_signature_denominator = 4
+tempo = 120.0
+
+[sub_resource type="Resource" id="Resource_1vujv"]
+script = ExtResource("3_lsnb5")
+pitch = 43
+string = 3
+
+[sub_resource type="Resource" id="Resource_jtyv7"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_v0qjy"), SubResource("Resource_honcs"), SubResource("Resource_1vujv"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_nx1aj"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_v0qjy"), SubResource("Resource_honcs"), SubResource("Resource_1vujv"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_jpqwt"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_v0qjy"), SubResource("Resource_honcs"), SubResource("Resource_1vujv"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_423u7"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_v0qjy"), SubResource("Resource_honcs"), SubResource("Resource_1vujv"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_460x0"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_v0qjy"), SubResource("Resource_honcs"), SubResource("Resource_1vujv"), SubResource("Resource_0114f"), SubResource("Resource_khc4l")])
+
+[sub_resource type="Resource" id="Resource_5rh6t"]
+script = ExtResource("1_w2i06")
+note_packages = Array[ExtResource("2_cgloy")]([SubResource("Resource_jtyv7"), SubResource("Resource_nx1aj"), SubResource("Resource_jpqwt"), SubResource("Resource_423u7"), SubResource("Resource_460x0")])
+time_signature_numerator = 4
+time_signature_denominator = 4
+tempo = 120.0
+
+[sub_resource type="Resource" id="Resource_rix2y"]
+script = ExtResource("3_lsnb5")
+fret = 3
+pitch = 31
+
+[sub_resource type="Resource" id="Resource_d6dks"]
+script = ExtResource("3_lsnb5")
+fret = 2
+pitch = 35
+string = 1
+
+[sub_resource type="Resource" id="Resource_16w1r"]
+script = ExtResource("3_lsnb5")
+pitch = 38
+string = 2
+
+[sub_resource type="Resource" id="Resource_4a0ge"]
+script = ExtResource("3_lsnb5")
+fret = 3
+pitch = 50
+string = 4
+
+[sub_resource type="Resource" id="Resource_2il4p"]
+script = ExtResource("3_lsnb5")
+fret = 3
+pitch = 55
+string = 5
+
+[sub_resource type="Resource" id="Resource_42of2"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rix2y"), SubResource("Resource_d6dks"), SubResource("Resource_16w1r"), SubResource("Resource_1vujv"), SubResource("Resource_4a0ge"), SubResource("Resource_2il4p")])
+
+[sub_resource type="Resource" id="Resource_rxftn"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rix2y"), SubResource("Resource_d6dks"), SubResource("Resource_16w1r"), SubResource("Resource_1vujv"), SubResource("Resource_4a0ge"), SubResource("Resource_2il4p")])
+
+[sub_resource type="Resource" id="Resource_dyfjx"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rix2y"), SubResource("Resource_d6dks"), SubResource("Resource_16w1r"), SubResource("Resource_1vujv"), SubResource("Resource_4a0ge"), SubResource("Resource_2il4p")])
+
+[sub_resource type="Resource" id="Resource_0mbbb"]
+script = ExtResource("2_cgloy")
+duration = 0.25
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rix2y"), SubResource("Resource_d6dks"), SubResource("Resource_16w1r"), SubResource("Resource_1vujv"), SubResource("Resource_4a0ge"), SubResource("Resource_2il4p")])
+
+[sub_resource type="Resource" id="Resource_4a4xm"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rix2y"), SubResource("Resource_d6dks"), SubResource("Resource_16w1r"), SubResource("Resource_1vujv"), SubResource("Resource_4a0ge"), SubResource("Resource_2il4p")])
+
+[sub_resource type="Resource" id="Resource_07f8a"]
+script = ExtResource("2_cgloy")
+duration = 0.125
+notes = Array[ExtResource("3_lsnb5")]([SubResource("Resource_rix2y"), SubResource("Resource_d6dks"), SubResource("Resource_16w1r"), SubResource("Resource_1vujv"), SubResource("Resource_4a0ge"), SubResource("Resource_2il4p")])
+
+[sub_resource type="Resource" id="Resource_ncikx"]
+script = ExtResource("1_w2i06")
+note_packages = Array[ExtResource("2_cgloy")]([SubResource("Resource_42of2"), SubResource("Resource_rxftn"), SubResource("Resource_dyfjx"), SubResource("Resource_0mbbb"), SubResource("Resource_4a4xm"), SubResource("Resource_07f8a")])
+time_signature_numerator = 4
+time_signature_denominator = 4
+tempo = 120.0
+
+[resource]
+script = ExtResource("4_xqg0a")
+measure_packages = Array[ExtResource("1_w2i06")]([SubResource("Resource_3h3vg"), SubResource("Resource_p2nrp"), SubResource("Resource_5rh6t"), SubResource("Resource_ncikx")])

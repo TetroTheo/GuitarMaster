@@ -112,6 +112,11 @@ layout_mode = 2
 toggle_mode = true
 text = "Loop"
 
+[node name="Metronome" type="Button" parent="Communicator/Editing" unique_id=372566371]
+layout_mode = 2
+toggle_mode = true
+text = "Metronome"
+
 [node name="BPM" type="SpinBox" parent="Communicator/Editing" unique_id=1391751871]
 custom_minimum_size = Vector2(96.645, 0)
 layout_mode = 2
@@ -130,6 +135,10 @@ text = "Save"
 [node name="LoadFile" type="Button" parent="Communicator/Editing" unique_id=475630318]
 layout_mode = 2
 text = "Load"
+
+[node name="DeleteFile" type="Button" parent="Communicator/Editing" unique_id=167129396]
+layout_mode = 2
+text = "Clear"
 
 [node name="Metronome" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
 stream = ExtResource("4_ppyta")
@@ -159,7 +168,10 @@ filters = PackedStringArray("*.tres")
 [connection signal="pressed" from="Communicator/Editing/PlaySong" to="Communicator" method="_on_play_song_pressed"]
 [connection signal="toggled" from="Communicator/Editing/PauseSong" to="Communicator" method="pause_song"]
 [connection signal="toggled" from="Communicator/Editing/Loop" to="Communicator" method="_on_loop_toggled"]
+[connection signal="toggled" from="Communicator/Editing/Metronome" to="Communicator" method="_on_metronome_toggled"]
 [connection signal="value_changed" from="Communicator/Editing/BPM" to="Communicator" method="_on_bpm_value_changed"]
 [connection signal="pressed" from="Communicator/Editing/SaveFile" to="Communicator" method="_on_save_file_pressed"]
+[connection signal="pressed" from="Communicator/Editing/LoadFile" to="Communicator" method="_on_load_file_pressed"]
+[connection signal="pressed" from="Communicator/Editing/DeleteFile" to="Communicator" method="_on_delete_file_pressed"]
 [connection signal="file_selected" from="Communicator/SaveFile" to="Communicator" method="_on_save_file_file_selected"]
 [connection signal="file_selected" from="Communicator/LoadFile" to="Communicator" method="_on_load_file_file_selected"]

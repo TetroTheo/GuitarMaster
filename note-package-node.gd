@@ -7,13 +7,24 @@ var note_pkg : NotePackage
 func set_note_pkg(measure : Measure, communicator : Node, pkg : NotePackage):
 	note_pkg = pkg
 	size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	## works perfectly, for any measure size, and duration, and any time signature!
-	custom_minimum_size.x = measure.custom_minimum_size.x * pkg.duration / measure.measure_length
-	if pkg.notes:
+	## resizes the node according to the measure size and time signature, and the note itself!
+	resize(measure)
+	update_note_display()
+	## we have passed the communicater all the way through, just for this one connection!
+	pressed.connect(communicator.on_npkgn_pressed.bind(self))
+
+## works perfectly, for any measure size, and duration, and any time signature!
+func resize(measure : Measure):
+	custom_minimum_size.x = measure.custom_minimum_size.x * note_pkg.duration / measure.measure_length
+
+## for when rewriting a node
+func update_note_display():
+	if note_pkg.notes:
 		$Label.text = ''
-		for note in pkg.notes:
+		for note in note_pkg.notes:
 			$Label.text += note.note_name() + '\n'
 	else:
 		$Label.text = 'REST'
-	## we have passed the communicater all the way through, just for this one connection!
-	pressed.connect(communicator.on_npkgn_pressed.bind(self))
+	## you can change the duration when rewriting, too!
+	resize(get_parent().get_parent())
+	get_parent().get_parent().update_display()

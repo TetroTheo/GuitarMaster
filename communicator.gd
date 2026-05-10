@@ -23,7 +23,7 @@ var BPM := 120.0
 var last_song_note_duration := 0.0
 var last_metronome_tick_position := 0.0
 var last_metronome_tick_duration := 0.0
-var metronome_on := true
+var metronome_on := false
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
@@ -34,7 +34,8 @@ func _ready() -> void:
 func note_edit_option_selected(index: int):
 	match index:
 		0: ## rewrite
-			pass
+			## the next time a note is played, the track will write to this node!
+			track.overwrite_npkg = selected_npkgn
 		1: ## delete
 			$Editing/NoteEdit.disabled = true
 			## if this is the last npkgn in the measure, delete that, too!
@@ -104,6 +105,8 @@ func on_chord_toggled(toggled_on: bool) -> void:
 	chord_creation = toggled_on
 	if not chord_creation:
 		if chord_notes:
+			## create an npkg, but not a node for it.
+			## only the track manages nodes!
 			var npkg = NotePackage.new()
 			## apply modifier here
 			npkg.duration = duration * duration_modifier
@@ -158,6 +161,8 @@ func _on_play_song_pressed() -> void:
 	last_song_note_duration = 0.0
 	last_metronome_tick_position = 0.0
 	last_metronome_tick_duration = 0.0
+	## set the song tempo to start off with!
+	BPM = song.measure_packages[song_measure_index].tempo
 	generator.play()
 
 
@@ -195,6 +200,12 @@ func _process(_delta: float) -> void:
 		## so that it can be turned on and off properly during playback!
 		if metronome_on:
 			#print("beep boop")
+			## make this a configurable setting later! because it's only useful sometimes!
+			## for the first note of the measure, play a slightly different sound!
+			if song_note_index == 0:
+				$Metronome.pitch_scale = 2.0
+			else:
+				$Metronome.pitch_scale = 1.0
 			$Metronome.play()
 		## don't delete this line! I crashed my computer after I forgot this one...
 		last_metronome_tick_position = song_position
@@ -224,6 +235,9 @@ func _process(_delta: float) -> void:
 					## end playback
 					stop_song()
 					break
+			## if we made it here, we're still playing! we should change the tempo!
+			BPM = song.measure_packages[song_measure_index].tempo
+			
 
 ## stops the song
 ## (did I really have to write this?)
@@ -276,3 +290,19 @@ func _on_save_file_file_selected(path: String) -> void:
 
 func _on_load_file_file_selected(path: String) -> void:
 	print(path)
+	var song_rc : SongPackage = ResourceLoader.load(path)
+	track.load_song(self, song_rc)
+
+
+func _on_load_file_pressed() -> void:
+	$Editing/NoteEdit.disabled = true
+	$LoadFile.popup_centered_clamped()
+
+
+func _on_delete_file_pressed() -> void:
+	$Editing/NoteEdit.disabled = true
+	track.clear_song()
+
+
+func _on_metronome_toggled(toggled_on: bool) -> void:
+	metronome_on = toggled_on
