@@ -61,6 +61,7 @@ popup/item_3/id = 3
 [node name="Duration" type="OptionButton" parent="Communicator/Editing" unique_id=53274829]
 layout_mode = 2
 selected = 2
+fit_to_longest_item = false
 item_count = 5
 popup/item_0/text = "Whole"
 popup/item_0/id = 0
@@ -140,6 +141,71 @@ text = "Load"
 layout_mode = 2
 text = "Clear"
 
+[node name="KeyScale" type="HBoxContainer" parent="Communicator" unique_id=1197233772]
+offset_top = 264.0
+offset_right = 40.0
+offset_bottom = 304.0
+
+[node name="PitchKey" type="OptionButton" parent="Communicator/KeyScale" unique_id=1319975438]
+layout_mode = 2
+selected = 0
+fit_to_longest_item = false
+item_count = 12
+popup/item_0/text = "C"
+popup/item_0/id = 0
+popup/item_1/text = "C#"
+popup/item_1/id = 1
+popup/item_2/text = "D"
+popup/item_2/id = 2
+popup/item_3/text = "D#"
+popup/item_3/id = 3
+popup/item_4/text = "E"
+popup/item_4/id = 4
+popup/item_5/text = "F"
+popup/item_5/id = 5
+popup/item_6/text = "F#"
+popup/item_6/id = 6
+popup/item_7/text = "G"
+popup/item_7/id = 7
+popup/item_8/text = "G#"
+popup/item_8/id = 8
+popup/item_9/text = "A"
+popup/item_9/id = 9
+popup/item_10/text = "A#"
+popup/item_10/id = 10
+popup/item_11/text = "B"
+popup/item_11/id = 11
+
+[node name="IntervalKey" type="OptionButton" parent="Communicator/KeyScale" unique_id=1548130432]
+layout_mode = 2
+selected = 0
+fit_to_longest_item = false
+item_count = 12
+popup/item_0/text = "Major"
+popup/item_0/id = 0
+popup/item_1/text = "Minor"
+popup/item_1/id = 1
+popup/item_2/text = "Pentonic Major"
+popup/item_2/id = 2
+popup/item_3/text = "Pentonic Minor"
+popup/item_3/id = 3
+popup/item_4/text = "Dorian"
+popup/item_4/id = 4
+popup/item_5/text = "Phrygian"
+popup/item_5/id = 5
+popup/item_6/text = "Lydian"
+popup/item_6/id = 6
+popup/item_7/text = "Mixolydian"
+popup/item_7/id = 7
+popup/item_8/text = "Locrian"
+popup/item_8/id = 8
+popup/item_9/text = "Harmonic Minor"
+popup/item_9/id = 9
+popup/item_10/text = "Melodic Minor"
+popup/item_10/id = 10
+popup/item_11/text = "Chromatic"
+popup/item_11/id = 11
+
 [node name="Metronome" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
 stream = ExtResource("4_ppyta")
 
@@ -173,5 +239,7 @@ filters = PackedStringArray("*.tres")
 [connection signal="pressed" from="Communicator/Editing/SaveFile" to="Communicator" method="_on_save_file_pressed"]
 [connection signal="pressed" from="Communicator/Editing/LoadFile" to="Communicator" method="_on_load_file_pressed"]
 [connection signal="pressed" from="Communicator/Editing/DeleteFile" to="Communicator" method="_on_delete_file_pressed"]
+[connection signal="item_selected" from="Communicator/KeyScale/PitchKey" to="Communicator" method="_on_pitch_key_item_selected"]
+[connection signal="item_selected" from="Communicator/KeyScale/IntervalKey" to="Communicator" method="_on_interval_key_item_selected"]
 [connection signal="file_selected" from="Communicator/SaveFile" to="Communicator" method="_on_save_file_file_selected"]
 [connection signal="file_selected" from="Communicator/LoadFile" to="Communicator" method="_on_load_file_file_selected"]

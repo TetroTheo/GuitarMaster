@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SongPackage" format=3 uid="uid://7ihabsnp2e1g"]
+[gd_resource type="Resource" script_class="SongPackage" format=3 uid="uid://b4pcysasfdscb"]
 
 [ext_resource type="Script" uid="uid://cxydnenors0o5" path="res://measure-package.gd" id="1_hq6yu"]
 [ext_resource type="Script" uid="uid://crprus3q5jnld" path="res://note-package.gd" id="2_tf5sy"]
@@ -87,7 +87,7 @@ script = ExtResource("2_tf5sy")
 duration = 0.08333333333333333
 notes = Array[ExtResource("3_3tt8v")]([SubResource("Resource_56nfh")])
 
-[sub_resource type="Resource" id="Resource_mvgqf"]
+[sub_resource type="Resource" id="Resource_hq6yu"]
 script = ExtResource("1_hq6yu")
 note_packages = Array[ExtResource("2_tf5sy")]([SubResource("Resource_ibs00"), SubResource("Resource_wghec"), SubResource("Resource_5yqkl"), SubResource("Resource_d01bu"), SubResource("Resource_cfc5x"), SubResource("Resource_2kofi"), SubResource("Resource_0gxwj"), SubResource("Resource_xb4pp"), SubResource("Resource_4kdn4"), SubResource("Resource_km104"), SubResource("Resource_kb46i"), SubResource("Resource_ac7ie")])
 time_signature_numerator = 4
@@ -159,7 +159,7 @@ script = ExtResource("2_tf5sy")
 duration = 0.08333333333333333
 notes = Array[ExtResource("3_3tt8v")]([SubResource("Resource_56nfh")])
 
-[sub_resource type="Resource" id="Resource_e3ujt"]
+[sub_resource type="Resource" id="Resource_tf5sy"]
 script = ExtResource("1_hq6yu")
 note_packages = Array[ExtResource("2_tf5sy")]([SubResource("Resource_dn70s"), SubResource("Resource_rigpk"), SubResource("Resource_fb5kl"), SubResource("Resource_fb0bo"), SubResource("Resource_vnmyr"), SubResource("Resource_6qg2r"), SubResource("Resource_0sohp"), SubResource("Resource_a2xga"), SubResource("Resource_m8eww"), SubResource("Resource_j8od4"), SubResource("Resource_244ks"), SubResource("Resource_ukw14")])
 time_signature_numerator = 4
@@ -232,7 +232,7 @@ script = ExtResource("2_tf5sy")
 duration = 0.08333333333333333
 notes = Array[ExtResource("3_3tt8v")]([SubResource("Resource_56nfh")])
 
-[sub_resource type="Resource" id="Resource_erxtj"]
+[sub_resource type="Resource" id="Resource_3tt8v"]
 script = ExtResource("1_hq6yu")
 note_packages = Array[ExtResource("2_tf5sy")]([SubResource("Resource_vpnpq"), SubResource("Resource_t36jf"), SubResource("Resource_n27ub"), SubResource("Resource_g30hf"), SubResource("Resource_1jr0k"), SubResource("Resource_5hm83"), SubResource("Resource_qsxnl"), SubResource("Resource_aw4py"), SubResource("Resource_qgx1a"), SubResource("Resource_y5dr2"), SubResource("Resource_8nd0u"), SubResource("Resource_bq01a")])
 time_signature_numerator = 4
@@ -299,7 +299,7 @@ script = ExtResource("2_tf5sy")
 duration = 0.08333333333333333
 notes = Array[ExtResource("3_3tt8v")]([SubResource("Resource_56nfh")])
 
-[sub_resource type="Resource" id="Resource_s8ffk"]
+[sub_resource type="Resource" id="Resource_s0ivc"]
 script = ExtResource("1_hq6yu")
 note_packages = Array[ExtResource("2_tf5sy")]([SubResource("Resource_tdhko"), SubResource("Resource_hppx6"), SubResource("Resource_3apnt"), SubResource("Resource_q50de"), SubResource("Resource_wtps2"), SubResource("Resource_3xfy6"), SubResource("Resource_o0nyn"), SubResource("Resource_swql3"), SubResource("Resource_nwbwr"), SubResource("Resource_hxlyx"), SubResource("Resource_32d2e"), SubResource("Resource_wte36")])
 time_signature_numerator = 4
@@ -308,4 +308,4 @@ tempo = 120.0
 
 [resource]
 script = ExtResource("4_s0ivc")
-measure_packages = Array[ExtResource("1_hq6yu")]([SubResource("Resource_mvgqf"), SubResource("Resource_e3ujt"), SubResource("Resource_erxtj"), SubResource("Resource_s8ffk")])
+measure_packages = Array[ExtResource("1_hq6yu")]([SubResource("Resource_hq6yu"), SubResource("Resource_tf5sy"), SubResource("Resource_3tt8v"), SubResource("Resource_s0ivc")])

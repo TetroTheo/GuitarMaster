@@ -16,12 +16,13 @@ var time_signature_denominator : int = 4
 
 ## the sheet calls this when making a new measure, so that the new measure may
 ## bind all of its editing buttons directly to that sheet.
-func connect_editing_buttons(sheet):
+func connect_editing_buttons(sheet : Track):
 	$HBoxContainerLower/Delete.pressed.connect(sheet.on_delete.bind(self))
 	$HBoxContainerLower/Duplicate.pressed.connect(sheet.on_duplicate.bind(self))
 	$HBoxContainerUpper/Right.pressed.connect(sheet.on_move_right.bind(self))
 	$HBoxContainerUpper/Left.pressed.connect(sheet.on_move_left.bind(self))
 	$HBoxContainerLower/AddNote.pressed.connect(sheet.add_to.bind(self))
+	$HBoxContainerUpperRight/Tempo.value_changed.connect(sheet.change_tempo.bind(self))
 
 ## the measure cannot set its own, so it relies on this function
 func set_measure_number(n : int):

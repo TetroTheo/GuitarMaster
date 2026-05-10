@@ -68,16 +68,21 @@ func edit_measure_mode(toggled_on: bool):
 ## deletes the measure that sent this
 ## moves measures that come after it backwards by one.
 func on_delete(measure):
+	## for the communicator to update any buttons connected to this measure
 	measure_deleted.emit(measure)
 	for i in range(measure.measure_number, measures.get_child_count()):
 		measures.get_child(i).change_measure_number(-1)
-		measure.queue_free()
+	measure.queue_free()
 
 ## duplicates the measure that sent this signal, and inserts that measure right after where it was duplicated.
 ## it moves measures that come after forward by one.
 func on_duplicate(measure : Measure):
 	for i in range(measure.measure_number + 1, measures.get_child_count()):
 		measures.get_child(i).change_measure_number(+1)
+	## should we just create a new measure?
+	#var copy = create_new_measure()
+	
+	
 	var copy = measure.duplicate()
 	## some annoying extra duplication, because the resources are not duplicated properly!
 	var index := 0
@@ -124,7 +129,7 @@ func get_song() -> SongPackage:
 		song_pkg.measure_packages.append(measure_pkg)
 	return song_pkg
 
-## here's where the fun begins...
+## this works perfectly, somehow!
 func load_song(communicator : Node, song : SongPackage):
 	clear_song()
 	for measure in song.measure_packages:
@@ -141,3 +146,18 @@ func load_song(communicator : Node, song : SongPackage):
 func clear_song():
 	for child in measures.get_children():
 		child.queue_free()
+	await get_tree().create_timer(0.1).timeout
+	
+
+
+func change_tempo(value : float, measure : Measure):
+	print(measures.get_children())
+	var tempo_to_change : float
+	for i in range(measure.measure_number, measures.get_child_count()):
+		## think of this like a paint bucket tool, where we keep changing similar measures!
+		if i == 1:
+			tempo_to_change = measures.get_child(i).tempo
+		if i > 1 and not is_equal_approx(measures.get_child(i).tempo,tempo_to_change):
+			break
+		measures.get_child(i).tempo = value
+		measures.get_child(i).update_display()

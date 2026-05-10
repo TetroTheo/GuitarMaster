@@ -24,6 +24,25 @@ var last_song_note_duration := 0.0
 var last_metronome_tick_position := 0.0
 var last_metronome_tick_duration := 0.0
 var metronome_on := false
+## I copied this over from the old script.
+## is it inconvenient? yes! but it works!
+## though, these should probably be made resources in the future.
+const interval_presets = [
+	[0, 2, 4, 5, 7, 9, 11], #major
+	[0, 2, 3, 5, 7, 8, 10], #minor
+	[0, 2, 4, 7, 9], #pent major
+	[0, 3, 5, 7, 10], # pent minor
+	[0, 2, 3, 5, 7, 9, 10], # dorian
+	[0, 1, 3, 5, 7, 8, 10], # phrygian
+	[0, 2, 4, 6, 7, 9, 11], # lydian
+	[0, 2, 4, 5, 7, 9, 10], # mixolydian
+	[0, 1, 3, 5, 6, 8, 10], # locrian
+	[0, 2, 3, 5, 7, 8, 11], # harmonic
+	[0, 2, 3, 5, 7, 9, 11], # melodic
+	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] # chromatic
+]
+var selected_interval_key := 0
+var selected_pitch_key := 0
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
@@ -239,7 +258,21 @@ func _process(_delta: float) -> void:
 					stop_song()
 					break
 			## if we made it here, we're still playing! we should change the tempo!
+			## undo normalization
+			song_position *= 4 * 60.0 / BPM
+			last_song_note_position *= 4 * 60.0 / BPM
+			last_metronome_tick_position *= 4 * 60.0 / BPM
+			## will this help?
+			last_song_note_duration *= 4 * 60.0 / BPM
+			last_metronome_tick_duration *= 4 * 60.0 / BPM
 			BPM = song.measure_packages[song_measure_index].tempo
+			## re-scale all position variables that depended on the song position,
+			## as well as the song position itself
+			song_position /= 4 * 60.0 / BPM
+			last_song_note_position /= 4 * 60.0 / BPM
+			last_metronome_tick_position /= 4 * 60.0 / BPM
+			last_song_note_duration /= 4 * 60.0 / BPM
+			last_metronome_tick_duration /= 4 * 60.0 / BPM
 			
 
 ## stops the song
@@ -309,3 +342,11 @@ func _on_delete_file_pressed() -> void:
 
 func _on_metronome_toggled(toggled_on: bool) -> void:
 	metronome_on = toggled_on
+
+
+func _on_pitch_key_item_selected(index: int) -> void:
+	selected_pitch_key = index
+
+
+func _on_interval_key_item_selected(index: int) -> void:
+	selected_interval_key = index
