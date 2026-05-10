@@ -6,10 +6,12 @@ extends Node
 ## for convenience
 @onready var generator = $AudioStreamGenerator
 var duration := 0.25
+## for editing
 ## so we keep track of what modifier mode we're in
 var duration_modifier := 1.0
 var chord_notes : Array[Note] = []
 var chord_creation := false
+var selected_npkgn: Node
 ## for track playback
 var song : Array[NotePackage]
 var song_position := 0.0
@@ -18,10 +20,6 @@ var last_song_note_position := 0.0
 var loop := false
 var BPM := 120.0
 var last_song_note_duration := 0.0
-var song_just_started := true
-
-var selected_npkgn: Node
-
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
@@ -35,8 +33,17 @@ func note_edit_option_selected(index: int):
 			pass
 		1: ## delete
 			$Editing/NoteEdit.disabled = true
-			selected_npkgn.queue_free()
-			selected_npkgn = null
+			## if this is the last npkgn in the measure, delete that, too!
+			var measure : Measure = selected_npkgn.get_parent().get_parent()
+			if len(measure.get_nkpgn()) == 1:
+				track.on_delete(measure)
+			else:
+				selected_npkgn.queue_free()
+				selected_npkgn = null
+				## note does not delete instantly, but when it does,
+				## refresh the measure's controls!
+				await get_tree().create_timer(0).timeout
+				measure.call_deferred("set_add_note_visibility")
 		2: ## play from here
 			pass
 
@@ -207,3 +214,18 @@ func _on_duration_modifiers_item_selected(index: int) -> void:
 func on_npkgn_pressed(npkgn):
 	selected_npkgn = npkgn
 	$Editing/NoteEdit.disabled = false
+
+
+func _on_save_file_pressed() -> void:
+	$SaveFile.popup_centered_clamped()
+
+
+func _on_save_file_file_selected(path: String) -> void:
+	## create the resource
+	var song_rc = Song.new()
+	song_rc.note_packages = track.get_song()
+	print(ResourceSaver.save(song_rc, path))
+
+
+func _on_load_file_file_selected(path: String) -> void:
+	print(path)

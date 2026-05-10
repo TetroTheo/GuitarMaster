@@ -52,9 +52,7 @@ func add_npkgn(communicator, npkgn, pkg):
 	## sets the size, and notes
 	## we send ourself as an argument so that the note can easier tell what to resize to!
 	npkgn.set_note_pkg(self, communicator, pkg)
-	## hide the Add Notes button if the measure is full!
-	if $HBoxContainer/AddNote.visible and is_full():
-		$HBoxContainer/AddNote.hide()
+	set_add_note_visibility()
 
 ## instead of accessing nkpgns directly, the measure should just return them when requested.
 func get_nkpgn():
@@ -67,3 +65,13 @@ func edit_mode(toggled_on : bool):
 	$HBoxContainer/Delete.visible = toggled_on
 	## this should only be visible when you can add notes!
 	$HBoxContainer/AddNote.visible = toggled_on and not is_full()
+
+## hide the Add Notes button if the measure is full!
+## show this button when the measure is no longer full!
+func set_add_note_visibility():
+	if $HBoxContainer/AddNote.visible and is_full():
+		$HBoxContainer/AddNote.hide()
+	## check to see if another editing button is toggled.
+	## if so, we are in editing mode!
+	if $HBoxContainer/Delete.visible and not is_full():
+		$HBoxContainer/AddNote.show()

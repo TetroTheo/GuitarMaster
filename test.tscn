@@ -95,6 +95,9 @@ popup/item_2/id = 2
 layout_mode = 2
 text = "EDIT MEASURES"
 
+[node name="VSeparator2" type="VSeparator" parent="Communicator/Editing" unique_id=1094811351]
+layout_mode = 2
+
 [node name="PlaySong" type="Button" parent="Communicator/Editing" unique_id=886263486]
 layout_mode = 2
 text = "Play/Stop"
@@ -117,6 +120,17 @@ max_value = 300.0
 value = 120.0
 suffix = "BPM"
 
+[node name="VSeparator" type="VSeparator" parent="Communicator/Editing" unique_id=1572293023]
+layout_mode = 2
+
+[node name="SaveFile" type="Button" parent="Communicator/Editing" unique_id=1351620320]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadFile" type="Button" parent="Communicator/Editing" unique_id=475630318]
+layout_mode = 2
+text = "Load"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Communicator" unique_id=888726797]
 stream = ExtResource("4_ppyta")
 
@@ -128,6 +142,17 @@ playback_type = 1
 
 [node name="AudioGenerator" type="Node" parent="Communicator" unique_id=1817462943]
 
+[node name="SaveFile" type="FileDialog" parent="Communicator" unique_id=1862164143]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+filters = PackedStringArray("*.tres")
+use_native_dialog = true
+
+[node name="LoadFile" type="FileDialog" parent="Communicator" unique_id=1289062983]
+title = "Open a File"
+file_mode = 0
+filters = PackedStringArray("*.tres")
+
 [connection signal="pressed" from="Communicator/Editing/Rest" to="Communicator" method="on_rest_pressed"]
 [connection signal="item_selected" from="Communicator/Editing/DurationModifiers" to="Communicator" method="_on_duration_modifiers_item_selected"]
 [connection signal="item_selected" from="Communicator/Editing/Duration" to="Communicator" method="on_duration_changed"]
@@ -137,3 +162,6 @@ playback_type = 1
 [connection signal="toggled" from="Communicator/Editing/PauseSong" to="Communicator" method="pause_song"]
 [connection signal="toggled" from="Communicator/Editing/Loop" to="Communicator" method="_on_loop_toggled"]
 [connection signal="value_changed" from="Communicator/Editing/BPM" to="Communicator" method="_on_bpm_value_changed"]
+[connection signal="pressed" from="Communicator/Editing/SaveFile" to="Communicator" method="_on_save_file_pressed"]
+[connection signal="file_selected" from="Communicator/SaveFile" to="Communicator" method="_on_save_file_file_selected"]
+[connection signal="file_selected" from="Communicator/LoadFile" to="Communicator" method="_on_load_file_file_selected"]
