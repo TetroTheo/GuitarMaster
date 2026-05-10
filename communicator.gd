@@ -194,11 +194,13 @@ func _process(_delta: float) -> void:
 		## even if not currently enabled, keep track of the metronome,
 		## so that it can be turned on and off properly during playback!
 		if metronome_on:
+			#print("beep boop")
 			$Metronome.play()
-		## don't delete this line! I crashed my computer after forgetting this one...
+		## don't delete this line! I crashed my computer after I forgot this one...
 		last_metronome_tick_position = song_position
 		## metronome frequency is based on the current time signature
-		last_metronome_tick_duration = 4.0/song.measure_packages[song_measure_index].time_signature_denominator
+		print(1.0/song.measure_packages[song_measure_index].time_signature_denominator)
+		last_metronome_tick_duration = 1.0/song.measure_packages[song_measure_index].time_signature_denominator
 	## play as many notes as the song position has passed
 	while last_song_note_position + last_song_note_duration < song_position:
 		for note in song.measure_packages[song_measure_index].note_packages[song_note_index].notes:
