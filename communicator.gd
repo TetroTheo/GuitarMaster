@@ -124,7 +124,7 @@ func on_chord_toggled(toggled_on: bool) -> void:
 # be able to move measures around
 # delete a measure
 # move a measure
-## delete an npkgn (if all are deleted in a measure, then delete the measure)
+# delete an npkgn (if all are deleted in a measure, then delete the measure)
 # duplicate a measure
 # adding notes will never overload a measure
 # make a guitar sound effect
@@ -132,11 +132,14 @@ func on_chord_toggled(toggled_on: bool) -> void:
 # compile one unbroken array of note packages
 # connect the sync test with the note packages
 # fix chord editing
+## tempo and signature changes should affect all measures directly to the right with the same property
 
 ## SETTINGS:
 # left-handed mode
 # bass mode
 ## scaling (constant | logarithmic)
+
+
 
 
 func on_measure_edit_toggled(toggled_on: bool) -> void:
@@ -210,7 +213,7 @@ func _process(_delta: float) -> void:
 		## don't delete this line! I crashed my computer after I forgot this one...
 		last_metronome_tick_position = song_position
 		## metronome frequency is based on the current time signature
-		print(1.0/song.measure_packages[song_measure_index].time_signature_denominator)
+		#print(1.0/song.measure_packages[song_measure_index].time_signature_denominator)
 		last_metronome_tick_duration = 1.0/song.measure_packages[song_measure_index].time_signature_denominator
 	## play as many notes as the song position has passed
 	while last_song_note_position + last_song_note_duration < song_position:

@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="SongPackage" format=3]
+[gd_resource type="Resource" script_class="SongPackage" format=3 uid="uid://7ihabsnp2e1g"]
 
-[ext_resource type="Script" path="res://measure-package.gd" id="1_hq6yu"]
-[ext_resource type="Script" path="res://note-package.gd" id="2_tf5sy"]
-[ext_resource type="Script" path="res://note.gd" id="3_3tt8v"]
-[ext_resource type="Script" path="res://song.gd" id="4_s0ivc"]
+[ext_resource type="Script" uid="uid://cxydnenors0o5" path="res://measure-package.gd" id="1_hq6yu"]
+[ext_resource type="Script" uid="uid://crprus3q5jnld" path="res://note-package.gd" id="2_tf5sy"]
+[ext_resource type="Script" uid="uid://d3fegwwpfjcwh" path="res://note.gd" id="3_3tt8v"]
+[ext_resource type="Script" uid="uid://djxrmchqhdklt" path="res://song.gd" id="4_s0ivc"]
 
 [sub_resource type="Resource" id="Resource_ldq71"]
 script = ExtResource("3_3tt8v")
