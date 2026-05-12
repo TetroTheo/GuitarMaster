@@ -1,11 +1,14 @@
 @tool
 extends ScrollContainer
 
-
+## tuning settings
 var tuning : Array[String] = ['E2', 'A2', 'D3', 'G3', 'B3', 'E4']
 var bass_tuning : Array[String] = ['E1', 'A1', 'D2', 'G2']
-var left_handed := false
-var bass_mode := false
+## configurable options
+var LEFT_HANDED := false
+var BASS_MODE := false
+var FRET_NUMBER := 24
+var SCALE_FRETS := true
 
 ## instantiates keys in the fretboard
 func _ready() -> void:
@@ -15,7 +18,7 @@ func _ready() -> void:
 ## this will be useful for when switching between left-handed or bass mode
 func create_keys():
 	## switches the tuning to bass (and there are four strings)
-	if bass_mode:
+	if BASS_MODE:
 		tuning = bass_tuning
 	# for debugging
 	for string_note in tuning:
@@ -28,16 +31,31 @@ func create_keys():
 		## adds keys on frets along the current string, 
 		## starting on fret 0
 		var keys : Array[Key] = []
-		for j in range(25):
+		## determine the length of each fret (may change)
+		var fret_length : float
+		var remaining_length : float = 2400
+		if SCALE_FRETS:
+			fret_length = remaining_length / 17.817
+		else: ## constant length
+			fret_length = 42
+		## add one to include fret zero
+		for j in range(FRET_NUMBER + 1):
 			var key = Key.new()
+			key.set_length(fret_length)
 			key.set_note(Note.new(j, pitch, i))
 			## if we are running this scene on its own, then this shouldn't run!
 			if get_parent().name == "Communicator":
 				key.key_pressed.connect(get_parent().key_pressed)
 			keys.append(key)
 			pitch += 1
+			## apparently, we follow the rule of 18
+			## TODO: find out where this number came from!
+			if SCALE_FRETS:
+				remaining_length -= fret_length
+				fret_length = remaining_length / 17.817
+				print(fret_length)
 		## now that the keys are in an array, we flip them like this:
-		if left_handed:
+		if LEFT_HANDED:
 			keys.reverse()
 		## now we add them to the string all at once
 		for key in keys:

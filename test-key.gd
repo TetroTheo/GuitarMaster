@@ -12,9 +12,15 @@ func set_note(note: Note):
 	text = note.note_name()
 
 
+## this class does not have a scene, so we have to handle
+## all connections and child nodes through code!
 func _ready() -> void:
-	self.custom_minimum_size.x = 42
 	pressed.connect(on_key_press)
+
+
+## useful because different frets may have different sizes
+func set_length(length) -> void:
+	custom_minimum_size.x = length
 
 
 func on_key_press():
