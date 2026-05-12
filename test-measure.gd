@@ -52,7 +52,7 @@ func can_fit(npkg: NotePackage) -> bool:
 	return get_duration() + npkg.duration < measure_length or is_equal_approx(get_duration() + npkg.duration, measure_length)
 
 ## adds the Note Package Node to this measure
-func add_npkgn(communicator, npkgn, pkg):
+func add_npkgn(communicator, npkgn, pkg : NotePackage):
 	$NotePackageNodes.add_child(npkgn)
 	## sets the size, and notes
 	## we send ourself as an argument so that the note can easier tell what to resize to!

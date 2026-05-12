@@ -69,7 +69,8 @@ func note_edit_option_selected(index: int):
 				await get_tree().create_timer(0).timeout
 				measure.call_deferred("set_add_note_visibility")
 		2: ## play from here
-			pass
+			for note : Note in selected_npkgn.note_pkg:
+				note.play_sound($AudioPlayers)
 
 
 

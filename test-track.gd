@@ -9,9 +9,6 @@ var measure_to_add_to := -1
 var overwrite_npkg : Node = null
 signal measure_deleted
 
-func _ready() -> void:
-	create_new_measure()
-
 
 ## adds an npkg to the sheet. if the last measure is full, we make a new one.
 ## either way, we add the measure to an available space in a measure.
@@ -80,23 +77,19 @@ func on_duplicate(measure : Measure):
 	for i in range(measure.measure_number + 1, measures.get_child_count()):
 		measures.get_child(i).change_measure_number(+1)
 	## should we just create a new measure?
-	#var copy = create_new_measure()
+	var copy = create_new_measure()
+	#var index := 0
 	
-	
-	var copy = measure.duplicate()
-	## some annoying extra duplication, because the resources are not duplicated properly!
-	var index := 0
 	for npkgn in measure.get_node("NotePackageNodes").get_children():
-		copy.get_node("NotePackageNodes").get_child(index).note_pkg = npkgn.note_pkg.duplicate()
-		index += 1
+		var new_npkgn = load("uid://bqhqm608hhbdx").instantiate()
+		copy.add_npkgn(get_parent(), new_npkgn, npkgn.note_pkg)
+		#index += 1
 	copy.set_measure_number(measure.measure_number + 1)
-	## duplication does not copy signal connections!
-	copy.connect_editing_buttons(self)
-	## it also does not copy time signatures or tempo
+	## set the time signatures or tempo
 	copy.time_signature_numerator = measure.time_signature_numerator
 	copy.time_signature_denominator = measure.time_signature_denominator
 	copy.tempo = measure.tempo
-	measures.add_child(copy)
+	copy.update_display()
 	measures.move_child(copy, copy.measure_number)
 
 ## moves the measure that sent this right, while moving the one after it backwards.
@@ -132,6 +125,8 @@ func get_song() -> SongPackage:
 ## this works perfectly, somehow!
 func load_song(communicator : Node, song : SongPackage):
 	clear_song()
+	while not measures.get_child_count() == 0:
+		await get_tree().create_timer(0.1).timeout
 	for measure in song.measure_packages:
 		var new_measure = create_new_measure()
 		new_measure.tempo = measure.tempo
@@ -143,10 +138,13 @@ func load_song(communicator : Node, song : SongPackage):
 			new_measure.add_npkgn(communicator, npkgn, npkg)
 
 
-func clear_song():
+func clear_song() -> void:
 	for child in measures.get_children():
 		child.queue_free()
+	## reset this, or you get errors!
+	measure_to_add_to = -1
 	await get_tree().create_timer(0.1).timeout
+	return
 	
 
 

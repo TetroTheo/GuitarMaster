@@ -13,6 +13,8 @@ static var pitch_to_string : Array[String] = [
 		'F#','G','G#','A','A#','B'
 ]
 
+static var audio_file : String = "res://audio/guitar-E2-distorted-shortened.wav"
+
 ## Fret Pitch String
 func _init(f := 0, p := 0, s := 0) -> void:
 	fret = f
@@ -55,7 +57,7 @@ func _to_string() -> String:
 # make the audio configurable!
 func play_sound(node : Node):
 	var audio_player := AudioStreamPlayer.new()
-	audio_player.stream = load("res://audio/A440.wav")
+	audio_player.stream = load(audio_file)
 	audio_player.finished.connect(on_audio_player_finished.bind(audio_player))
 	audio_player.pitch_scale = scale_pitch()
 	node.add_child(audio_player)
