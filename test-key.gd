@@ -28,6 +28,15 @@ func on_key_press():
 	key_pressed.emit(key_note)
 
 
+func on_update_key_scale(new_pitch: int, new_interval: int):
+	if key_note.same_note_name_as(new_pitch):
+		self_modulate = Color.MEDIUM_SPRING_GREEN
+	elif key_note.in_scale(new_pitch, new_interval):
+		self_modulate = Color.MEDIUM_TURQUOISE
+	else:
+		self_modulate = Color.WHITE
+
+
 ## for now, toggling is purely visual
 
 func toggle_on():

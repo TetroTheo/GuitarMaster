@@ -2,7 +2,7 @@
 extends ScrollContainer
 
 ## tuning settings
-var tuning : Array[String] = ['E2', 'A2', 'D3', 'G3', 'B3', 'E4']
+var standard_tuning : Array[String] = ['E2', 'A2', 'D3', 'G3', 'B3', 'E4']
 var bass_tuning : Array[String] = ['E1', 'A1', 'D2', 'G2']
 ## configurable options
 var LEFT_HANDED := false
@@ -11,17 +11,49 @@ var FRET_NUMBER := 24
 var SCALE_FRETS := true
 ## we derived the scaling constant!
 const SCALE_FRET_FACTOR : float = (1 - (2 ** (-1/12.0))) ** -1
+## for convenience
+var settings_menu: MenuButton
 
 ## instantiates keys in the fretboard
 func _ready() -> void:
 	create_keys()
 
+
+func connect_settings_menu(menu: MenuButton):
+	settings_menu = menu
+	settings_menu.get_popup().id_pressed.connect(on_settings_changed)
+
+func on_settings_changed(id: int):
+	match id:
+		0: ## bass mode
+			BASS_MODE = not BASS_MODE
+			print(BASS_MODE)
+			settings_menu.get_popup().set_item_checked(0, BASS_MODE)
+		1: ## bass mode
+			LEFT_HANDED = not LEFT_HANDED
+			settings_menu.get_popup().set_item_checked(1, LEFT_HANDED)
+		2: ## fret scaling
+			SCALE_FRETS = not SCALE_FRETS
+			settings_menu.get_popup().set_item_checked(2, SCALE_FRETS)
+	## clear all keys
+	for child in $Strings.get_children():
+		child.queue_free()
+	## wait for all children to disappear
+	while $Strings.get_child_count() > 0:
+		await get_tree().create_timer(0.1).timeout
+	## refresh everything
+	create_keys()
+	get_parent().update_key_scales()
+
 ## builds all the keys and adds them to this fretboard, with connections.
 ## this will be useful for when switching between left-handed or bass mode
 func create_keys():
 	## switches the tuning to bass (and there are four strings)
+	var tuning: Array[String]
 	if BASS_MODE:
 		tuning = bass_tuning
+	else:
+		tuning = standard_tuning
 	# for debugging
 	for string_note in tuning:
 		print(Note.pitch_from_string(string_note))
@@ -51,14 +83,13 @@ func create_keys():
 			## if we are running this scene on its own, then this shouldn't run!
 			if get_parent().name == "Communicator":
 				key.key_pressed.connect(get_parent().key_pressed)
+				## we can also send information back to each key, like this!
+				get_parent().update_key_scale.connect(key.on_update_key_scale)
 			keys.append(key)
 			pitch += 1
-			## apparently, we follow the rule of 18
-			## TODO: find out where this number came from!
 			if SCALE_FRETS:
 				remaining_length -= fret_length
 				fret_length = remaining_length / SCALE_FRET_FACTOR
-				print(fret_length, " ", SCALE_FRET_FACTOR)
 		## now that the keys are in an array, we flip them like this:
 		if LEFT_HANDED:
 			keys.reverse()

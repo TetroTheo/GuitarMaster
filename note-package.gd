@@ -10,7 +10,6 @@ extends Resource
 ## to string feature
 func _to_string() -> String:
 	var string := ""
-	string += str(duration)
-	for note in notes:
-		string += "|" + str(note)
+	string += str(duration) + "|"
+	string += str(notes)
 	return string

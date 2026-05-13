@@ -24,30 +24,18 @@ var last_song_note_duration := 0.0
 var last_metronome_tick_position := 0.0
 var last_metronome_tick_duration := 0.0
 var metronome_on := false
-## I copied this over from the old script.
-## is it inconvenient? yes! but it works!
-## though, these should probably be made resources in the future.
-const interval_presets = [
-	[0, 2, 4, 5, 7, 9, 11], #major
-	[0, 2, 3, 5, 7, 8, 10], #minor
-	[0, 2, 4, 7, 9], #pent major
-	[0, 3, 5, 7, 10], # pent minor
-	[0, 2, 3, 5, 7, 9, 10], # dorian
-	[0, 1, 3, 5, 7, 8, 10], # phrygian
-	[0, 2, 4, 6, 7, 9, 11], # lydian
-	[0, 2, 4, 5, 7, 9, 10], # mixolydian
-	[0, 1, 3, 5, 6, 8, 10], # locrian
-	[0, 2, 3, 5, 7, 8, 11], # harmonic
-	[0, 2, 3, 5, 7, 9, 11], # melodic
-	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] # chromatic
-]
 var selected_interval_key := 0
 var selected_pitch_key := 0
+## for when changing key scales
+signal update_key_scale
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
 	track.measure_deleted.connect(on_measure_deleted)
 	$Editing/NoteEdit.get_popup().id_pressed.connect(note_edit_option_selected)
+	## settings should only affect the fretboard, but only the communicator can easily access the node!
+	$Fretboard.connect_settings_menu($MainControls/Settings)
+	update_key_scales()
 
 
 func note_edit_option_selected(index: int):
@@ -69,7 +57,7 @@ func note_edit_option_selected(index: int):
 				await get_tree().create_timer(0).timeout
 				measure.call_deferred("set_add_note_visibility")
 		2: ## play from here
-			for note : Note in selected_npkgn.note_pkg:
+			for note : Note in selected_npkgn.note_pkg.notes:
 				note.play_sound($AudioPlayers)
 
 
@@ -89,16 +77,16 @@ func key_pressed(note : Note):
 		## if the same note is clicked twice, than assume the user wants to delete it!
 		if note in chord_notes:
 			chord_notes.erase(note)
-			note.key.toggle_off()
+			get_key_from_note(note).toggle_off()
 			return
 		## overwrite any notes in the chord that may be on this note's string
 		## there will only be one!
 		for c_note in chord_notes:
 			if c_note.string == note.string:
 				chord_notes.erase(c_note)
-				c_note.key.toggle_off()
+				get_key_from_note(c_note).toggle_off()
 				break
-		note.key.toggle_on()
+		get_key_from_note(note).toggle_on()
 		chord_notes.append(note)
 		note.play_sound($AudioPlayers)
 		return
@@ -132,12 +120,24 @@ func on_chord_toggled(toggled_on: bool) -> void:
 			npkg.duration = duration * duration_modifier
 			for note in chord_notes:
 				npkg.notes.append(note)
-				note.key.toggle_off()
+				get_key_from_note(note).toggle_off()
 				## just play for fun!
 				note.play_sound($AudioPlayers)
 			## include ourselves so that the npkgn can conect to us
 			track.add_note_pkg(self, npkg)
 			chord_notes.clear()
+
+## each note contains information about which fret and note it was pressed on.
+## this function retrieves the key that pressed it based on that data.
+func get_key_from_note(note) -> Key:
+	## strings are positioned in reverse order
+	## left-handed mode reverses the frets, too!
+	## also, fret number may vary.
+	if $Fretboard.LEFT_HANDED:
+		return $Fretboard/Strings.get_child($Fretboard/Strings.get_child_count() - note.string - 1).get_child($Fretboard.FRET_NUMBER - note.fret)
+	else:
+		return $Fretboard/Strings.get_child($Fretboard/Strings.get_child_count() - note.string - 1).get_child(note.fret)
+
 
 ## TODO:
 # make sure notes do not repeat strings in a chord
@@ -152,12 +152,13 @@ func on_chord_toggled(toggled_on: bool) -> void:
 # compile one unbroken array of note packages
 # connect the sync test with the note packages
 # fix chord editing
-## tempo and signature changes should affect all measures directly to the right with the same property
+# tempo should affect all measures directly to the right with the same property
+## and signature changes should do the same
 
 ## SETTINGS:
 # left-handed mode
 # bass mode
-## scaling (constant | logarithmic)
+# scaling (constant | logarithmic)
 
 
 
@@ -172,7 +173,7 @@ func on_measure_edit_toggled(toggled_on: bool) -> void:
 
 
 func _on_play_song_pressed() -> void:
-	$Editing/PauseSong.button_pressed = false
+	$MainControls/PauseSong.button_pressed = false
 	if generator.playing:
 		stop_song()
 		return
@@ -185,8 +186,9 @@ func _on_play_song_pressed() -> void:
 	last_metronome_tick_position = 0.0
 	last_metronome_tick_duration = 0.0
 	## set the song tempo to start off with!
-	BPM = song.measure_packages[song_measure_index].tempo
-	generator.play()
+	if song.measure_packages:
+		BPM = song.measure_packages[song_measure_index].tempo
+		generator.play()
 
 
 ## let's take a moment to talk about time signatures. I finally understand them now.
@@ -205,10 +207,14 @@ func _on_play_song_pressed() -> void:
 
 ## plays the song
 func _process(_delta: float) -> void:
+	## there may not be a song!
 	if not song or not generator.playing:
 		return
 	## there may be a song without measures!
 	if not song.measure_packages:
+		return
+	## there may be a song without notes!
+	if not song.measure_packages[0].note_packages:
 		return
 	song_position = generator.get_playback_position() + AudioServer.get_time_since_last_mix()
 	song_position -= AudioServer.get_output_latency() + 0.25
@@ -347,7 +353,12 @@ func _on_metronome_toggled(toggled_on: bool) -> void:
 
 func _on_pitch_key_item_selected(index: int) -> void:
 	selected_pitch_key = index
-
+	update_key_scales()
 
 func _on_interval_key_item_selected(index: int) -> void:
 	selected_interval_key = index
+	update_key_scales()
+
+## helper function for refreshing all key colors
+func update_key_scales():
+	update_key_scale.emit(selected_pitch_key, selected_interval_key)

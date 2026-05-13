@@ -78,12 +78,9 @@ func on_duplicate(measure : Measure):
 		measures.get_child(i).change_measure_number(+1)
 	## should we just create a new measure?
 	var copy = create_new_measure()
-	#var index := 0
-	
 	for npkgn in measure.get_node("NotePackageNodes").get_children():
 		var new_npkgn = load("uid://bqhqm608hhbdx").instantiate()
 		copy.add_npkgn(get_parent(), new_npkgn, npkgn.note_pkg)
-		#index += 1
 	copy.set_measure_number(measure.measure_number + 1)
 	## set the time signatures or tempo
 	copy.time_signature_numerator = measure.time_signature_numerator
