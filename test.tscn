@@ -4,8 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bniuvcdt27wtl" path="res://test-track.tscn" id="2_6uqi0"]
 [ext_resource type="Script" uid="uid://cbe1xr2bm1tt5" path="res://communicator.gd" id="3_6uqi0"]
 [ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://audio/metronome-sound.mp3" id="4_ppyta"]
+[ext_resource type="Script" uid="uid://bmy3ku1ea1fa8" path="res://guitar_input_recorder.gd" id="5_ykrsh"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_ppyta"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_ykrsh"]
 
 [node name="Test" type="Control" unique_id=385323799]
 layout_mode = 3
@@ -234,6 +237,16 @@ title = "Open a File"
 file_mode = 0
 filters = PackedStringArray("*.tres")
 
+[node name="GuitarInputRecorder" type="AudioStreamPlayer" parent="Communicator" unique_id=24025548]
+stream = SubResource("AudioStreamMicrophone_ykrsh")
+autoplay = true
+bus = &"Guitar Recorder"
+script = ExtResource("5_ykrsh")
+
+[node name="InputEvent" type="Timer" parent="Communicator/GuitarInputRecorder" unique_id=1032325104]
+wait_time = 0.1
+autostart = true
+
 [connection signal="item_selected" from="Communicator/MainControls/PitchKey" to="Communicator" method="_on_pitch_key_item_selected"]
 [connection signal="item_selected" from="Communicator/MainControls/IntervalKey" to="Communicator" method="_on_interval_key_item_selected"]
 [connection signal="pressed" from="Communicator/MainControls/PlaySong" to="Communicator" method="_on_play_song_pressed"]
@@ -250,3 +263,4 @@ filters = PackedStringArray("*.tres")
 [connection signal="pressed" from="Communicator/Editing/DeleteFile" to="Communicator" method="_on_delete_file_pressed"]
 [connection signal="file_selected" from="Communicator/SaveFile" to="Communicator" method="_on_save_file_file_selected"]
 [connection signal="file_selected" from="Communicator/LoadFile" to="Communicator" method="_on_load_file_file_selected"]
+[connection signal="timeout" from="Communicator/GuitarInputRecorder/InputEvent" to="Communicator/GuitarInputRecorder" method="_on_input_event_timeout"]

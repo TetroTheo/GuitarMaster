@@ -24,6 +24,11 @@ run/main_scene="uid://bca24mwsuhtsx"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://b8uv78kad6ss"
 
+[audio]
+
+buses/default_bus_layout="uid://bhlh7kvl8ivky"
+driver/enable_input=true
+
 [display]
 
 window/size/resizable=false
