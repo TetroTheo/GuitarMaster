@@ -8,7 +8,7 @@ signal key_pressed
 
 func set_note(note: Note):
 	key_note = note
-	key_note.key = self
+	#key_note.key = self
 	text = note.note_name()
 
 

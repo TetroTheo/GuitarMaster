@@ -29,6 +29,10 @@ config/icon="uid://b8uv78kad6ss"
 window/size/resizable=false
 window/size/always_on_top=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
+
 [gui]
 
 theme/custom_font="uid://di5n2uwfyyvh2"
