@@ -117,7 +117,7 @@ layout_mode = 2
 toggle_mode = true
 text = "Metronome"
 
-[node name="BPM" type="SpinBox" parent="Communicator/MainControls" unique_id=1391751871]
+[node name="SpeedChanger" type="SpinBox" parent="Communicator/MainControls" unique_id=1391751871]
 layout_mode = 2
 min_value = 50.0
 max_value = 200.0
@@ -154,6 +154,7 @@ toggle_mode = true
 text = "Guitar Tuner"
 
 [node name="PanelContainer" type="PanelContainer" parent="Communicator/MainControls/Tuner" unique_id=17911573]
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = -1
@@ -179,6 +180,10 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer" unique_id=1156969464]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
 script = ExtResource("3_g14j6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer" unique_id=2101975609]
@@ -324,6 +329,7 @@ autostart = true
 [connection signal="toggled" from="Communicator/MainControls/PauseSong" to="Communicator" method="pause_song"]
 [connection signal="toggled" from="Communicator/MainControls/Loop" to="Communicator" method="_on_loop_toggled"]
 [connection signal="toggled" from="Communicator/MainControls/Metronome" to="Communicator" method="_on_metronome_toggled"]
+[connection signal="value_changed" from="Communicator/MainControls/SpeedChanger" to="Communicator" method="on_speed_changer_value_changed"]
 [connection signal="toggled" from="Communicator/MainControls/GuitarInputMode" to="Communicator" method="on_guitar_input_mode_toggled"]
 [connection signal="toggled" from="Communicator/MainControls/Tuner" to="Communicator" method="on_tuner_toggled"]
 [connection signal="pressed" from="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/Done" to="Communicator" method="on_tuner_closed"]

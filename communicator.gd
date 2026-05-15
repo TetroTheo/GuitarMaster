@@ -23,9 +23,11 @@ var BPM := 120.0
 var last_song_note_duration := 0.0
 var last_metronome_tick_position := 0.0
 var last_metronome_tick_duration := 0.0
+var metronome_ticks_this_measure := 0
 var metronome_on := false
 var selected_interval_key := 0
 var selected_pitch_key := 0
+var speed_scale := 1.0
 ## for when changing key scales
 signal update_key_scale
 
@@ -207,10 +209,11 @@ func _on_play_song_pressed() -> void:
 	last_song_note_position = 0.0
 	last_song_note_duration = 0.0
 	last_metronome_tick_position = 0.0
-	last_metronome_tick_duration = 0.0
+	metronome_ticks_this_measure = 0
 	## set the song tempo to start off with!
 	if song.measure_packages:
 		BPM = song.measure_packages[song_measure_index].tempo
+		last_metronome_tick_duration = 1.0/song.measure_packages[song_measure_index].time_signature_denominator
 		generator.play()
 
 
@@ -228,16 +231,22 @@ func _on_play_song_pressed() -> void:
 ## in terms of this program, the duration of the metronome should be 4/Y for any time signature X/Y.
 ## (but we still need to store X and Y. both to calculate the ratio of the measure, and for display.)
 
-## plays the song
-func _process(_delta: float) -> void:
+
+func is_song_playing() -> bool:
 	## there may not be a song!
 	if not song or not generator.playing:
-		return
+		return false
 	## there may be a song without measures!
 	if not song.measure_packages:
-		return
+		return false
 	## there may be a song without notes!
 	if not song.measure_packages[0].note_packages:
+		return false
+	return true
+
+## plays the song
+func _process(_delta: float) -> void:
+	if not is_song_playing():
 		return
 	song_position = generator.get_playback_position() + AudioServer.get_time_since_last_mix()
 	song_position -= AudioServer.get_output_latency() + 0.25
@@ -245,27 +254,28 @@ func _process(_delta: float) -> void:
 	## here, we're using the BPM to uniformly scale the song position,
 	## so that we won't have to scale the metronome or any notes after this.
 	## the BPM will also not be needed.
-	song_position /= 4 * 60.0 / BPM
-	## play the metronome!
+	song_position /= 4 * 60.0 / BPM / speed_scale
+	## metronome check
 	while last_metronome_tick_position + last_metronome_tick_duration < song_position:
-		## even if not currently enabled, keep track of the metronome,
-		## so that it can be turned on and off properly during playback!
-		if metronome_on:
-			#print("beep boop")
-			## make this a configurable setting later! because it's only useful sometimes!
-			## for the first note of the measure, play a slightly different sound!
-			if song_note_index == 0:
-				$Metronome.pitch_scale = 2.0
-			else:
-				$Metronome.pitch_scale = 1.0
-			$Metronome.play()
+		## the numerator tells us how many times the metronome will tick each measure.
+		## in 4/4, the ticks will occur on 0, 1, 2, and 3, but there will be
+		## no fourth tick. this is played on next measure's tick 0.
+		if metronome_ticks_this_measure >= song.measure_packages[song_measure_index].time_signature_numerator - 1:
+			break
+		play_the_metronome()
 		## don't delete this line! I crashed my computer after I forgot this one...
-		last_metronome_tick_position = song_position
-		## metronome frequency is based on the current time signature
-		#print(1.0/song.measure_packages[song_measure_index].time_signature_denominator)
-		last_metronome_tick_duration = 1.0/song.measure_packages[song_measure_index].time_signature_denominator
+		last_metronome_tick_position += last_metronome_tick_duration
+		## we keep track of these ticks, so that a metroome ticking too fast
+		## will not play more times in a measure than it should.
+		metronome_ticks_this_measure += 1
 	## play as many notes as the song position has passed
 	while last_song_note_position + last_song_note_duration < song_position:
+		if song_note_index == 0:
+			play_the_metronome()
+			## set metronome interval duration for this measure
+			last_metronome_tick_duration = 1.0/song.measure_packages[song_measure_index].time_signature_denominator
+			last_metronome_tick_position = song_position
+			metronome_ticks_this_measure = 0
 		for note in song.measure_packages[song_measure_index].note_packages[song_note_index].notes:
 			note.play_sound(get_node("AudioPlayers"))
 		last_song_note_position = song_position
@@ -273,37 +283,77 @@ func _process(_delta: float) -> void:
 		last_song_note_duration = song.measure_packages[song_measure_index].note_packages[song_note_index].duration
 		song_note_index += 1
 		## check if this was the last note in the measure
-		if song_note_index >= len(song.measure_packages[song_measure_index].note_packages):
-			## move to next measure
-			song_measure_index += 1
-			song_note_index = 0
-			## check if this was the last note of the last measure
-			if song_measure_index >= len(song.measure_packages):
-				if loop:
-					## start from the first note of the first measure
-					song_note_index = 0
-					song_measure_index = 0
+		if not song_note_index >= len(song.measure_packages[song_measure_index].note_packages):
+			## if not, continue
+			continue
+		## move to next measure
+		song_measure_index += 1
+		song_note_index = 0
+		## check if this was the last note of the last measure
+		if song_measure_index >= len(song.measure_packages):
+			if loop:
+				## start from the first note of the first measure
+				song_note_index = 0
+				song_measure_index = 0
+				## the metronome will figure it out later!
+			else:
+				## end playback
+				stop_song()
+				break
+		## if we made it here, we're still playing! we should change the tempo!
+		change_song_tempo()
+
+
+## if the speed scale has changed, pass in the new scale as an argument.
+## that way, it's easy to keep track of both!
+func change_song_tempo():
+	var scaling_constant: float = 4 * 60.0 / (BPM)
+	## undo normalization
+	song_position *= scaling_constant
+	last_song_note_position *= scaling_constant
+	last_metronome_tick_position *= scaling_constant
+	last_song_note_duration *= scaling_constant
+	last_metronome_tick_duration *= scaling_constant
+	BPM = song.measure_packages[song_measure_index].tempo
+	scaling_constant = 4 * 60.0 / (BPM)
+	## re-scale all position variables that depended on the song position,
+	## as well as the song position itself
+	song_position /= scaling_constant
+	last_song_note_position /= scaling_constant
+	last_metronome_tick_position /= scaling_constant
+	last_song_note_duration /= scaling_constant
+	last_metronome_tick_duration /= scaling_constant
+
+## do the same thing, but with song speed
+func change_song_speed(new_speed_scale):
+	var scaling_constant: float = speed_scale
+	song_position /= scaling_constant
+	last_song_note_position /= scaling_constant
+	last_metronome_tick_position /= scaling_constant
+	last_song_note_duration /= scaling_constant
+	last_metronome_tick_duration /= scaling_constant
+	scaling_constant = new_speed_scale
+	song_position *= scaling_constant
+	last_song_note_position *= scaling_constant
+	last_metronome_tick_position *= scaling_constant
+	last_song_note_duration *= scaling_constant
+	last_metronome_tick_duration *= scaling_constant
+	speed_scale = new_speed_scale
+	
+## play the metronome!
+## that is, if it's on!
+func play_the_metronome():
+			## even if not currently enabled, keep track of the metronome,
+			## so that it can be turned on and off properly during playback!
+			if metronome_on:
+				## make this a configurable setting later! because it's only useful sometimes!
+				## for the first note of the measure, play a slightly different sound!
+				if song_note_index == 0:
+					$Metronome.pitch_scale = 2.0
 				else:
-					## end playback
-					stop_song()
-					break
-			## if we made it here, we're still playing! we should change the tempo!
-			## undo normalization
-			song_position *= 4 * 60.0 / BPM
-			last_song_note_position *= 4 * 60.0 / BPM
-			last_metronome_tick_position *= 4 * 60.0 / BPM
-			## will this help?
-			last_song_note_duration *= 4 * 60.0 / BPM
-			last_metronome_tick_duration *= 4 * 60.0 / BPM
-			BPM = song.measure_packages[song_measure_index].tempo
-			## re-scale all position variables that depended on the song position,
-			## as well as the song position itself
-			song_position /= 4 * 60.0 / BPM
-			last_song_note_position /= 4 * 60.0 / BPM
-			last_metronome_tick_position /= 4 * 60.0 / BPM
-			last_song_note_duration /= 4 * 60.0 / BPM
-			last_metronome_tick_duration /= 4 * 60.0 / BPM
-			
+					$Metronome.pitch_scale = 1.0
+				$Metronome.play()
+
 
 ## stops the song
 ## (did I really have to write this?)
@@ -400,3 +450,15 @@ func on_tuner_closed() -> void:
 
 func on_tuner_toggled(toggled_on: bool) -> void:
 	$MainControls/Tuner/PanelContainer.visible = toggled_on
+
+
+## when you don't want to change the tempo,
+## but the song is a little too slow or too fast,
+## then this speed changer will help!
+## the value is in percent, by the way.
+func on_speed_changer_value_changed(value: float) -> void:
+	## obviously, this will mess with the song a little.
+	if is_song_playing():
+		change_song_speed(value / 100)
+	else:
+		speed_scale = value / 100
