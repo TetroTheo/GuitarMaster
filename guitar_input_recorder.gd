@@ -6,11 +6,16 @@ extends AudioStreamPlayer
 @onready var MAX_RATE := 600#int(sample_rate / 1000.0) #600
 
 var fixed_data := PackedFloat32Array()
+## keep this at above 2048, or it will become too inaccurate!
 const MAX_DATA = 2048
-const MIN_VOL := 0.00005
+## anything below 0.001 is low confidence,
+## at least with this microphone.
+const MIN_VOL := 0.001
 var new_pitch_cooldown = 0
 var thread := Thread.new()
 var current_pitch := 0.0
+
+signal note_detected
 
 func _ready():
 	## mutes the audio without actually preventing audio capture!
@@ -37,19 +42,17 @@ func main():
 	## pass our data to a detector thread
 	thread.start(autocorrelate.bind(fixed_data))
 	var pitch = thread.wait_to_finish()
-	print(pitch)
+	## just send the most likely note to the communicator
+	note_detected.emit(pitch[0])
+	## the rest is for debugging
 	return
 	@warning_ignore("unreachable_code")
-	var send = []
-	for i in range(3):
-		if pitch[i] < 80: continue
-		## NOTE: You can only add the cooldown after making sure the pitch wasn't 0
-		new_pitch_cooldown = 0
-		var my_pitch = (log(pitch[i]/440.0) / log(2)) + 4.75
-		var note = Note.new()
-		note.pitch = my_pitch
-		send.append(note)
-	print(send)
+	var notes := ""
+	for frq: float in pitch:
+		var note := Note.new()
+		note.pitch = Note.pitch_from_frequency(frq)
+		notes += str(note) + str(roundi(frq)) + " "
+	print(notes)
 
 ## Don't close the game without removing the thread!
 func _exit_tree():
@@ -63,6 +66,7 @@ func volume_check(samples) -> bool:
 	for s in samples:
 		sum += s * s
 	var rms = sqrt(sum / rin)
+	#print(rms)
 	return not (rms < MIN_VOL)
 
 func autocorrelate(samples):

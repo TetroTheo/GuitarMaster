@@ -38,6 +38,7 @@ func _init(f := 0, p := 0, s := 0) -> void:
 	fret = f
 	pitch = p
 	string = s
+	#print(pitch_from_string("A4"))
 
 
 func pitch_letter() -> String:
@@ -47,8 +48,8 @@ func pitch_letter() -> String:
 func octave() -> int:
 	return floori(pitch / 12.0)
 
-
-func note_name()-> String:
+## example -> "A4"
+func note_name() -> String:
 	return pitch_letter() + str(octave())
 
 
@@ -59,7 +60,15 @@ static func pitch_from_string(name: String) -> int:
 	new_pitch += 12 * int(name_parts[1])
 	return new_pitch
 
-## we start at C0, but the audio is E2, so offset by 28
+## A4 = 440 is an exact definition for the pitch scale,
+## so we start with that, because we know the exact pitch value it will land on.
+## from there, determining the rest of the function is easy.
+static func pitch_from_frequency(frq: float) -> int:
+	return roundi(12 * log(frq / 440)/log(2) + 57)
+	
+
+## (in our pitch variable) we store C0 as pitch = 0, 
+## but the audio is E2, so offset by 28
 ## example inputs: 
 ## 'E1' (pitch = 16) -> 0.5
 ## 'E2' (pitch = 28) -> 1.0

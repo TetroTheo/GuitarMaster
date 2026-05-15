@@ -36,7 +36,28 @@ func _ready() -> void:
 	## settings should only affect the fretboard, but only the communicator can easily access the node!
 	$Fretboard.connect_settings_menu($MainControls/Settings)
 	update_key_scales()
+	$GuitarInputRecorder.note_detected.connect(on_note_detected)
 
+
+## TODO:
+## instead of showing which note it thinks you're playing...
+## show the six notes in tuning right now
+## and let you select which one to match to.
+## it will show you the frequency and name of each note
+## it will still show your recorded frequency, of course
+## make the tuner show how many cents off you are
+
+
+## by the way, we only detect notes when input is enabled
+func on_note_detected(frequency: float):
+	## don't do anything for now, except in the frequency screen
+	if not $MainControls/Tuner/PanelContainer.visible:
+		return
+	var widgets := $MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer
+	widgets.get_node("Frequency").text = str(snapped(frequency, 0.1))
+	var note := Note.new()
+	note.pitch = Note.pitch_from_frequency(frequency)
+	widgets.get_node("Note Name").text = note.note_name()
 
 func note_edit_option_selected(index: int):
 	match index:
@@ -362,3 +383,18 @@ func _on_interval_key_item_selected(index: int) -> void:
 ## helper function for refreshing all key colors
 func update_key_scales():
 	update_key_scale.emit(selected_pitch_key, selected_interval_key)
+
+
+func on_guitar_input_mode_toggled(toggled_on: bool) -> void:
+	$GuitarInputRecorder.playing = toggled_on
+	## the tuner is not helpful if we cannot hear anything...
+	## so we disable it along with the input mode!
+	$MainControls/Tuner.disabled = not toggled_on
+
+## this triggers the function below
+func on_tuner_closed() -> void:
+	$MainControls/Tuner.button_pressed = false
+
+
+func on_tuner_toggled(toggled_on: bool) -> void:
+	$MainControls/Tuner/PanelContainer.visible = toggled_on

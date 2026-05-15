@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dfw50qnbmywo" path="res://test-fretboard.tscn" id="1_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://bniuvcdt27wtl" path="res://test-track.tscn" id="2_6uqi0"]
 [ext_resource type="Script" uid="uid://cbe1xr2bm1tt5" path="res://communicator.gd" id="3_6uqi0"]
+[ext_resource type="Script" uid="uid://c8gb06b4mbaw4" path="res://margin_container.gd" id="3_g14j6"]
 [ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://audio/metronome-sound.mp3" id="4_ppyta"]
 [ext_resource type="Script" uid="uid://bmy3ku1ea1fa8" path="res://guitar_input_recorder.gd" id="5_ykrsh"]
 
@@ -28,6 +29,7 @@ grow_vertical = 2
 script = ExtResource("3_6uqi0")
 
 [node name="Fretboard" parent="Communicator" unique_id=165216119 instance=ExtResource("1_8uh7m")]
+clip_contents = true
 layout_mode = 2
 
 [node name="MainControls" type="HBoxContainer" parent="Communicator" unique_id=1197233772]
@@ -124,7 +126,8 @@ suffix = "%"
 
 [node name="Settings" type="MenuButton" parent="Communicator/MainControls" unique_id=1263572175]
 layout_mode = 2
-text = "Settings"
+text = "Board Settings
+"
 flat = false
 item_count = 3
 popup/item_0/text = "Bass Mode"
@@ -137,6 +140,67 @@ popup/item_2/text = "Fret Scaling"
 popup/item_2/checkable = 1
 popup/item_2/checked = true
 popup/item_2/id = 2
+
+[node name="VSeparator3" type="VSeparator" parent="Communicator/MainControls" unique_id=466923312]
+layout_mode = 2
+
+[node name="GuitarInputMode" type="CheckButton" parent="Communicator/MainControls" unique_id=514070450]
+layout_mode = 2
+text = "Guitar Input"
+
+[node name="Tuner" type="Button" parent="Communicator/MainControls" unique_id=1563579507]
+layout_mode = 2
+toggle_mode = true
+text = "Guitar Tuner"
+
+[node name="PanelContainer" type="PanelContainer" parent="Communicator/MainControls/Tuner" unique_id=17911573]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -219.0
+offset_right = 163.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Communicator/MainControls/Tuner/PanelContainer" unique_id=559980915]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer" unique_id=117935082]
+layout_mode = 2
+text = "Guitar Tuner"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer" unique_id=1156969464]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("3_g14j6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer" unique_id=2101975609]
+layout_mode = 2
+
+[node name="Note Name" type="Label" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2031465940]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "A4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frequency" type="Label" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1915605283]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "440 Hz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Done" type="Button" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer" unique_id=10609546]
+layout_mode = 2
+text = "Done"
 
 [node name="Editing" type="HBoxContainer" parent="Communicator" unique_id=535346514]
 layout_mode = 2
@@ -184,7 +248,7 @@ text = "CHORD"
 [node name="NoteEdit" type="MenuButton" parent="Communicator/Editing" unique_id=552369376]
 layout_mode = 2
 disabled = true
-text = "EDIT NOTE"
+text = "NOTE"
 flat = false
 item_count = 3
 popup/item_0/text = "Rewrite"
@@ -253,6 +317,9 @@ autostart = true
 [connection signal="toggled" from="Communicator/MainControls/PauseSong" to="Communicator" method="pause_song"]
 [connection signal="toggled" from="Communicator/MainControls/Loop" to="Communicator" method="_on_loop_toggled"]
 [connection signal="toggled" from="Communicator/MainControls/Metronome" to="Communicator" method="_on_metronome_toggled"]
+[connection signal="toggled" from="Communicator/MainControls/GuitarInputMode" to="Communicator" method="on_guitar_input_mode_toggled"]
+[connection signal="toggled" from="Communicator/MainControls/Tuner" to="Communicator" method="on_tuner_toggled"]
+[connection signal="pressed" from="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/Done" to="Communicator" method="on_tuner_closed"]
 [connection signal="pressed" from="Communicator/Editing/Rest" to="Communicator" method="on_rest_pressed"]
 [connection signal="item_selected" from="Communicator/Editing/DurationModifiers" to="Communicator" method="_on_duration_modifiers_item_selected"]
 [connection signal="item_selected" from="Communicator/Editing/Duration" to="Communicator" method="on_duration_changed"]
