@@ -119,7 +119,7 @@ text = "Metronome"
 
 [node name="SpeedChanger" type="SpinBox" parent="Communicator/MainControls" unique_id=1391751871]
 layout_mode = 2
-min_value = 50.0
+min_value = 20.0
 max_value = 200.0
 value = 100.0
 suffix = "%"
