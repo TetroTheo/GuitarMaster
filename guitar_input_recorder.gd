@@ -10,8 +10,8 @@ var fixed_data := PackedFloat32Array()
 const MAX_DATA = 2048
 ## anything below 0.001 is low confidence,
 ## at least with this microphone.
-const MIN_VOL := 0.001
-var new_pitch_cooldown = 0
+const MIN_VOLUME := 0.1
+var detection_delay = 0
 var thread := Thread.new()
 var current_pitch := 0.0
 
@@ -23,6 +23,8 @@ func _ready():
 
 func main():
 	var frames = capture.get_frames_available()
+	## we need at least this many frames
+	## for an accurate calculation.
 	if frames < MAX_DATA: return
 	## convert raw input to mono channel
 	var data = capture.get_buffer(frames)
@@ -32,44 +34,38 @@ func main():
 	## trim to the most recent 2048 frames
 	if fixed_data.size() > MAX_DATA:
 		fixed_data = fixed_data.slice(fixed_data.size() - MAX_DATA)
-	if not volume_check(fixed_data):
-		new_pitch_cooldown = 0
+	## store the volume!
+	var volume := get_volume(fixed_data)
+	if volume <= MIN_VOLUME:
 		return
-	if thread.is_alive(): return
-	if new_pitch_cooldown > 0: 
-		new_pitch_cooldown -= 1
+	if thread.is_alive(): 
 		return
 	## pass our data to a detector thread
+	## this thread will run the autocorrelate function,
+	## with our sampled data as the parameter.
 	thread.start(autocorrelate.bind(fixed_data))
-	var pitch = thread.wait_to_finish()
+	var frequency = thread.wait_to_finish()
 	## just send the most likely note to the communicator
-	note_detected.emit(pitch[0])
-	## the rest is for debugging
-	return
-	@warning_ignore("unreachable_code")
-	var notes := ""
-	for frq: float in pitch:
-		var note := Note.new()
-		note.pitch = Note.pitch_from_frequency(frq)
-		notes += str(note) + str(roundi(frq)) + " "
-	print(notes)
+	note_detected.emit(frequency[0], volume)
 
-## Don't close the game without removing the thread!
+
+## never close the game without removing all active threads
 func _exit_tree():
 	if thread.is_started():
 		thread.wait_to_finish()
 
 
-func volume_check(samples) -> bool:
+## let's return the calculated volume itself, to be used
+## for other purposes.
+func get_volume(samples: PackedFloat32Array) -> float:
 	var rin = samples.size()
-	var sum = 0
+	var sum := 0.0
 	for s in samples:
 		sum += s * s
-	var rms = sqrt(sum / rin)
-	#print(rms)
-	return not (rms < MIN_VOL)
+	var rms := sqrt(sum / rin)
+	return rms
 
-func autocorrelate(samples):
+func autocorrelate(samples: PackedFloat32Array):
 	var rin = samples.size()
 	## check to make sure array is big enough
 	if rin < 2: 

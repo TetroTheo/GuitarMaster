@@ -156,7 +156,7 @@ text = "Guitar Tuner"
 [node name="PanelContainer" type="PanelContainer" parent="Communicator/MainControls/Tuner" unique_id=17911573]
 top_level = true
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -184,7 +184,7 @@ script = ExtResource("3_g14j6")
 [node name="VBoxContainer" type="VBoxContainer" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer" unique_id=2101975609]
 layout_mode = 2
 
-[node name="Note Name" type="Label" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2031465940]
+[node name="NoteName" type="Label" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2031465940]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "A4"
@@ -195,6 +195,13 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "440 Hz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="Label" parent="Communicator/MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1135294920]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0.00"
 horizontal_alignment = 1
 vertical_alignment = 1
 

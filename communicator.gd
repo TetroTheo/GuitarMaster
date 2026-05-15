@@ -49,15 +49,17 @@ func _ready() -> void:
 
 
 ## by the way, we only detect notes when input is enabled
-func on_note_detected(frequency: float):
+func on_note_detected(frequency: float, volume: float):
 	## don't do anything for now, except in the frequency screen
 	if not $MainControls/Tuner/PanelContainer.visible:
 		return
 	var widgets := $MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer
-	widgets.get_node("Frequency").text = str(snapped(frequency, 0.1))
+	widgets.get_node("Frequency").text = str(snapped(frequency, 0.1)) + " Hz"
 	var note := Note.new()
 	note.pitch = Note.pitch_from_frequency(frequency)
-	widgets.get_node("Note Name").text = note.note_name()
+	widgets.get_node("NoteName").text = note.note_name()
+	widgets.get_node("Volume").text = str(snapped(volume,0.01))
+
 
 func note_edit_option_selected(index: int):
 	match index:

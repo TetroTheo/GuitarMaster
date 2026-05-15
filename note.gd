@@ -1,6 +1,7 @@
 @tool
 class_name Note
 extends Resource
+## the greatest class I've ever made
 
 @export_range(0,24,1) var fret : int
 @export var pitch : int
