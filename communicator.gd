@@ -104,10 +104,10 @@ func key_pressed(note : Note):
 			return
 		## overwrite any notes in the chord that may be on this note's string
 		## there will only be one!
-		for c_note in chord_notes:
-			if c_note.string == note.string:
-				chord_notes.erase(c_note)
-				get_key_from_note(c_note).toggle_off()
+		for chord_note in chord_notes:
+			if chord_note.string == note.string:
+				chord_notes.erase(chord_note)
+				get_key_from_note(chord_note).toggle_off()
 				break
 		get_key_from_note(note).toggle_on()
 		chord_notes.append(note)
