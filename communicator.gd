@@ -31,7 +31,8 @@ var speed_scale := 1.0
 ## for when changing key scales
 signal update_key_scale
 ## game mode!
-var gaming := true
+var gaming := false
+var accuracy_matrix: Array[int] = [0, 0, 0, 0, 0]
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
@@ -41,6 +42,7 @@ func _ready() -> void:
 	$Fretboard.connect_settings_menu($MainControls/Settings)
 	update_key_scales()
 	$GuitarInputRecorder.note_detected.connect(on_note_detected)
+	$EventNodes.note_hit.connect(on_note_hit)
 
 
 ## TODO:
@@ -103,8 +105,11 @@ func on_measure_deleted(measure: Measure):
 
 ## if any key is pressed, tell the sheet to add a note
 func key_pressed(note : Note):
+	## instead of editing,
+	## treat the note as guitar input
 	if gaming:
 		add_input_event(note)
+		return
 	## if we are creating a chord, keep it to yourself for now.
 	## we will add all notes of the chord at once!
 	if chord_creation:
@@ -219,6 +224,8 @@ func _on_play_song_pressed() -> void:
 	last_song_note_duration = 0.0
 	last_metronome_tick_position = 0.0
 	metronome_ticks_this_measure = 0
+	## reset accuracy count
+	accuracy_matrix = [0, 0, 0, 0, 0]
 	## set the song tempo to start off with!
 	if song.measure_packages:
 		BPM = song.measure_packages[song_measure_index].tempo
@@ -293,6 +300,8 @@ func _process(_delta: float) -> void:
 				var event = Event.new()
 				for note: Note in nkpg.notes:
 					event.add_note(note)
+				## we don't connect this to input events!
+				event.timeout.connect(on_note_miss)
 				$EventNodes/Notes.add_child(event)
 				$EventNodes.check_events()
 		## plays note sound for the entire chord
@@ -481,3 +490,31 @@ func on_speed_changer_value_changed(percent: float) -> void:
 		change_song_speed(percent / 100)
 	else:
 		speed_scale = percent / 100
+
+
+func _on_game_mode_toggled(toggled_on: bool) -> void:
+	gaming = toggled_on
+
+
+func on_note_hit(timing: float):
+	if timing < 0.1:
+		accuracy_matrix[0] += 1
+	elif timing < 0.3:
+		accuracy_matrix[1] += 1
+	elif timing < 0.6:
+		accuracy_matrix[2] += 1
+	else:
+		accuracy_matrix[3] += 1
+	update_accuracy_display()
+
+
+func on_note_miss():
+	accuracy_matrix[4] += 1
+	update_accuracy_display()
+
+
+func update_accuracy_display():
+	var index := 0
+	for accuracy_name in ['Perfect', 'Great', 'Good', 'Bad', 'Miss']:
+		$GamePanel.get_node(accuracy_name).get_node("Count").text = str(accuracy_matrix[index])
+		index += 1

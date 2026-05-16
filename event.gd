@@ -20,6 +20,7 @@ func add_note(note: Note):
 	notes.append(note)
 	name += " " + note.note_name()
 
+
 func on_timeout():
 	queue_free()
 
