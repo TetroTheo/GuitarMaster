@@ -30,6 +30,8 @@ var selected_pitch_key := 0
 var speed_scale := 1.0
 ## for when changing key scales
 signal update_key_scale
+## game mode!
+var gaming := true
 
 ## so that we can connect to the track, so that it will tell us when a measure is deleted
 func _ready() -> void:
@@ -52,16 +54,21 @@ func _ready() -> void:
 
 ## by the way, we only detect notes when input is enabled
 func on_note_detected(frequency: float, volume: float):
-	## don't do anything for now, except in the frequency screen
-	if not $MainControls/Tuner/PanelContainer.visible:
-		return
-	var widgets := $MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer
-	widgets.get_node("Frequency").text = str(snapped(frequency, 0.1)) + " Hz"
 	var note := Note.new()
 	note.pitch = Note.pitch_from_frequency(frequency)
-	widgets.get_node("NoteName").text = note.note_name()
-	widgets.get_node("Volume").text = str(snapped(volume,0.01))
+	if $MainControls/Tuner/PanelContainer.visible:
+		var widgets := $MainControls/Tuner/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer
+		widgets.get_node("Frequency").text = str(snapped(frequency, 0.1)) + " Hz"
+		widgets.get_node("NoteName").text = note.note_name()
+		widgets.get_node("Volume").text = str(snapped(volume,0.01))
+	if volume > 0.1:
+		add_input_event(note)
 
+func add_input_event(note: Note):
+	var event = Event.new()
+	event.add_note(note)
+	$EventNodes/Inputs.add_child(event)
+	$EventNodes.check_events()
 
 func note_edit_option_selected(index: int):
 	match index:
@@ -96,6 +103,8 @@ func on_measure_deleted(measure: Measure):
 
 ## if any key is pressed, tell the sheet to add a note
 func key_pressed(note : Note):
+	if gaming:
+		add_input_event(note)
 	## if we are creating a chord, keep it to yourself for now.
 	## we will add all notes of the chord at once!
 	if chord_creation:
@@ -276,7 +285,18 @@ func _process(_delta: float) -> void:
 			last_metronome_tick_duration = 1.0/song.measure_packages[song_measure_index].time_signature_denominator
 			last_metronome_tick_position = song_position
 			metronome_ticks_this_measure = 0
-		for note in song.measure_packages[song_measure_index].note_packages[song_note_index].notes:
+		var nkpg: NotePackage = song.measure_packages[song_measure_index].note_packages[song_note_index]
+		## if we are gaming, then add the notes as note events!
+		if gaming:
+			## exclude rests
+			if len(nkpg.notes) > 0:
+				var event = Event.new()
+				for note: Note in nkpg.notes:
+					event.add_note(note)
+				$EventNodes/Notes.add_child(event)
+				$EventNodes.check_events()
+		## plays note sound for the entire chord
+		for note in nkpg.notes:
 			note.play_sound(get_node("AudioPlayers"))
 		last_song_note_position = song_position
 		## we need to get the LAST note that was played!
@@ -343,16 +363,16 @@ func change_song_speed(new_speed_scale):
 ## play the metronome!
 ## that is, if it's on!
 func play_the_metronome():
-			## even if not currently enabled, keep track of the metronome,
-			## so that it can be turned on and off properly during playback!
-			if metronome_on:
-				## make this a configurable setting later! because it's only useful sometimes!
-				## for the first note of the measure, play a slightly different sound!
-				if song_note_index == 0:
-					$Metronome.pitch_scale = 2.0
-				else:
-					$Metronome.pitch_scale = 1.0
-				$Metronome.play()
+	## even if not currently enabled, keep track of the metronome,
+	## so that it can be turned on and off properly during playback!
+	if metronome_on:
+		## make this a configurable setting later! because it's only useful sometimes!
+		## for the first note of the measure, play a slightly different sound!
+		if song_note_index == 0:
+			$Metronome.pitch_scale = 2.0
+		else:
+			$Metronome.pitch_scale = 1.0
+		$Metronome.play()
 
 
 ## stops the song
@@ -455,10 +475,9 @@ func on_tuner_toggled(toggled_on: bool) -> void:
 ## when you don't want to change the tempo,
 ## but the song is a little too slow or too fast,
 ## then this speed changer will help!
-## the value is in percent, by the way.
-func on_speed_changer_value_changed(value: float) -> void:
+func on_speed_changer_value_changed(percent: float) -> void:
 	## obviously, this will mess with the song a little.
 	if is_song_playing():
-		change_song_speed(value / 100)
+		change_song_speed(percent / 100)
 	else:
-		speed_scale = value / 100
+		speed_scale = percent / 100

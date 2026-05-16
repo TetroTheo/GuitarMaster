@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c8gb06b4mbaw4" path="res://margin_container.gd" id="3_g14j6"]
 [ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://audio/metronome-sound.mp3" id="4_ppyta"]
 [ext_resource type="Script" uid="uid://bmy3ku1ea1fa8" path="res://guitar_input_recorder.gd" id="5_ykrsh"]
+[ext_resource type="Script" uid="uid://qf3mcuqu6vsj" path="res://event_nodes.gd" id="7_vbegm"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_ppyta"]
 
@@ -322,6 +323,13 @@ script = ExtResource("5_ykrsh")
 [node name="InputEvent" type="Timer" parent="Communicator/GuitarInputRecorder" unique_id=1032325104]
 wait_time = 0.1
 autostart = true
+
+[node name="EventNodes" type="Node" parent="Communicator" unique_id=785014561]
+script = ExtResource("7_vbegm")
+
+[node name="Notes" type="Node" parent="Communicator/EventNodes" unique_id=1814852829]
+
+[node name="Inputs" type="Node" parent="Communicator/EventNodes" unique_id=106868803]
 
 [connection signal="item_selected" from="Communicator/MainControls/PitchKey" to="Communicator" method="_on_pitch_key_item_selected"]
 [connection signal="item_selected" from="Communicator/MainControls/IntervalKey" to="Communicator" method="_on_interval_key_item_selected"]
