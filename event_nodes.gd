@@ -7,7 +7,7 @@ func check_events():
 	for note_event: Event in $Notes.get_children():
 		for input_event: Event in $Inputs.get_children():
 			## inputs only have one note!
-			if input_event.notes[0] in note_event.notes:
+			if input_event.notes[0].note_name() in note_event.get_note_names():
 				## the condition is satisfied
 				var timing: float = note_event.age() - input_event.age()
 				note_hit.emit(timing)

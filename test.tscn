@@ -151,6 +151,7 @@ text = "Guitar Input"
 
 [node name="Tuner" type="Button" parent="Communicator/MainControls" unique_id=1563579507]
 layout_mode = 2
+disabled = true
 toggle_mode = true
 text = "Guitar Tuner"
 

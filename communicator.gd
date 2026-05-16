@@ -64,7 +64,9 @@ func on_note_detected(frequency: float, volume: float):
 		widgets.get_node("NoteName").text = note.note_name()
 		widgets.get_node("Volume").text = str(snapped(volume,0.01))
 	if volume > 0.1:
-		add_input_event(note)
+		if not gaming:
+			key_pressed(note)
+	add_input_event(note)
 
 func add_input_event(note: Note):
 	var event = Event.new()
@@ -497,13 +499,14 @@ func _on_game_mode_toggled(toggled_on: bool) -> void:
 
 
 func on_note_hit(timing: float):
-	if timing < 0.1:
+	print(timing)
+	if timing < 0.1: ## perfect
 		accuracy_matrix[0] += 1
-	elif timing < 0.3:
+	elif timing < 0.3: ## great
 		accuracy_matrix[1] += 1
-	elif timing < 0.6:
+	elif timing < 0.6: ## good
 		accuracy_matrix[2] += 1
-	else:
+	else: ## bad
 		accuracy_matrix[3] += 1
 	update_accuracy_display()
 

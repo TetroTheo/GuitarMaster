@@ -10,7 +10,7 @@ var fixed_data := PackedFloat32Array()
 const MAX_DATA = 2048
 ## anything below 0.001 is low confidence,
 ## at least with this microphone.
-const MIN_VOLUME := 0.1
+const MIN_VOLUME := 0.001
 var detection_delay = 0
 var thread := Thread.new()
 var current_pitch := 0.0

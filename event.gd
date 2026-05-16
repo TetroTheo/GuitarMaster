@@ -28,3 +28,11 @@ func on_timeout():
 ## returns how long (in seconds) the event has been alive.
 func age() -> float:
 	return max_wait_time - time_left
+
+
+## get all note names as an array
+func get_note_names() -> Array[String]:
+	var array: Array[String]
+	for note in notes:
+		array.append(note.note_name())
+	return array
