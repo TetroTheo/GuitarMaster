@@ -9,7 +9,9 @@ signal key_pressed
 func set_note(note: Note):
 	key_note = note
 	#key_note.key = self
-	text = note.note_name()
+	$Label.text = note.note_name()
+	size_flags_horizontal = Control.SIZE_FILL
+	custom_minimum_size.y = 24
 
 
 ## this class does not have a scene, so we have to handle

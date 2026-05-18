@@ -1,0 +1,37 @@
+[gd_resource type="Theme" format=3 uid="uid://0t3sxdtmit65"]
+
+[ext_resource type="FontFile" uid="uid://dpqskw3mfngxy" path="res://IBM_Plex_Sans_JP/IBMPlexSansJP-Bold.ttf" id="2_6665y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbqgp"]
+bg_color = Color(0.5856, 0.89759994, 0.96, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuhg0"]
+bg_color = Color(0.42749998, 0.77583325, 0.95, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_catep"]
+bg_color = Color(0.8778041, 0.93792695, 0.96128994, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+Button/colors/font_pressed_color = Color(0.42745098, 0.7764706, 0.9490196, 1)
+Button/font_sizes/font_size = 14
+Button/styles/hover = SubResource("StyleBoxFlat_mbqgp")
+Button/styles/normal = SubResource("StyleBoxFlat_xuhg0")
+Button/styles/pressed = SubResource("StyleBoxFlat_catep")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+Label/constants/outline_size = 3
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_outline_size = 3
+Label/fonts/font = ExtResource("2_6665y")

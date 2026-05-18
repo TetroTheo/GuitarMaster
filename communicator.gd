@@ -495,6 +495,8 @@ func on_speed_changer_value_changed(percent: float) -> void:
 
 
 func _on_game_mode_toggled(toggled_on: bool) -> void:
+	## reset accuracy count
+	accuracy_matrix = [0, 0, 0, 0, 0]
 	gaming = toggled_on
 
 

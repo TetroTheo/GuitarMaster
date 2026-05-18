@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dfw50qnbmywo" path="res://test-fretboard.tscn" id="1_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://bniuvcdt27wtl" path="res://test-track.tscn" id="2_6uqi0"]
 [ext_resource type="Script" uid="uid://cbe1xr2bm1tt5" path="res://communicator.gd" id="3_6uqi0"]
-[ext_resource type="Script" uid="uid://c8gb06b4mbaw4" path="res://margin_container.gd" id="3_g14j6"]
+[ext_resource type="Script" path="res://margin_container.gd" id="3_g14j6"]
 [ext_resource type="AudioStream" uid="uid://bgh7xlurdxeav" path="res://audio/metronome-sound.mp3" id="4_ppyta"]
 [ext_resource type="Script" uid="uid://bmy3ku1ea1fa8" path="res://guitar_input_recorder.gd" id="5_ykrsh"]
 [ext_resource type="Script" uid="uid://qf3mcuqu6vsj" path="res://event_nodes.gd" id="7_vbegm"]
@@ -301,8 +301,7 @@ layout_mode = 2
 [node name="GameMode" type="Button" parent="Communicator/GamePanel" unique_id=151287369]
 layout_mode = 2
 toggle_mode = true
-text = "Game
-Mode"
+text = "Game Mode"
 
 [node name="Perfect" type="VBoxContainer" parent="Communicator/GamePanel" unique_id=1650644757]
 custom_minimum_size = Vector2(60, 0)

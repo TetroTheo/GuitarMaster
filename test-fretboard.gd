@@ -74,7 +74,8 @@ func create_keys():
 			fret_length = 42
 		## add one to include fret zero
 		for j in range(FRET_NUMBER + 1):
-			var key = Key.new()
+			## load key script
+			var key = load("uid://biq2gnj0eses8").instantiate()
 			if SCALE_FRETS and not j:
 				key.set_length(40)
 			else:
